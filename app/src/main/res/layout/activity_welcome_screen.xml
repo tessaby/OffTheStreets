@@ -7,12 +7,37 @@
     tools:context="com.example.tessamber.offthestreets.WelcomeScreen">
 
     <TextView
+        android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:text="Off The Streets"
+        android:textAppearance="@android:style/TextAppearance.Material.Display2"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="79dp" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Connecting with nearby shelters for a place to stay the night"
+        tools:layout_editor_absoluteX="6dp"
+        tools:layout_editor_absoluteY="177dp" />
+
+    <Button
+        android:id="@+id/bLogin"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log In"
+        android:textAppearance="@style/TextAppearance.AppCompat.Widget.Button"
+        tools:layout_editor_absoluteX="86dp"
+        tools:layout_editor_absoluteY="312dp" />
+
+    <Button
+        android:id="@+id/bSignup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Sign Up"
+        tools:layout_editor_absoluteX="211dp"
+        tools:layout_editor_absoluteY="312dp" />
 
 </android.support.constraint.ConstraintLayout>

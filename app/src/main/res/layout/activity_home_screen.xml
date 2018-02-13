@@ -6,4 +6,11 @@
     android:layout_height="match_parent"
     tools:context="com.example.tessamber.offthestreets.HomeScreen">
 
+    <Button
+        android:id="@+id/bLogout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Log Out"
+        tools:layout_editor_absoluteX="280dp"
+        tools:layout_editor_absoluteY="16dp" />
 </android.support.constraint.ConstraintLayout>
