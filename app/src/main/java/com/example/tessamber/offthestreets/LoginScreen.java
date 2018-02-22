@@ -35,10 +35,24 @@ public class LoginScreen extends AppCompatActivity {
                 String password = String.valueOf(etPassword.getText());
 
                 //validates the username and password for user, pass
-                if (username.equals("user") && password.equals("pass")) {
-                    android.content.Intent myIntent1 = new android.content.Intent(view.getContext(), HomeScreen.class);
-                    startActivityForResult(myIntent1, 0);
-                } else {
+//                if (username.equals("user") && password.equals("pass")) {
+//                    android.content.Intent myIntent1 = new android.content.Intent(view.getContext(), HomeScreen.class);
+//                    startActivityForResult(myIntent1, 0);
+
+
+                //validates that email matches one of the registered emails,
+                // and if true, that password matches the registered password for that email
+                boolean flag = true;
+                for (user myuser : user.MyArr1) {
+                    if (myuser.getEmail().equals(username)) {
+                        if (myuser.getPass().equals(password)) {
+                            android.content.Intent myIntent1 = new android.content.Intent(view.getContext(), HomeScreen.class);
+                            startActivityForResult(myIntent1, 0);
+                            flag = false;
+                        }
+                    }
+                }
+                if (flag) {
                     tvMessage.setText("Login Unsuccessful!");
                 }
             }

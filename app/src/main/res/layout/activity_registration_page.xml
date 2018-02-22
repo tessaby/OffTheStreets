@@ -10,75 +10,114 @@
     <Button
         android:id="@+id/bCancel"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginBottom="25dp"
+        android:layout_marginEnd="10dp"
         android:text="Cancel"
-        tools:layout_editor_absoluteX="231dp"
-        tools:layout_editor_absoluteY="381dp" />
+        app:layout_constraintBottom_toTopOf="@+id/tvRegistration"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bRegister"
+        app:layout_constraintTop_toBottomOf="@+id/spUserType" />
 
     <EditText
         android:id="@+id/etName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="15dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="27dp"
         android:ems="10"
         android:hint="Name"
         android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="27dp" />
+        app:layout_constraintBottom_toTopOf="@+id/etEmailR"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/etEmailR"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="14dp"
+        android:layout_marginStart="16dp"
         android:ems="10"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="88dp" />
+        app:layout_constraintBottom_toTopOf="@+id/etPhoneNum"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etName" />
 
     <EditText
         android:id="@+id/etPhoneNum"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="12dp"
+        android:layout_marginStart="16dp"
         android:ems="10"
         android:hint="Phone Number"
         android:inputType="phone"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="153dp" />
+        app:layout_constraintBottom_toTopOf="@+id/etPassword"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etEmailR" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="3dp"
+        android:layout_marginStart="16dp"
         android:ems="10"
         android:hint="Password"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="211dp" />
+        app:layout_constraintBottom_toTopOf="@+id/etPassword2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etPhoneNum" />
 
     <Spinner
-        android:id="@+id/etUserType"
-        android:layout_width="215dp"
-        android:layout_height="42dp"
+        android:id="@+id/spUserType"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginBottom="7dp"
+        android:layout_marginEnd="27dp"
+        android:layout_marginStart="27dp"
         android:visibility="visible"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="325dp" />
+        app:layout_constraintBottom_toTopOf="@+id/bCancel"
+        app:layout_constraintEnd_toEndOf="@+id/etPassword2"
+        app:layout_constraintStart_toStartOf="@+id/etPassword2"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword2" />
 
     <Button
         android:id="@+id/bRegister"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
+        android:layout_marginStart="9dp"
         android:text="Register"
-        tools:layout_editor_absoluteX="79dp"
-        tools:layout_editor_absoluteY="381dp" />
+        app:layout_constraintBottom_toBottomOf="@+id/bCancel"
+        app:layout_constraintEnd_toStartOf="@+id/bCancel"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bCancel" />
 
     <EditText
         android:id="@+id/etPassword2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="9dp"
         android:ems="10"
         android:hint="Confirm Password"
         android:inputType="textPassword"
-        tools:layout_editor_absoluteX="16dp"
-        tools:layout_editor_absoluteY="265dp" />
+        app:layout_constraintBottom_toTopOf="@+id/spUserType"
+        app:layout_constraintStart_toStartOf="@+id/etPassword"
+        app:layout_constraintTop_toBottomOf="@+id/etPassword" />
+
+    <TextView
+        android:id="@+id/tvRegistration"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="22dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginStart="32dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/bCancel" />
 
 </android.support.constraint.ConstraintLayout>
