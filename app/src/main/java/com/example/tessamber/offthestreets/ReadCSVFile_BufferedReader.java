@@ -23,7 +23,7 @@ public class ReadCSVFile_BufferedReader {
         try {
 
             br = new BufferedReader(new FileReader("Homeless Shelter Database.csv"));
-            List<User> userList = new ArrayList<User>();
+            List<user> userList = new ArrayList<user>();
             String line = "";
             br.readLine(); //read header line, must handle IOException
 
@@ -32,11 +32,11 @@ public class ReadCSVFile_BufferedReader {
 
                 if (userDetails.length > 0) {
 
-                    //User(int uniqueKey,String shelterName, int capacity, String restrictions,
+                    //user(int uniqueKey,String shelterName, int capacity, String restrictions,
                     //double longitude, double latitude, String address, String specialNotes,
                           //  String phoneNumber)
 
-                    User user = new User(Integer.parseInt(userDetails[0]), userDetails[1],
+                    user user = new user(Integer.parseInt(userDetails[0]), userDetails[1],
                             Integer.parseInt(userDetails[2]), userDetails[3],
                             Double.parseDouble(userDetails[4]), Double.parseDouble(userDetails[5]),
                             userDetails[6], userDetails[7], userDetails[8]);
