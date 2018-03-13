@@ -38,7 +38,7 @@ public class ReadCSVFile_BufferedReader {
                     //double longitude, double latitude, String address, String specialNotes,
                           //  String phoneNumber)
 
-                    HomelessShelter shelter = new HomelessShelter(Integer.parseInt(userDetails[0]), userDetails[1],
+                    HomelessShelter shelter = new HomelessShelter(Integer.parseInt(shelterDetails[0]), shelterDetails[1],
                             Integer.parseInt(shelterDetails[2]), shelterDetails[3],
                             Double.parseDouble(shelterDetails[4]), Double.parseDouble(shelterDetails[5]),
                             shelterDetails[6], shelterDetails[7], shelterDetails[8]);
