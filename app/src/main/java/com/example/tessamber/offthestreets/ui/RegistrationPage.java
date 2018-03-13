@@ -1,4 +1,4 @@
-package com.example.tessamber.offthestreets;
+package com.example.tessamber.offthestreets.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +8,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.example.tessamber.offthestreets.R;
+import com.example.tessamber.offthestreets.model.User;
 
 public class RegistrationPage extends AppCompatActivity {
     private EditText etName;
@@ -35,7 +38,7 @@ public class RegistrationPage extends AppCompatActivity {
         /*
           Set up the adapter to display the allowable majors in the spinner
          */
-        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, user.userTypes);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this,android.R.layout.simple_spinner_item, User.userTypes);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spUserType.setAdapter(adapter);
 
@@ -62,12 +65,12 @@ public class RegistrationPage extends AppCompatActivity {
                 } else if (!password.equals(password2)) {
                         tvRegistration.setText("Registration unsuccessful! Passwords do not match.");
 
-                    //store user info in system, return to HomeScreen.
+                    //store User info in system, return to HomeScreen.
                 } else {
                     //check that username does not already exist in list
-                    if (user.MyArr1.size() != 0) {
+                    if (User.MyArr1.size() != 0) {
                         boolean flag = true;
-                        for (user myuser : user.MyArr1) {
+                        for (User myuser : User.MyArr1) {
                             if (email.equals(myuser.getEmail())) {
                                 tvRegistration.setText("Registration unsuccessful! Email is already registered under another account.");
                                 flag = false;
@@ -75,14 +78,14 @@ public class RegistrationPage extends AppCompatActivity {
 
                             //email not previously registered, allow registration
                         } if (flag) {
-                                //add user to database ArrayList
-                                user.MyArr1.add(new user(name, email, phone, password));
+                                //add User to database ArrayList
+                                User.MyArr1.add(new User(name, email, phone, password));
                                 android.content.Intent myIntentRegister = new android.content.Intent(view.getContext(), WelcomeScreen.class);
                                 startActivityForResult(myIntentRegister, 0);
                         }
                     } else {
-                        //list is empty, add first user to database ArrayList
-                        user.MyArr1.add(new user(name, email, phone, password));
+                        //list is empty, add first User to database ArrayList
+                        User.MyArr1.add(new User(name, email, phone, password));
                         android.content.Intent myIntentRegister = new android.content.Intent(view.getContext(), WelcomeScreen.class);
                         startActivityForResult(myIntentRegister, 0);
                     }

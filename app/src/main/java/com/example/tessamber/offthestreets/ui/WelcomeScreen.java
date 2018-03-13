@@ -1,9 +1,14 @@
-package com.example.tessamber.offthestreets;
+package com.example.tessamber.offthestreets.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
+import com.example.tessamber.offthestreets.R;
+import com.example.tessamber.offthestreets.ui.HomeScreen;
+import com.example.tessamber.offthestreets.ui.LoginScreen;
+import com.example.tessamber.offthestreets.ui.RegistrationPage;
 
 public class WelcomeScreen extends AppCompatActivity {
 

@@ -1,4 +1,6 @@
-package com.example.tessamber.offthestreets;
+package com.example.tessamber.offthestreets.model;
+
+import com.example.tessamber.offthestreets.model.User;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -23,25 +25,25 @@ public class ReadCSVFile_BufferedReader {
         try {
 
             br = new BufferedReader(new FileReader("Homeless Shelter Database.csv"));
-            List<user> userList = new ArrayList<user>();
+            List<HomelessShelter> shelterList = new ArrayList<HomelessShelter>();
             String line = "";
             br.readLine(); //read header line, must handle IOException
 
             while ((line = br.readLine()) != null) {
-                String[] userDetails = line.split(COMMA_DELIMITER);
+                String[] shelterDetails = line.split(COMMA_DELIMITER);
 
-                if (userDetails.length > 0) {
+                if (shelterDetails.length > 0) {
 
-                    //user(int uniqueKey,String shelterName, int capacity, String restrictions,
+                    //User(int uniqueKey,String shelterName, int capacity, String restrictions,
                     //double longitude, double latitude, String address, String specialNotes,
                           //  String phoneNumber)
 
-                    user user = new user(Integer.parseInt(userDetails[0]), userDetails[1],
-                            Integer.parseInt(userDetails[2]), userDetails[3],
-                            Double.parseDouble(userDetails[4]), Double.parseDouble(userDetails[5]),
-                            userDetails[6], userDetails[7], userDetails[8]);
+                    HomelessShelter shelter = new HomelessShelter(Integer.parseInt(userDetails[0]), userDetails[1],
+                            Integer.parseInt(shelterDetails[2]), shelterDetails[3],
+                            Double.parseDouble(shelterDetails[4]), Double.parseDouble(shelterDetails[5]),
+                            shelterDetails[6], shelterDetails[7], shelterDetails[8]);
 
-                    userList.add(user);
+                    shelterList.add(shelter);
                 }
             }
 
