@@ -37,7 +37,7 @@ public class User {
 
 
     public String getEmail() {
-        return this.email;
+        return email;
     }
 
 //    public int getCount() {

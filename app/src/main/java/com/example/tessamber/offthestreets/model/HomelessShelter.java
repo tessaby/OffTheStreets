@@ -43,4 +43,13 @@ public class HomelessShelter {
     public String getAddress() { return address; }
     public String getSpecialNotes() { return specialNotes; }
     public String getPhoneNumber() { return phoneNumber; }
+    public String getGender() {
+        if (restrictions.toLowerCase().indexOf("men") != -1) {
+            return "men";
+        } else if (restrictions.toLowerCase().indexOf("women") != -1) {
+            return "women";
+        } else {
+            return "both";
+        }
+    }
 }
