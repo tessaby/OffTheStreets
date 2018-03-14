@@ -9,6 +9,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 import android.view.View;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 
 import com.example.tessamber.offthestreets.R;
 import com.example.tessamber.offthestreets.model.HomelessShelter;
@@ -58,9 +61,9 @@ public class HomelessShelterDetail extends AppCompatActivity {
                     getIntent().getIntExtra(HomelessShelterDetailFragment.ARG_ITEM_ID, 1000));
             HomelessShelterDetailFragment fragment = new HomelessShelterDetailFragment();
             fragment.setArguments(arguments);
-            getSupportFragmentManager().beginTransaction()
-                    .add(R.id.homeless_shelter_detail_container, fragment)
-                    .commit();
+            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+            fragmentTransaction.add(R.id.homeless_shelter_detail_container, fragment);
+                   
         }
     }
 
