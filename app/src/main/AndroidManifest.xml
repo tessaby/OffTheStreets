@@ -28,8 +28,12 @@
             android:name=".LoginActivity"
             android:label="@string/title_activity_login" />
         <activity
-            android:name=".ui.ShelterList"
-            android:label="@string/title_activity_shelter_list"
+            android:name=".ui.HomelessShelterDetail"
+            android:label="@string/title_activity_homeless_shelter_detail"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ui.HomelessShelterList"
+            android:label="@string/title_activity_homeless_shelter_list"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
