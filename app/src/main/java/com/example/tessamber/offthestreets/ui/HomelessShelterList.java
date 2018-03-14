@@ -1,5 +1,6 @@
 package com.example.tessamber.offthestreets.ui;
 
+//import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -32,23 +34,23 @@ public class HomelessShelterList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_homeless_shelter_list);
+        setContentView(R.layout.homeless_shelter_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //toolbar.setTitle(getTitle());
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        /*FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
             }
-        });
+        });*/
 
-        View recyclerView = findViewById(R.id.homeless_shelter_list);
+        RecyclerView recyclerView = findViewById(R.id.homeless_shelter_list);
         assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
+        setupRecyclerView(recyclerView);
 
 //        if (findViewById(R.id.dataitem_detail_container) != null) {
 //            // The detail container view will be present only in the
@@ -60,7 +62,8 @@ public class HomelessShelterList extends AppCompatActivity {
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
-        recyclerView.setAdapter(new HomelessShelterList.SimpleItemRecyclerViewAdapter(ShelterCollection.INSTANCE.getShelters()));
+        recyclerView.setAdapter(new HomelessShelterList.SimpleItemRecyclerViewAdapter
+                (ShelterCollection.INSTANCE.getShelters()));
     }
 
     public class SimpleItemRecyclerViewAdapter
@@ -91,7 +94,7 @@ public class HomelessShelterList extends AppCompatActivity {
                     if (mTwoPane) {
                         Bundle arguments = new Bundle();
                         arguments.putInt(HomelessShelterDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
-                        HomelessShelterDetailFragment fragment = new HomelessShelterDetailFragment();
+                        Fragment fragment = new Fragment();
                         fragment.setArguments(arguments);
                         getSupportFragmentManager().beginTransaction()
                                 .replace(R.id.homeless_shelter_detail_container, fragment)

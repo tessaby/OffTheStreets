@@ -11,8 +11,8 @@ public class HomelessShelter {
     private String shelterName;
     private int capacity;
     private String restrictions;
-    private int longitude;
-    private int latitude;
+    private double longitude;
+    private double latitude;
     private String address;
     private String specialNotes;
     private String phoneNumber;
@@ -20,7 +20,7 @@ public class HomelessShelter {
 
     //Homeless Shelter Constructor
     public HomelessShelter(int uniqueKey, String shelterName, int capacity, String restrictions,
-                int longitude, int latitude, String address, String specialNotes,
+                double longitude, double latitude, String address, String specialNotes,
                 String phoneNumber) {
 
         this.uniqueKey = uniqueKey;
@@ -38,8 +38,8 @@ public class HomelessShelter {
     public String getShelterName() { return shelterName; }
     public int getCapacity() { return capacity; }
     public String getRestrictions() { return restrictions; }
-    public int getLongitude() { return longitude; }
-    public int getLatitude() { return latitude; }
+    public double getLongitude() { return longitude; }
+    public double getLatitude() { return latitude; }
     public String getAddress() { return address; }
     public String getSpecialNotes() { return specialNotes; }
     public String getPhoneNumber() { return phoneNumber; }

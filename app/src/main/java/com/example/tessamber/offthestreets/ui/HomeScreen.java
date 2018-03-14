@@ -37,7 +37,9 @@ public class HomeScreen extends AppCompatActivity {
         Button bLoadShelters = findViewById(R.id.bLoadFile);
         bLoadShelters.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-
+                readSDFile();
+                Intent intent = new Intent(getApplicationContext(), HomelessShelterList.class);
+                startActivity(intent);
             }
         });
     }
@@ -60,6 +62,10 @@ public class HomeScreen extends AppCompatActivity {
      * Open the HomelessShelterDatabase.csv file in the /res/raw directory
      *
      */
+    private int getInts(String str) {
+        int value = Integer.parseInt(str.replaceAll("[\\D]", ""));
+        return value;
+    }
     private void readSDFile() {
         ShelterCollection model = ShelterCollection.INSTANCE;
         BufferedReader br = null;
@@ -68,30 +74,34 @@ public class HomeScreen extends AppCompatActivity {
             InputStream is = getResources().openRawResource(R.raw.shelterdatabase);
             //From here we probably should call a model method and pass the InputStream
             //Wrap it in a BufferedReader so that we get the readLine() method
-            //BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
-            br = new BufferedReader(new FileReader("shelterdatabase.csv"));
+            br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+            //br = new BufferedReader(new FileReader("shelterdatabase.csv"));
 
             String line;
             br.readLine(); //get rid of header line
+            int count = 0;
             while ((line = br.readLine()) != null) {
                 Log.d(HomeScreen.TAG, line);
-                String[] shelterDetails = line.split(COMMA_DELIMITER);
+                String[] shelterDetails = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
                 //String[] tokens = line.split(",");
 
                 //HomelessShelter(int uniqueKey,String shelterName, int capacity,
                 // String restrictions, double longitude, double latitude, String address,
                 // String specialNotes, String phoneNumber)
 
-//                HomelessShelter shelter = new HomelessShelter(Integer.parseInt(shelterDetails[0]), shelterDetails[1],
-//                        Integer.parseInt(shelterDetails[2]), shelterDetails[3],
-//                        Double.parseDouble(shelterDetails[4]), Double.parseDouble(shelterDetails[5]),
-//                        shelterDetails[6], shelterDetails[7], shelterDetails[8]);
 
-                HomelessShelter shelter = new HomelessShelter(Integer.parseInt(shelterDetails[0]), shelterDetails[1],
-                        Integer.parseInt(shelterDetails[2]), shelterDetails[3],
-                        Integer.parseInt(shelterDetails[4]), Integer.parseInt(shelterDetails[5]),
+                //for(int i = 0; i < shelterDetails.length; i++) {
+                //    System.out.println("ShelterDetails[" + i + "]: " + shelterDetails[i]);
+                //}
+                int passInt = 0;
+                if(!(shelterDetails[2].equals(""))) {
+                    passInt = Integer.parseInt(shelterDetails[2].replaceAll("[\\D]", ""));
+                }
+                HomelessShelter shelter = new HomelessShelter(Integer.parseInt(shelterDetails[0]),
+                        shelterDetails[1], passInt, shelterDetails[3],
+                        Double.parseDouble(shelterDetails[4]),
+                        Double.parseDouble(shelterDetails[5]),
                         shelterDetails[6], shelterDetails[7], shelterDetails[8]);
-
             }
             br.close();
         } catch (IOException e) {

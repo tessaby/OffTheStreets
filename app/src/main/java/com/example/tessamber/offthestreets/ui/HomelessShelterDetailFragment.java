@@ -78,8 +78,8 @@ public class HomelessShelterDetailFragment extends Fragment {
             ((TextView) rootView.findViewById(R.id.name)).setText(mItem.getShelterName());
             ((TextView) rootView.findViewById(R.id.capacity)).setText(mItem.getCapacity());
             ((TextView) rootView.findViewById(R.id.restrictions)).setText(mItem.getRestrictions());
-            ((TextView) rootView.findViewById(R.id.longitude)).setText(mItem.getLongitude());
-            ((TextView) rootView.findViewById(R.id.address)).setText(mItem.getLatitude());
+            ((TextView) rootView.findViewById(R.id.longitude)).setText(Double.toString(mItem.getLongitude()));
+            ((TextView) rootView.findViewById(R.id.address)).setText(Double.toString(mItem.getLatitude()));
             ((TextView) rootView.findViewById(R.id.specialNotes)).setText(mItem.getSpecialNotes());
             ((TextView) rootView.findViewById(R.id.phoneNumber)).setText(mItem.getPhoneNumber());
         }
