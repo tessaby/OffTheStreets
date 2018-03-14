@@ -80,7 +80,8 @@ public class HomelessShelterList extends AppCompatActivity {
         agSpinner.setAdapter(agAdapter);
 
         lv = findViewById(R.id.listV);
-        adapter = new ShelterAdapter(this, HomeScreen.shelterList);
+        ShelterCollection model = ShelterCollection.INSTANCE;
+        adapter = new ShelterAdapter(this, model.getShelters());
         lv.setAdapter(adapter);
         Button searchButton = findViewById(R.id.searchButton);
         searchButton.setOnClickListener(new View.OnClickListener() {
@@ -89,11 +90,11 @@ public class HomelessShelterList extends AppCompatActivity {
                 String ageRange = agSpinner.getSelectedItem().toString();
                 String name = ((EditText) findViewById(R.id.nameTextField)).getText().toString();
             adapter = new ShelterAdapter(getApplicationContext(),
-                    searchShelterList(HomeScreen.shelterList, gender, ageRange, name));
+                    ShelterCollection.INSTANCE.searchShelterList(gender, ageRange, name));
             lv.setAdapter(adapter);
             }
         });
-    }
+    }/*
     public ArrayList<HomelessShelter> searchShelterList(List<HomelessShelter> shelterList,
                                                    String gender, String ageRange, String name) {
         ArrayList<HomelessShelter> displayList = new ArrayList<HomelessShelter>();
@@ -110,7 +111,7 @@ public class HomelessShelterList extends AppCompatActivity {
             }
         }
         return displayList;
-    }
+    }*/
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
         recyclerView.setAdapter(new HomelessShelterList.SimpleItemRecyclerViewAdapter

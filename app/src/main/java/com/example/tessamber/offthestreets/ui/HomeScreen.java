@@ -46,6 +46,7 @@ public class HomeScreen extends AppCompatActivity {
         bLoadShelters.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 readSDFile();
+                //ShelterCollection.INSTANCE.readSDFile();
                 Intent intent = new Intent(getApplicationContext(), HomelessShelterList.class);
                 startActivity(intent);
             }
@@ -110,6 +111,7 @@ public class HomeScreen extends AppCompatActivity {
                         Double.parseDouble(shelterDetails[5]),
                         shelterDetails[6], shelterDetails[7], shelterDetails[8]);
                 shelterList.add(shelter);
+                model.addShelter(shelter);
             }
             br.close();
 
