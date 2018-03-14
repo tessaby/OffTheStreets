@@ -50,7 +50,7 @@ public class HomeScreen extends AppCompatActivity {
     public void onLoadButtonPressed(View view) {
         Log.v(HomeScreen.TAG, "Pressed the load button");
         readSDFile();
-        Intent intent = new Intent(this, ShelterList.class);
+        Intent intent = new Intent(this, HomelessShelterList.class);
         startActivity(intent);
     }
 
@@ -82,9 +82,14 @@ public class HomeScreen extends AppCompatActivity {
                 // String restrictions, double longitude, double latitude, String address,
                 // String specialNotes, String phoneNumber)
 
+//                HomelessShelter shelter = new HomelessShelter(Integer.parseInt(shelterDetails[0]), shelterDetails[1],
+//                        Integer.parseInt(shelterDetails[2]), shelterDetails[3],
+//                        Double.parseDouble(shelterDetails[4]), Double.parseDouble(shelterDetails[5]),
+//                        shelterDetails[6], shelterDetails[7], shelterDetails[8]);
+
                 HomelessShelter shelter = new HomelessShelter(Integer.parseInt(shelterDetails[0]), shelterDetails[1],
                         Integer.parseInt(shelterDetails[2]), shelterDetails[3],
-                        Double.parseDouble(shelterDetails[4]), Double.parseDouble(shelterDetails[5]),
+                        Integer.parseInt(shelterDetails[4]), Integer.parseInt(shelterDetails[5]),
                         shelterDetails[6], shelterDetails[7], shelterDetails[8]);
 
             }

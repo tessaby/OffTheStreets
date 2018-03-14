@@ -32,7 +32,7 @@ public class HomelessShelterList extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shelter_list);
+        setContentView(R.layout.activity_homeless_shelter_list);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         //toolbar.setTitle(getTitle());
@@ -46,7 +46,7 @@ public class HomelessShelterList extends AppCompatActivity {
             }
         });
 
-        View recyclerView = findViewById(R.id.shelter_list);
+        View recyclerView = findViewById(R.id.homeless_shelter_list);
         assert recyclerView != null;
         setupRecyclerView((RecyclerView) recyclerView);
 
@@ -75,7 +75,7 @@ public class HomelessShelterList extends AppCompatActivity {
         @Override
         public HomelessShelterList.SimpleItemRecyclerViewAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.content_shelter_list, parent, false);
+                    .inflate(R.layout.content_homeless_shelter_list, parent, false);
             return new HomelessShelterList.SimpleItemRecyclerViewAdapter.ViewHolder(view);
         }
 

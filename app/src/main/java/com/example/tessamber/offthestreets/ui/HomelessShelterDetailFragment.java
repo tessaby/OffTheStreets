@@ -25,6 +25,14 @@ import com.example.tessamber.offthestreets.model.ShelterCollection;
  * on handsets.
  */
 public class HomelessShelterDetailFragment extends Fragment {
+
+    /**
+     * Mandatory empty constructor for the fragment manager to instantiate the
+     * fragment (e.g. upon screen orientation changes).
+     */
+    public HomelessShelterDetailFragment() {
+    }
+
     /**
      * The fragment argument representing the item ID that this fragment
      * represents.
@@ -35,13 +43,6 @@ public class HomelessShelterDetailFragment extends Fragment {
      * The dummy content this fragment is presenting.
      */
     private HomelessShelter mItem;
-
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
-    public HomelessShelterDetailFragment() {
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -66,16 +67,20 @@ public class HomelessShelterDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.dataitem_detail, container, false);
+        View rootView = inflater.inflate(R.layout.homeless_shelter_detail, container, false);
         Log.d("MYAPP", "Getting ready to set data");
         // Show the dummy content as text in a TextView.
         if (mItem != null) {
             Log.d("MYAPP", "Getting ready to set id");
             ((TextView) rootView.findViewById(R.id.id2)).setText("" + mItem.getId());
             Log.d("MYAPP", "Getting ready to set name");
-            ((TextView) rootView.findViewById(R.id.name)).setText(mItem.getName());
-            ((TextView) rootView.findViewById(R.id.email)).setText(mItem.getEmail());
-            ((TextView) rootView.findViewById(R.id.fruit)).setText(mItem.getFruit());
+            ((TextView) rootView.findViewById(R.id.name)).setText(mItem.getShelterName());
+            ((TextView) rootView.findViewById(R.id.capacity)).setText(mItem.getCapacity());
+            ((TextView) rootView.findViewById(R.id.restrictions)).setText(mItem.getRestrictions());
+            ((TextView) rootView.findViewById(R.id.longitude)).setText(mItem.getLongitude());
+            ((TextView) rootView.findViewById(R.id.address)).setText(mItem.getLatitude());
+            ((TextView) rootView.findViewById(R.id.specialNotes)).setText(mItem.getSpecialNotes());
+            ((TextView) rootView.findViewById(R.id.phoneNumber)).setText(mItem.getPhoneNumber());
         }
 
         return rootView;
