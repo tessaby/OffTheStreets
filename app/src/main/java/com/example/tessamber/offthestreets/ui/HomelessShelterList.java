@@ -65,10 +65,7 @@ public class HomelessShelterList extends AppCompatActivity {
 //            // activity should be in two-pane mode.
 //            mTwoPane = true;
         final Spinner gSpinner = findViewById(R.id.genderSpinner);
-        java.util.ArrayList<String> genders = new java.util.ArrayList<>();
-        genders.add("Both") ;
-        genders.add("Men");
-        genders.add("Women");
+        String[] genders = {"Both", "Men", "Women"};
         ArrayAdapter<String> gendersAdapter = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item, genders);
         gSpinner.setAdapter(gendersAdapter);
@@ -80,7 +77,7 @@ public class HomelessShelterList extends AppCompatActivity {
         agSpinner.setAdapter(agAdapter);
 
         lv = findViewById(R.id.listV);
-        ShelterCollection model = ShelterCollection.INSTANCE;
+        final ShelterCollection model = ShelterCollection.INSTANCE;
         adapter = new ShelterAdapter(this, model.getShelters());
         lv.setAdapter(adapter);
         Button searchButton = findViewById(R.id.searchButton);
@@ -90,7 +87,7 @@ public class HomelessShelterList extends AppCompatActivity {
                 String ageRange = agSpinner.getSelectedItem().toString();
                 String name = ((EditText) findViewById(R.id.nameTextField)).getText().toString();
             adapter = new ShelterAdapter(getApplicationContext(),
-                    ShelterCollection.INSTANCE.searchShelterList(gender, ageRange, name));
+                    model.searchShelterList(gender, ageRange, name));
             lv.setAdapter(adapter);
             }
         });
@@ -143,22 +140,12 @@ public class HomelessShelterList extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    if (mTwoPane) {
-                        Bundle arguments = new Bundle();
-                        arguments.putInt(HomelessShelterDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
-                        Fragment fragment = new Fragment();
-                        fragment.setArguments(arguments);
-                        getSupportFragmentManager().beginTransaction()
-                                .replace(R.id.homeless_shelter_detail_container, fragment)
-                                .commit();
-                    } else {
+                        System.out.println("Detected Click");
                         Context context = v.getContext();
                         Intent intent = new Intent(context, HomelessShelterDetail.class);
                         Log.d("MYAPP", "Switch to detailed view for item: " + holder.mItem.getId());
                         intent.putExtra(HomelessShelterDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
-
                         context.startActivity(intent);
-                    }
                 }
             });
         }
