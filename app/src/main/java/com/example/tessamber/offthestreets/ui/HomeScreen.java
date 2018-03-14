@@ -17,9 +17,12 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeScreen extends AppCompatActivity {
     public static String TAG = "MY_APP";
+    public static List<HomelessShelter> shelterList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,8 +105,10 @@ public class HomeScreen extends AppCompatActivity {
                         Double.parseDouble(shelterDetails[4]),
                         Double.parseDouble(shelterDetails[5]),
                         shelterDetails[6], shelterDetails[7], shelterDetails[8]);
+                shelterList.add(shelter);
             }
             br.close();
+
         } catch (IOException e) {
             Log.e(HomeScreen.TAG, "error reading assets", e);
         }
