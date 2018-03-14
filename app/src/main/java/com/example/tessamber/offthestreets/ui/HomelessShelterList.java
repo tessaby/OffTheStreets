@@ -15,6 +15,9 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.example.tessamber.offthestreets.R;
@@ -30,6 +33,7 @@ public class HomelessShelterList extends AppCompatActivity {
      * device.
      */
     private boolean mTwoPane;
+    private ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +51,9 @@ public class HomelessShelterList extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
-
-        RecyclerView recyclerView = findViewById(R.id.homeless_shelter_list);
-        assert recyclerView != null;
-        setupRecyclerView(recyclerView);
-
+        lv = (ListView) findViewById(R.id.listV);
+        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, HomeScreen.shelterList);
+        lv.setAdapter(adapter);
 //        if (findViewById(R.id.dataitem_detail_container) != null) {
 //            // The detail container view will be present only in the
 //            // large-screen layouts (res/values-w900dp).
