@@ -12,6 +12,7 @@ import com.example.tessamber.offthestreets.model.HomelessShelter;
 import com.example.tessamber.offthestreets.model.ShelterCollection;
 
 import java.io.BufferedReader;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -61,13 +62,14 @@ public class HomeScreen extends AppCompatActivity {
      */
     private void readSDFile() {
         ShelterCollection model = ShelterCollection.INSTANCE;
-
+        BufferedReader br = null;
         try {
             //Open a stream on the raw file
-            InputStream is = getResources().openRawResource(R.raw.HomelessShelterDatabase);
+            InputStream is = getResources().openRawResource(R.raw.shelterdatabase);
             //From here we probably should call a model method and pass the InputStream
             //Wrap it in a BufferedReader so that we get the readLine() method
-            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+            //BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+            br = new BufferedReader(new FileReader("shelterdatabase.csv"));
 
             String line;
             br.readLine(); //get rid of header line

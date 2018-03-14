@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.tessamber.offthestreets.ui.ShelterList"
-    tools:showIn="@layout/activity_shelter_list">
+    tools:context="com.example.tessamber.offthestreets.ui.HomelessShelterDetail"
+    tools:showIn="@layout/activity_homeless_shelter_detail">
 
 </android.support.constraint.ConstraintLayout>

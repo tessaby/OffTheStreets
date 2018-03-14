@@ -38,9 +38,10 @@ public class HomelessShelter {
     public String getShelterName() { return shelterName; }
     public int getCapacity() { return capacity; }
     public String getRestrictions() { return restrictions; }
-    public double getLLongitude() { return longitude; }
+    public double getLongitude() { return longitude; }
     public double getLatitude() { return latitude; }
     public String getAddress() { return address; }
+    public String getSpecialNotes() { return specialNotes; }
     public String getPhoneNumber() { return phoneNumber; }
     public String getGender() {
         if (restrictions.indexOf("Men") != -1) {

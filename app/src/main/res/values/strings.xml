@@ -15,4 +15,6 @@
         completions."
     </string>
     <string name="title_activity_shelter_list">ShelterList</string>
+    <string name="title_activity_homeless_shelter_detail">HomelessShelterDetail</string>
+    <string name="title_activity_homeless_shelter_list">HomelessShelterList</string>
 </resources>

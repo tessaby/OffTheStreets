@@ -14,12 +14,12 @@ import com.example.tessamber.offthestreets.model.ShelterCollection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ShelterList extends AppCompatActivity {
+public class HomelessShelterDetail extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_shelter_list);
+        setContentView(R.layout.activity_homeless_shelter_detail);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
