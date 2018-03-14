@@ -34,6 +34,7 @@ public class HomelessShelterList extends AppCompatActivity {
      */
     private boolean mTwoPane;
     private ListView lv;
+    private ShelterAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,9 +52,7 @@ public class HomelessShelterList extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });*/
-        lv = (ListView) findViewById(R.id.listV);
-        ListAdapter adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, HomeScreen.shelterList);
-        lv.setAdapter(adapter);
+
 //        if (findViewById(R.id.dataitem_detail_container) != null) {
 //            // The detail container view will be present only in the
 //            // large-screen layouts (res/values-w900dp).
@@ -61,6 +60,9 @@ public class HomelessShelterList extends AppCompatActivity {
 //            // activity should be in two-pane mode.
 //            mTwoPane = true;
 //        }
+        lv = (ListView) findViewById(R.id.listV);
+        adapter = new ShelterAdapter(this, HomeScreen.shelterList);
+        lv.setAdapter(adapter);
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {

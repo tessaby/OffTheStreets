@@ -5,7 +5,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 import com.example.tessamber.offthestreets.R;
 import com.example.tessamber.offthestreets.model.HomelessShelter;
@@ -18,11 +21,13 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class HomeScreen extends AppCompatActivity {
     public static String TAG = "MY_APP";
-    public static List<HomelessShelter> shelterList = new ArrayList<>();
+    public static ArrayList<HomelessShelter> shelterList = new ArrayList<>();
+    private ListView lv;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,17 +52,19 @@ public class HomeScreen extends AppCompatActivity {
         });
     }
 
+
+
     /**
      * Button handler for the load button
      *
      * @param view  the actual button object that was pressed
      */
-    public void onLoadButtonPressed(View view) {
-        Log.v(HomeScreen.TAG, "Pressed the load button");
-        readSDFile();
-        Intent intent = new Intent(this, HomelessShelterList.class);
-        startActivity(intent);
-    }
+//    public void onLoadButtonPressed(View view) {
+//        Log.v(HomeScreen.TAG, "Pressed the load button");
+//        readSDFile();
+//        Intent intent = new Intent(this, HomelessShelterList.class);
+//        startActivity(intent);
+//    }
 
     //public static final int NAME_POSITION = 0;
     private static final String COMMA_DELIMITER = ",";
@@ -108,6 +115,8 @@ public class HomeScreen extends AppCompatActivity {
                 shelterList.add(shelter);
             }
             br.close();
+
+
 
         } catch (IOException e) {
             Log.e(HomeScreen.TAG, "error reading assets", e);

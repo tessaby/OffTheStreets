@@ -52,4 +52,8 @@ public class HomelessShelter {
             return "both";
         }
     }
+    public String toString() {
+        return uniqueKey + shelterName + capacity + restrictions + longitude + latitude +address
+                + specialNotes + phoneNumber;
+    }
 }
