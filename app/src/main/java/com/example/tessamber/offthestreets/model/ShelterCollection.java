@@ -35,6 +35,41 @@ public class ShelterCollection {
         return null;
     }
 
+    private List<HomelessShelter> searchByGender(String gender) {
+        List<HomelessShelter> displayList = new ArrayList<HomelessShelter>();
+        for (int i = 0; i < shelters.size(); i++) {
+            HomelessShelter shelt = shelters.get(i);
+            // the replace all is so it can match famillies with newborns"
+            if(shelt.getGender().equalsIgnoreCase(gender)) {
+                displayList.add(shelt);
+            }
+        }
+        return displayList;
+    }
+    private List<HomelessShelter> searchByAgeRange(String ageRange) {
+        List<HomelessShelter> displayList = new ArrayList<HomelessShelter>();
+        for (int i = 0; i < shelters.size(); i++) {
+            HomelessShelter shelt = shelters.get(i);
+            // the replace all is so it can match famillies with newborns"
+            if(shelt.getRestrictions().replaceAll("w/", "with").toLowerCase()
+                    .indexOf(ageRange.toLowerCase()) != -1 ) {
+                displayList.add(shelt);
+            }
+        }
+        return displayList;
+    }
+    private List<HomelessShelter> searchByName(String name) {
+        List<HomelessShelter> displayList = new ArrayList<HomelessShelter>();
+        for (int i = 0; i < shelters.size(); i++) {
+            HomelessShelter shelt = shelters.get(i);
+            // the replace all is so it can match famillies with newborns"
+            if(shelt.getShelterName().equalsIgnoreCase(name)) {
+                displayList.add(shelt);
+            }
+        }
+        return displayList;
+    }
+
     private List<HomelessShelter> searchShelters(String gender, String ageRange, String name) {
         //IF Gender can be either, "both" should be passed in
         //FOR age range, assume you can only search for one age category at a time
@@ -47,10 +82,12 @@ public class ShelterCollection {
         for (int i = 0; i < shelters.size(); i++) {
             HomelessShelter shelt = shelters.get(i);
             // the replace all is so it can match famillies with newborns"
-            if(shelt.getRestrictions().replaceAll("w/", "with").toLowerCase()
-                    .indexOf(ageRange.toLowerCase()) != -1 &&
-                    shelt.getShelterName().equalsIgnoreCase(name) &&
-                    shelt.getGender().equalsIgnoreCase(gender)) {
+            if((ageRange.equalsIgnoreCase("all") ||
+                    shelt.getRestrictions().replaceAll("w/", "with").toLowerCase()
+                    .indexOf(ageRange.toLowerCase()) != -1 )&& (name.equals("") ||
+                    shelt.getShelterName().equalsIgnoreCase(name)) && (
+                            gender.equalsIgnoreCase("both") ||
+                    shelt.getGender().equalsIgnoreCase(gender))) {
                 displayList.add(shelt);
             }
         }

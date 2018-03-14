@@ -16,14 +16,19 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListAdapter;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.example.tessamber.offthestreets.R;
 import com.example.tessamber.offthestreets.model.HomelessShelter;
 import com.example.tessamber.offthestreets.model.ShelterCollection;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class HomelessShelterList extends AppCompatActivity {
@@ -59,10 +64,51 @@ public class HomelessShelterList extends AppCompatActivity {
 //            // If this view is present, then the
 //            // activity should be in two-pane mode.
 //            mTwoPane = true;
-//        }
-        lv = (ListView) findViewById(R.id.listV);
+        final Spinner gSpinner = findViewById(R.id.genderSpinner);
+        java.util.ArrayList<String> genders = new java.util.ArrayList<>();
+        genders.add("Both") ;
+        genders.add("Men");
+        genders.add("Women");
+        ArrayAdapter<String> gendersAdapter = new ArrayAdapter<String>(this,
+                R.layout.support_simple_spinner_dropdown_item, genders);
+        gSpinner.setAdapter(gendersAdapter);
+
+        final Spinner agSpinner = findViewById(R.id.ageRangeSpinner);
+        String[] agRanges = {"Families with newborns", "Children", "Young Adults", "Anyone"};
+        ArrayAdapter<String> agAdapter = new ArrayAdapter<String>(this,
+                R.layout.support_simple_spinner_dropdown_item, agRanges);
+        agSpinner.setAdapter(agAdapter);
+
+        lv = findViewById(R.id.listV);
         adapter = new ShelterAdapter(this, HomeScreen.shelterList);
         lv.setAdapter(adapter);
+        Button searchButton = findViewById(R.id.searchButton);
+        searchButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                String gender = gSpinner.getSelectedItem().toString();
+                String ageRange = agSpinner.getSelectedItem().toString();
+                String name = ((EditText) findViewById(R.id.nameTextField)).getText().toString();
+            adapter = new ShelterAdapter(getApplicationContext(),
+                    searchShelterList(HomeScreen.shelterList, gender, ageRange, name));
+            }
+        });
+    }
+    public ArrayList<HomelessShelter> searchShelterList(List<HomelessShelter> shelterList,
+                                                   String gender, String ageRange, String name) {
+        ArrayList<HomelessShelter> displayList = new ArrayList<HomelessShelter>();
+        for (int i = 0; i < shelterList.size(); i++) {
+            HomelessShelter shelt = shelterList.get(i);
+            // the replace all is so it can match famillies with newborns"
+            if((ageRange.equalsIgnoreCase("all") ||
+                    shelt.getRestrictions().replaceAll("w/", "with").toLowerCase()
+                            .indexOf(ageRange.toLowerCase()) != -1 )&& (name.equals("") ||
+                    shelt.getShelterName().equalsIgnoreCase(name)) && (
+                    gender.equalsIgnoreCase("both") ||
+                            shelt.getGender().equalsIgnoreCase(gender))) {
+                displayList.add(shelt);
+            }
+        }
+        return displayList;
     }
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {

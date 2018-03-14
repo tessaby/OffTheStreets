@@ -93,12 +93,9 @@ public class HomeScreen extends AppCompatActivity {
             while ((line = br.readLine()) != null) {
                 Log.d(HomeScreen.TAG, line);
                 String[] shelterDetails = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
-                //String[] tokens = line.split(",");
-
                 //HomelessShelter(int uniqueKey,String shelterName, int capacity,
                 // String restrictions, double longitude, double latitude, String address,
                 // String specialNotes, String phoneNumber)
-
 
                 //for(int i = 0; i < shelterDetails.length; i++) {
                 //    System.out.println("ShelterDetails[" + i + "]: " + shelterDetails[i]);
@@ -126,3 +123,6 @@ public class HomeScreen extends AppCompatActivity {
 
 
 }
+
+
+
