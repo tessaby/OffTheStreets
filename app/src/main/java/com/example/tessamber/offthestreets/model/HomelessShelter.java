@@ -42,4 +42,13 @@ public class HomelessShelter {
     public double getLatitude() { return latitude; }
     public String getAddress() { return address; }
     public String getPhoneNumber() { return phoneNumber; }
+    public String getGender() {
+        if (restrictions.indexOf("Men") != -1) {
+            return "Men";
+        } else if (restrictions.indexOf("Women") != -1) {
+            return "Women";
+        } else {
+            return "both";
+        }
+    }
 }

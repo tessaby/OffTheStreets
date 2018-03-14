@@ -8,6 +8,11 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 
 import com.example.tessamber.offthestreets.R;
+import com.example.tessamber.offthestreets.model.HomelessShelter;
+import com.example.tessamber.offthestreets.model.ShelterCollection;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ShelterList extends AppCompatActivity {
 
@@ -27,5 +32,6 @@ public class ShelterList extends AppCompatActivity {
             }
         });
     }
+
 
 }

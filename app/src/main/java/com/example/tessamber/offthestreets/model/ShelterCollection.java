@@ -34,4 +34,20 @@ public class ShelterCollection {
         Log.d("MYAPP", "Warning - Failed to find id: " + id);
         return null;
     }
+
+    private List<HomelessShelter> searchShelters(String gender, String ageRange, String name) {
+        //IF Gender can be either, "both" should be passed in
+        //FOR age range, assume you can only search for one age category at a time
+        //Name is self explanatory,
+        List<HomelessShelter> displayList = new ArrayList<HomelessShelter>();
+        for (int i = 0; i < shelters.size(); i++) {
+            HomelessShelter shelt = shelters.get(i);
+            if(shelt.getRestrictions().equalsIgnoreCase(ageRange) &&
+                    shelt.getShelterName().equalsIgnoreCase(name) &&
+                    shelt.getGender().equalsIgnoreCase(gender)) {
+                displayList.add(shelt);
+            }
+        }
+        return displayList;
+    }
 }
