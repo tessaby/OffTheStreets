@@ -44,10 +44,10 @@ public class HomelessShelter {
     public String getSpecialNotes() { return specialNotes; }
     public String getPhoneNumber() { return phoneNumber; }
     public String getGender() {
-        if (restrictions.indexOf("Men") != -1) {
-            return "Men";
-        } else if (restrictions.indexOf("Women") != -1) {
-            return "Women";
+        if (restrictions.toLowerCase().indexOf("men") != -1) {
+            return "men";
+        } else if (restrictions.toLowerCase().indexOf("women") != -1) {
+            return "women";
         } else {
             return "both";
         }
