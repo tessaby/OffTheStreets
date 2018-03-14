@@ -90,6 +90,7 @@ public class HomelessShelterList extends AppCompatActivity {
                 String name = ((EditText) findViewById(R.id.nameTextField)).getText().toString();
             adapter = new ShelterAdapter(getApplicationContext(),
                     searchShelterList(HomeScreen.shelterList, gender, ageRange, name));
+            lv.setAdapter(adapter);
             }
         });
     }
@@ -99,7 +100,7 @@ public class HomelessShelterList extends AppCompatActivity {
         for (int i = 0; i < shelterList.size(); i++) {
             HomelessShelter shelt = shelterList.get(i);
             // the replace all is so it can match famillies with newborns"
-            if((ageRange.equalsIgnoreCase("all") ||
+            if((ageRange.equalsIgnoreCase("all") || ageRange.equalsIgnoreCase("anyone") ||
                     shelt.getRestrictions().replaceAll("w/", "with").toLowerCase()
                             .indexOf(ageRange.toLowerCase()) != -1 )&& (name.equals("") ||
                     shelt.getShelterName().equalsIgnoreCase(name)) && (
