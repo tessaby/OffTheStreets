@@ -11,7 +11,7 @@ import com.example.tessamber.offthestreets.R;
 import com.example.tessamber.offthestreets.model.User;
 
 
-public class LoginScreen extends AppCompatActivity {
+public class LoginScreenActivity extends AppCompatActivity {
     private EditText etUsername;
     private EditText etPassword;
     private TextView tvMessage;
@@ -39,7 +39,7 @@ public class LoginScreen extends AppCompatActivity {
 
                 //validates the username and password for User, pass
 //                if (username.equals("User") && password.equals("pass")) {
-//                    android.content.Intent myIntent1 = new android.content.Intent(view.getContext(), HomeScreen.class);
+//                    android.content.Intent myIntent1 = new android.content.Intent(view.getContext(), HomeScreenActivity.class);
 //                    startActivityForResult(myIntent1, 0);
 
 
@@ -49,7 +49,7 @@ public class LoginScreen extends AppCompatActivity {
                 for (User myuser : User.MyArr1) {
                     if (myuser.getEmail().equals(username)) {
                         if (myuser.getPass().equals(password)) {
-                            android.content.Intent myIntent1 = new android.content.Intent(view.getContext(), HomeScreen.class);
+                            android.content.Intent myIntent1 = new android.content.Intent(view.getContext(), HomeScreenActivity.class);
                             startActivityForResult(myIntent1, 0);
                             flag = false;
                         }
@@ -64,7 +64,7 @@ public class LoginScreen extends AppCompatActivity {
         Button bBack = findViewById(R.id.bBack);
         bBack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                android.content.Intent myIntent2 = new android.content.Intent(view.getContext(), WelcomeScreen.class);
+                android.content.Intent myIntent2 = new android.content.Intent(view.getContext(), WelcomeScreenActivity.class);
                 startActivityForResult(myIntent2, 0);
             }
         });

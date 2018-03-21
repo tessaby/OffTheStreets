@@ -8,6 +8,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.support.v4.app.Fragment;
@@ -21,23 +22,14 @@ import com.example.tessamber.offthestreets.model.ShelterCollection;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomelessShelterDetail extends AppCompatActivity {
+public class HomelessShelterDetailActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homeless_shelter_detail);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.detail_toolbar);
         setSupportActionBar(toolbar);
-
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
 
         // Show the Up button in the action bar.
         ActionBar actionBar = getSupportActionBar();
@@ -55,15 +47,26 @@ public class HomelessShelterDetail extends AppCompatActivity {
         // http://developer.android.com/guide/components/fragments.html
         //
         if (savedInstanceState == null) {
+//            System.out.println("HELLODETAIL!");
             // Create the detail fragment and add it to the activity
             // using a fragment transaction.
             Bundle arguments = new Bundle();
+
+//            String name = getIntent().getStringExtra(HomelessShelterDetailFragment.ARG_ITEM_ID);
+//            Log.d("MY APP", "Detail got name: " + name);
+
+//            arguments.putString(HomelessShelterDetailFragment.ARG_ITEM_ID,
+//                    getIntent().getStringExtra(HomelessShelterDetailFragment.ARG_ITEM_ID));
             arguments.putInt(HomelessShelterDetailFragment.ARG_ITEM_ID,
                     getIntent().getIntExtra(HomelessShelterDetailFragment.ARG_ITEM_ID, 1000));
             HomelessShelterDetailFragment fragment = new HomelessShelterDetailFragment();
             fragment.setArguments(arguments);
-            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.add(R.id.homeless_shelter_detail_container, fragment);
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.homeless_shelter_detail_container, fragment)
+                    .commit();
+
+//            FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+//            fragmentTransaction.add(R.id.homeless_shelter_detail_container, fragment);
                    
         }
     }
@@ -78,11 +81,9 @@ public class HomelessShelterDetail extends AppCompatActivity {
             //
             // http://developer.android.com/design/patterns/navigation.html#up-vs-back
             //
-            navigateUpTo(new Intent(this, HomelessShelterList.class));
+            navigateUpTo(new Intent(this, HomelessShelterListActivity.class));
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
-
 }

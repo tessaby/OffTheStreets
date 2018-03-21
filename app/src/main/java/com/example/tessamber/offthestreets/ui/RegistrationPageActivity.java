@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.example.tessamber.offthestreets.R;
 import com.example.tessamber.offthestreets.model.User;
 
-public class RegistrationPage extends AppCompatActivity {
+public class RegistrationPageActivity extends AppCompatActivity {
     private EditText etName;
     private EditText etEmailR;
     private EditText etPhoneNum;
@@ -65,7 +65,7 @@ public class RegistrationPage extends AppCompatActivity {
                 } else if (!password.equals(password2)) {
                         tvRegistration.setText("Registration unsuccessful! Passwords do not match.");
 
-                    //store User info in system, return to HomeScreen.
+                    //store User info in system, return to HomeScreenActivity.
                 } else {
                     //check that username does not already exist in list
                     if (User.MyArr1.size() != 0) {
@@ -80,13 +80,13 @@ public class RegistrationPage extends AppCompatActivity {
                         } if (flag) {
                                 //add User to database ArrayList
                                 User.MyArr1.add(new User(name, email, phone, password));
-                                android.content.Intent myIntentRegister = new android.content.Intent(view.getContext(), WelcomeScreen.class);
+                                android.content.Intent myIntentRegister = new android.content.Intent(view.getContext(), WelcomeScreenActivity.class);
                                 startActivityForResult(myIntentRegister, 0);
                         }
                     } else {
                         //list is empty, add first User to database ArrayList
                         User.MyArr1.add(new User(name, email, phone, password));
-                        android.content.Intent myIntentRegister = new android.content.Intent(view.getContext(), WelcomeScreen.class);
+                        android.content.Intent myIntentRegister = new android.content.Intent(view.getContext(), WelcomeScreenActivity.class);
                         startActivityForResult(myIntentRegister, 0);
                     }
                 }
@@ -96,7 +96,7 @@ public class RegistrationPage extends AppCompatActivity {
         Button bCancel = findViewById(R.id.bCancel);
         bCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                android.content.Intent myIntent = new android.content.Intent(view.getContext(), WelcomeScreen.class);
+                android.content.Intent myIntent = new android.content.Intent(view.getContext(), WelcomeScreenActivity.class);
                 startActivityForResult(myIntent, 0);
             }
         });
