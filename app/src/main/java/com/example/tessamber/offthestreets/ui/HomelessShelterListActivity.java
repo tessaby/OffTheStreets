@@ -20,7 +20,6 @@ import android.widget.TextView;
 
 import com.example.tessamber.offthestreets.R;
 import com.example.tessamber.offthestreets.model.HomelessShelter;
-import com.example.tessamber.offthestreets.model.ShelterAdapter;
 import com.example.tessamber.offthestreets.model.ShelterCollection;
 
 import java.util.ArrayList;
@@ -160,7 +159,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
             // the replace all is so it can match famillies with newborns"
             if((ageRange.equalsIgnoreCase("all") || ageRange.equalsIgnoreCase("anyone") ||
                     shelt.getRestrictions().replaceAll("w/", "with").toLowerCase()
-                            .indexOf(ageRange.toLowerCase()) != -1 )&& (name.equals("") ||
+                            .contains(ageRange.toLowerCase()))&& (name.equals("") ||
                     shelt.getShelterName().equalsIgnoreCase(name)) && (
                     gender.equalsIgnoreCase("both") ||
                             shelt.getGender().equalsIgnoreCase(gender))) {

@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "545250051107",
+    "firebase_url": "https://offthestreets-55088.firebaseio.com",
+    "project_id": "offthestreets-55088",
+    "storage_bucket": "offthestreets-55088.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:545250051107:android:f58d82d028b17de0",
+        "android_client_info": {
+          "package_name": "com.example.tessamber.offthestreets"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "545250051107-k8n1h0u7qlv85vntpng66fblpn7gcipd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.tessamber.offthestreets",
+            "certificate_hash": "b06a5fec855b2f1f115ae66617379a1b15bc3c19"
+          }
+        },
+        {
+          "client_id": "545250051107-620h78ho3bqpd96a4cj8l5cr8h22o6st.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDKv2Q-HZY63_MZcSb43g6tiB5UuLkHgqU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "545250051107-620h78ho3bqpd96a4cj8l5cr8h22o6st.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
