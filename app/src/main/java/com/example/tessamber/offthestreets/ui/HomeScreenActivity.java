@@ -5,10 +5,13 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.tessamber.offthestreets.R;
 import com.example.tessamber.offthestreets.model.HomelessShelter;
 import com.example.tessamber.offthestreets.model.ShelterCollection;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -17,22 +20,42 @@ import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
 public class HomeScreenActivity extends AppCompatActivity {
+
     private static final String TAG = "OffTheStreets";
+
+    // DECLARE BUTTONS
+    Button bLogout;
+    Button bLoadShelters;
+
+    // DECLARE FirebaseAuth
+    private FirebaseAuth mAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_screen);
 
-        Button bLogout = findViewById(R.id.bLogout);
+        // INITIALIZE:
+
+        // BUTTONS
+        bLogout = findViewById(R.id.bLogout);
+        bLoadShelters = findViewById(R.id.bLoadFile);
+
+        // FIREBASE Authentication
+        mAuth = FirebaseAuth.getInstance();
+
         bLogout.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
+                mAuth.signOut();
+                toastMessage("Signing Out...");
+                System.out.println(FirebaseAuth.getInstance().getCurrentUser() == null);
+
+
                 android.content.Intent myIntent = new android.content.Intent(view.getContext(), WelcomeScreenActivity.class);
                 startActivityForResult(myIntent, 0);
             }
         });
 
-        Button bLoadShelters = findViewById(R.id.bLoadFile);
         bLoadShelters.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 readSDFile();
@@ -42,18 +65,17 @@ public class HomeScreenActivity extends AppCompatActivity {
         });
     }
 
-    private static final String COMMA_DELIMITER = ",";
 
     /**
-     * Open the HomelessShelterDatabase.csv file in the /res/raw directory
-     *
+     * customizable toast
+     * @param message
      */
+    private void toastMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+    }
 
-//    private int getInts(String str) {
-//        int value = Integer.parseInt(str.replaceAll("[\\D]", ""));
-//        return value;
-//    }
 
+    //READ CSV FILE OF HOMELESS SHELTERS.
     private void readSDFile() {
 
         ShelterCollection model = ShelterCollection.INSTANCE;
@@ -105,4 +127,11 @@ public class HomeScreenActivity extends AppCompatActivity {
             Log.e(HomeScreenActivity.TAG, "error reading assets", e);
         }
     }
+
+
+//    public FirebaseUser getFirebaseUser() {
+//        return FirebaseAuth.getInstance().getCurrentUser();
+//    }
+
+
 }

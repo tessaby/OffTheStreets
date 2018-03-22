@@ -1,5 +1,8 @@
 package com.example.tessamber.offthestreets.model;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -11,7 +14,7 @@ import java.util.List;
 
 public class User {
 
-    public static List<String> userTypes = Arrays.asList("User", "admin");
+    public static List<String> userTypes = Arrays.asList("user", "admin");
 
     public static ArrayList<User> MyArr1 = new ArrayList<User>();
 
@@ -20,8 +23,8 @@ public class User {
     private String email;
     private String phone;
     private String password;
-
-
+    private int bedsBooked = 0;
+    private Booking booking;
 
     public User() {
     }
@@ -35,16 +38,37 @@ public class User {
         count++;
     }
 
-
     public String getEmail() {
         return email;
     }
 
-//    public int getCount() {
-//        return count;
-//    }
-
     public String getPass() {
         return password;
+    }
+
+    public String getName() { return name; }
+
+    public String getPhoneNumber() { return phone; }
+
+    public int getNumberOfBedsBooked() { return bedsBooked; }
+
+    public void clearBedsBooked() { bedsBooked = 0; }
+
+    public class Booking {
+        private int beds;
+        private HomelessShelter shelterBooked;
+
+        public Booking() {
+        }
+
+        public Booking(int beds, HomelessShelter shelter) {
+            this.beds = beds;
+            shelterBooked = shelter;
+        }
+
+        public void clearBooking() {
+            beds = 0;
+            shelterBooked = null;
+        }
     }
 }
