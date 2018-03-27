@@ -11,4 +11,4 @@ Unique Key,Shelter Name,Capacity,Restrictions,Longitude ,Latitude ,Address,Speci
 9,Hope Atlanta ,22 apartments,Anyone ,-84.390429,33.753594,"34 Peachtree Street NW, Suite 700, Atlanta, GA 30303",Emergency shelter ,(404)-817-7070
 10,Gateway Center,330,Men,-84.394529,33.747618,"275 Pryor St. SW, Atlanta, GA 30303",Shelter and recovery services ,(404) 215-6600
 11,Young Adult Guidance Center ,12,Young adults ,-84.470567,33.789157,"1230 Hightower Road NW Atlanta, GA 30318","Emergency, Independent living, Restoration ",(404) 792-7616
-12,Homes of Light ,,Veterans ,-84.328691,33.747641,"1800 Memorial Dr SE G3, Atlanta, GA 30317",Veterans ,(844) 289-8382
+12,Homes of Light ,1,Veterans ,-84.328691,33.747641,"1800 Memorial Dr SE G3, Atlanta, GA 30317",Veterans ,(844) 289-8382

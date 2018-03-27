@@ -101,6 +101,16 @@ public class HomelessShelterListActivity extends AppCompatActivity {
         public void setmValues(ArrayList<HomelessShelter> newlist) { mValues = newlist; }
 
         @Override
+        public long getItemId(int position) {
+            return position;
+        }
+
+        @Override
+        public int getItemViewType(int position) {
+            return position;
+        }
+
+        @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
             View view = LayoutInflater.from(parent.getContext())
                     .inflate(R.layout.content_homeless_shelter_list, parent, false);

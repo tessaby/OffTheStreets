@@ -78,14 +78,11 @@
         style="@style/Widget.AppCompat.Button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
         android:layout_marginStart="161dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="3dp"
         android:text="Search"
-        app:layout_constraintBottom_toTopOf="@+id/shelter_list"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvShelterName" />
+        app:layout_constraintTop_toBottomOf="@+id/etShelterName" />
 
     <!--<android.support.v7.widget.RecyclerView-->
     <!--android:id="@+id/homeless_shelter_list"-->
@@ -104,15 +101,14 @@
         android:id="@+id/shelter_list"
         android:name="om.example.tessamber.offthestreets.HomelessShelterListFragment"
         android:layout_width="match_parent"
-        android:layout_height="421dp"
-        android:layout_marginTop="20dp"
+        android:layout_height="321dp"
+        android:layout_marginTop="25dp"
         app:layoutManager="LinearLayoutManager"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/bSearch"
         tools:context="com.example.tessamber.offthestreets.HomelessShelterListActivity"
-        tools:layout_editor_absoluteX="16dp"
         tools:listitem="@layout/content_homeless_shelter_list" />
 
 </android.support.constraint.ConstraintLayout>

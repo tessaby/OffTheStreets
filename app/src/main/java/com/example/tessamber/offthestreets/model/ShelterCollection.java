@@ -24,6 +24,8 @@ public class ShelterCollection {
         shelters.add(shelter);
     }
 
+    public void clearShelterList() { shelters.clear(); }
+
     public ArrayList<HomelessShelter> getShelters() {
         return shelters;
     }
@@ -58,7 +60,7 @@ public class ShelterCollection {
             //differentiate between men and women...
             return (s.getGender().equalsIgnoreCase(gender));
         } else {
-            return !(ageRange.toLowerCase().contains("children"));
+            return !(s.getGender().equalsIgnoreCase("men")) && !(s.getGender().equalsIgnoreCase("women"));
         }
         //if it doesn't say men or women, don't bother, everything is true.. unless it specifies children
     }

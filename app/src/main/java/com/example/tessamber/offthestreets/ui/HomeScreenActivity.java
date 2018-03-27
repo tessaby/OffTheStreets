@@ -80,6 +80,8 @@ public class HomeScreenActivity extends AppCompatActivity {
 
         ShelterCollection model = ShelterCollection.INSTANCE;
 
+        model.clearShelterList();
+
         try {
             //Open a stream on the raw file
             InputStream is = getResources().openRawResource(R.raw.shelterdatabase);
@@ -114,8 +116,10 @@ public class HomeScreenActivity extends AppCompatActivity {
                 }
                 System.out.println(address);
 
+                String name = shelterDetails[1].trim();
+
                 HomelessShelter shelter = new HomelessShelter(Integer.parseInt(shelterDetails[0]),
-                        shelterDetails[1], passInt, shelterDetails[3],
+                        name, passInt, shelterDetails[3],
                         Double.parseDouble(shelterDetails[4]),
                         Double.parseDouble(shelterDetails[5]),
                         address, notes, shelterDetails[8]);
