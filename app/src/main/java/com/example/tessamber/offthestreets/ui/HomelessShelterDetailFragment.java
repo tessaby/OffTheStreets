@@ -120,7 +120,10 @@ public class HomelessShelterDetailFragment extends Fragment {
                             "Please log in before booking", Toast.LENGTH_LONG)
                             .show();
                 } else {
-
+                    ShelterCollection model = new ShelterCollection.INSTANCE;
+                    model.updateCapacity(mItem.getId(),
+                            mItem.getCapacity() - number);
+                    //need to set booking
                 }
             }
         }));
