@@ -6,6 +6,7 @@ package com.example.tessamber.offthestreets.ui;
 
 import android.app.Activity;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.util.Log;
@@ -29,6 +30,8 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
+
+import java.util.List;
 
 /**
  * A fragment representing a single DataItem detail screen.
@@ -60,7 +63,6 @@ public class HomelessShelterDetailFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         ShelterCollection sc = ShelterCollection.INSTANCE;
         boolean found = true;
 
@@ -103,6 +105,7 @@ public class HomelessShelterDetailFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //final Context myC = getActivity();
         View rootView = inflater.inflate(R.layout.homeless_shelter_detail, container, false);
         final EditText toBook = null;
         // Show the dummy content as text in a TextView.
@@ -129,19 +132,35 @@ public class HomelessShelterDetailFragment extends Fragment {
                 int number = Integer.parseInt(toBook.getText().toString());
                 if (number < 0 || number > mItem.getCapacity()) {
                     toBook.clearComposingText();
-                    Toast.makeText(getApplicationContext(),
+                    Toast.makeText(myC,
                             "Number must be between 0 and " + mItem.getCapacity(), Toast.LENGTH_LONG)
                             .show();
                 }
                 if (currentUser == null) {
-                    Toast.makeText(getApplicationContext(),
+                    Toast.makeText(myC,
                             "Please log in before booking", Toast.LENGTH_LONG)
                             .show();
                 } else {
-                    ShelterCollection model = new ShelterCollection.INSTANCE;
+                    ShelterCollection model = ShelterCollection.INSTANCE;
                     model.updateCapacity(mItem.getId(),
                             mItem.getCapacity() - number);
                     //need to set booking
+                    String email = DecodeString(currentUser.getEmail());
+                    User user = null;
+                    List<User> userList = User.MyArr1;
+                    boolean found = false;
+                    for (User u: userList) {
+                        if (u.getEmail().equalsIgnoreCase(email)) {
+                            found = true;
+                            user = u;
+                            break;
+                        }
+                    }
+                    if (!found) {
+                        System.out.print("Error: couldn't find user");
+                    } else {
+                        user.setBooking(mItem.getId(), number);
+                    }
                 }
             }
         }));
@@ -151,5 +170,7 @@ public class HomelessShelterDetailFragment extends Fragment {
     public String EncodeString(String string) {
         return string.replace(".", ",");
     }
-
+    public String DecodeString(String string) {
+        return string.replace(",", ".");
+    }
 }

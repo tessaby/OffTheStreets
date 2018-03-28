@@ -35,6 +35,7 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.password = password;
+        MyArr1.add(this);
         count++;
     }
 
@@ -55,7 +56,7 @@ public class User {
     public void clearBedsBooked() { bedsBooked = 0; }
 
     public void setBooking(int shelterID, int number) {
-        HomelessShelter s = new ShelterCollection.INSTANCE.findItemById(shelterID);
+        HomelessShelter s = ShelterCollection.INSTANCE.findItemById(shelterID);
         booking = new Booking(number, s);
         bedsBooked += number;
     }
