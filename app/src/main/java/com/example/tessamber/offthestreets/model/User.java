@@ -64,7 +64,7 @@ public class User {
         }
 
         private boolean updateBooked(Boolean value) {
-            booked = value;
+            return true;
         }
 
         public Booking() {
