@@ -67,7 +67,7 @@ public class ShelterCollection {
 
     private boolean searchForAgeRange(HomelessShelter s, String ageRange) {
         if (ageRange.equalsIgnoreCase("Anyone")) {
-            return true;
+            return true ;
         } else if (ageRange.toLowerCase().contains("children") && s.getRestrictions().toLowerCase().contains("children")) {
             return true;
         } else if (ageRange.toLowerCase().contains("newborns") && s.getRestrictions().toLowerCase().contains("newborns")) {
