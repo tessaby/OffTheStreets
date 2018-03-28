@@ -54,18 +54,15 @@ public class User {
 
     public void clearBedsBooked() { bedsBooked = 0; }
 
+    public void setBooking(int shelterID, int number) {
+        HomelessShelter s = new ShelterCollection.INSTANCE.findItemById(shelterID);
+        booking = new Booking(number, s);
+        bedsBooked += number;
+    }
+
     public class Booking {
         private int beds;
         private HomelessShelter shelterBooked;
-        private boolean booked = false;
-
-        public boolean checkBooked() {
-            return booked;
-        }
-
-        private boolean updateBooked(Boolean value) {
-            return true;
-        }
 
         public Booking() {
         }

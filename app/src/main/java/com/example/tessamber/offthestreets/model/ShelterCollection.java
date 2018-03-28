@@ -144,6 +144,10 @@ public class ShelterCollection {
             key = hs.getId();
             sheltersRef.child(key + hs.getShelterName()).setValue(hs);
         }
+    }
 
+    public static void updateCapacity(int shelterID, int newCapacity) {
+        HomelessShelter s = INSTANCE.findItemById(shelterID);
+        s.setCapacity(newCapacity);
     }
 }
