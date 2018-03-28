@@ -18,6 +18,10 @@ import android.widget.TextView;
 import com.example.tessamber.offthestreets.R;
 import com.example.tessamber.offthestreets.model.HomelessShelter;
 import com.example.tessamber.offthestreets.model.ShelterCollection;
+import com.example.tessamber.offthestreets.model.User;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import org.w3c.dom.Text;
 
@@ -46,6 +50,8 @@ public class HomelessShelterDetailFragment extends Fragment {
     public HomelessShelterDetailFragment() {
     }
 
+    private DatabaseReference mDatabase;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,6 +67,19 @@ public class HomelessShelterDetailFragment extends Fragment {
             System.out.println("found this: " + item_id);
             Log.d("MYAPP", "Start details for: " + item_id);
             mItem = ShelterCollection.INSTANCE.findItemById(item_id);
+
+            //SEARCH FOR USER IN FIREBASE
+            //SET LAST VIEWED SHELTER FOR CURRENT USER.
+            //////////////User.lastViewedShelter = mItem name and id concatenated;
+            if (mItem != null && FirebaseAuth.getInstance().getCurrentUser() != null) {
+                String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                String ref = EncodeString(email);
+                mDatabase = FirebaseDatabase.getInstance().getReference("OffTheStreetsDatabase");
+                mDatabase.child("users").child(ref).child("lastViewedShelter").setValue(mItem.getId() + mItem.getShelterName());
+            } else {
+                //cannot book. no user signed in.
+            }
+
             if (mItem == null) found = false;
 
             Activity activity = this.getActivity();
@@ -99,4 +118,9 @@ public class HomelessShelterDetailFragment extends Fragment {
         }
         return rootView;
     }
+
+    public String EncodeString(String string) {
+        return string.replace(".", ",");
+    }
+
 }
