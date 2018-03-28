@@ -57,15 +57,6 @@ public class User {
     public class Booking {
         private int beds;
         private HomelessShelter shelterBooked;
-        private boolean booked = false;
-
-        public boolean checkBooked() {
-            return booked;
-        }
-
-        private boolean updateBooked(Boolean value) {
-            booked = value;
-        }
 
         public Booking() {
         }

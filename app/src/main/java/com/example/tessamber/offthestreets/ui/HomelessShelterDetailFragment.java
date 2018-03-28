@@ -13,11 +13,16 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.support.v4.app.Fragment;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.tessamber.offthestreets.R;
 import com.example.tessamber.offthestreets.model.HomelessShelter;
 import com.example.tessamber.offthestreets.model.ShelterCollection;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 import org.w3c.dom.Text;
 
@@ -67,20 +72,21 @@ public class HomelessShelterDetailFragment extends Fragment {
             CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
                 if (found) {
-                    appBarLayout.setTitle("Details for: " + mItem.getShelterName());
+                    appBarLayout.setTitle(mItem.getShelterName());
                     //appBarLayout.setTitle(mItem.getShelterName());
                 } else {
                     appBarLayout.setTitle("Shelter Details Not Found");
                 }
             }
         }
+
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.homeless_shelter_detail, container, false);
-
+        final EditText toBook = null;
         // Show the dummy content as text in a TextView.
         Log.d("MYAPP", "Getting ready to set data");
         // Show the dummy content as text in a TextView.
@@ -96,7 +102,28 @@ public class HomelessShelterDetailFragment extends Fragment {
             ((TextView) rootView.findViewById(R.id.latitude)).setText("Latitude: " + Double.toString(mItem.getLatitude()));
             ((TextView) rootView.findViewById(R.id.specialNotes)).setText("Note: " + mItem.getSpecialNotes());
             ((TextView) rootView.findViewById(R.id.phoneNumber)).setText("Phone Number: " + mItem.getPhoneNumber());
+            toBook = (EditText) rootView.findViewById(R.id.numberToBook);
         }
+        Button bookButton = rootView.findViewById(R.id.bookButton);
+        bookButton.setOnClickListener( bookButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+                int number = Integer.parseInt(toBook.getText().toString());
+                if (number < 0 || number > mItem.getCapacity()) {
+                    toBook.clearComposingText();
+                    Toast.makeText(getApplicationContext(),
+                            "Number must be between 0 and " + mItem.getCapacity(), Toast.LENGTH_LONG)
+                            .show();
+                }
+                if (currentUser == null) {
+                    Toast.makeText(getApplicationContext(),
+                            "Please log in before booking", Toast.LENGTH_LONG)
+                            .show();
+                } else {
+
+                }
+            }
+        }));
         return rootView;
     }
 }
