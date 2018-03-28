@@ -3,6 +3,9 @@ package com.example.tessamber.offthestreets.model;
 import android.text.TextUtils;
 import android.util.Log;
 
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,8 +23,7 @@ public class ShelterCollection {
         shelters = new ArrayList<>();
     }
 
-    public void addShelter(HomelessShelter shelter) {
-        shelters.add(shelter);
+    public void addShelter(HomelessShelter shelter) { shelters.add(shelter);
     }
 
     public void clearShelterList() { shelters.clear(); }
@@ -38,8 +40,13 @@ public class ShelterCollection {
         return null;
     }
 
+    /**
+     * method to search for specific shelter
+     * @param name name of Homeless shelter
+     * @return arraylist with shelter with specified name if it exists in the list
+     */
     private ArrayList<HomelessShelter> searchByName(String name) {
-        ArrayList<HomelessShelter> displayList = new ArrayList<HomelessShelter>();
+        ArrayList<HomelessShelter> displayList = new ArrayList<>();
         for (int i = 0; i < shelters.size(); i++) {
             HomelessShelter shelt = shelters.get(i);
             // the replace all is so it can match families with newborns"
@@ -50,6 +57,13 @@ public class ShelterCollection {
         return displayList;
     }
 
+    /**
+     * helper method that searches through arraylist of shelters based on specified gender
+     * @param s specific search to check
+     * @param gender specified gender
+     * @param ageRange i.e. children
+     * @return true if the shelter satisfies criteria, false otherwise
+     */
     private boolean searchForGender(HomelessShelter s, String gender, String ageRange) {
         //if its empty return true
         if (gender.isEmpty()) {
@@ -65,6 +79,12 @@ public class ShelterCollection {
         //if it doesn't say men or women, don't bother, everything is true.. unless it specifies children
     }
 
+    /**
+     * helper method checks if shelter takes in requested age range
+     * @param s specified shelter
+     * @param ageRange specified age group
+     * @return true if it does, false otherwise
+     */
     private boolean searchForAgeRange(HomelessShelter s, String ageRange) {
         if (ageRange.equalsIgnoreCase("Anyone")) {
             return true ;
@@ -77,9 +97,16 @@ public class ShelterCollection {
         }
     }
 
+    /**
+     * method that searches through list of shelters based on search criteria entered by user
+     * @param gender restrictions
+     * @param ageRange restrictions
+     * @param name specific shelter name requested
+     * @return ArrayList of shelters satisfying search criteria
+     */
     public ArrayList<HomelessShelter> searchShelterList(String gender, String ageRange, String name) {
 
-        ArrayList<HomelessShelter> displayList = new ArrayList<HomelessShelter>();
+        ArrayList<HomelessShelter> displayList = new ArrayList<>();
         // if all the search boxes are empty
         if (TextUtils.isEmpty(gender) && TextUtils.isEmpty(ageRange) && TextUtils.isEmpty(name)) {
             Log.d("ifSearchBoxesAreEmpty", "display whole list of shelters");
@@ -100,5 +127,23 @@ public class ShelterCollection {
             if (flag1 && flag2) { displayList.add(s); }
         }
         return displayList;
+    }
+
+    /**
+     * Method called to write complete list of shelter to FireBase database
+     * OffTheStreets child homeless_shelters
+     * @param shelters ArrayList of shelters from csv file
+     */
+    public static void addShelterCollectionToFirebase(ArrayList<HomelessShelter> shelters) {
+
+        FirebaseDatabase hFirebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference hDatabaseReference = hFirebaseDatabase.getReference("OffTheStreetsDatabase");
+        DatabaseReference sheltersRef = hDatabaseReference.child("homeless_shelters");
+        int key;
+        for (HomelessShelter hs : shelters) {
+            key = hs.getId();
+            sheltersRef.child(key + hs.getShelterName()).setValue(hs);
+        }
+
     }
 }

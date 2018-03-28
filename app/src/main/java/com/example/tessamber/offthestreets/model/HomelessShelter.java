@@ -18,6 +18,8 @@ public class HomelessShelter {
     private String phoneNumber;
 
 
+    public HomelessShelter() {
+    }
     //Homeless Shelter Constructor
     public HomelessShelter(int uniqueKey, String shelterName, int capacity, String restrictions,
                 double longitude, double latitude, String address, String specialNotes,
@@ -53,6 +55,11 @@ public class HomelessShelter {
             return "both";
         }
     }
+
+    public void setCapacity(int cap) {
+        capacity = cap;
+    }
+
     public String toString() {
         return uniqueKey + " " + shelterName + " " + capacity + " " + restrictions + " " + longitude + " " + latitude + " " + address
                 + " " + specialNotes + " " + phoneNumber;
