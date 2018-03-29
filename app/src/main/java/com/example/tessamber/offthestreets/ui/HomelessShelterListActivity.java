@@ -202,8 +202,9 @@ public class HomelessShelterListActivity extends AppCompatActivity {
                     String name = shelter.getShelterName();
                     String concatenate = (id + name);
                     Long lon = (Long) dataSnapshot.child(concatenate).child("capacity").getValue();
-                    int cap = lon.intValue();
-                    shelter.setCapacity(cap);
+                    if (lon != null ) {
+                        int cap = lon.intValue();
+                        shelter.setCapacity(cap);}
                 }
 
 //                System.out.println(dataSnapshot.child(concatenate).child("capacity").getValue());

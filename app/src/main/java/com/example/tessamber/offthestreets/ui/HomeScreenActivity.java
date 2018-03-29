@@ -12,6 +12,11 @@ import com.example.tessamber.offthestreets.model.HomelessShelter;
 import com.example.tessamber.offthestreets.model.ShelterCollection;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -26,9 +31,12 @@ public class HomeScreenActivity extends AppCompatActivity {
     // DECLARE BUTTONS
     Button bLogout;
     Button bLoadShelters;
+    Button bClear;
 
     // DECLARE FirebaseAuth
     private FirebaseAuth mAuth;
+
+    DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +48,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         // BUTTONS
         bLogout = findViewById(R.id.bLogout);
         bLoadShelters = findViewById(R.id.bLoadFile);
+        bClear = findViewById(R.id.bClear);
 
         // FIREBASE Authentication
         mAuth = FirebaseAuth.getInstance();
@@ -63,8 +72,54 @@ public class HomeScreenActivity extends AppCompatActivity {
                 startActivityForResult(myIntent2, 0);
             }
         });
-    }
 
+        bClear.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
+                final String emailRef = email.replace(".", ",");
+                mDatabase = FirebaseDatabase.getInstance().getReference("OffTheStreetsDatabase");
+
+                mDatabase.child("users").child(emailRef).addListenerForSingleValueEvent(new ValueEventListener() {
+
+                    @Override
+                    public void onDataChange(DataSnapshot snapshot) {
+                        //retrieve and clear from user
+//                        if (snapshot.child("bedsBooked").containsKey())
+
+                        final Integer num = snapshot.child("bedsBooked").getValue(Integer.class);
+                        mDatabase.child("users").child(emailRef).child("bedsBooked").setValue(0);
+                        final String shelter = snapshot.child("shelterBookedAt").getValue(String.class);
+                        mDatabase.child("users").child(emailRef).child("shelterBookedAt").setValue("");
+
+                        mDatabase.child("homeless_shelters").child("capacity").addListenerForSingleValueEvent(new ValueEventListener() {
+
+                            @Override
+                            public void onDataChange(DataSnapshot dataSnapshot) {
+                                Integer cap = 0;
+                                        //dataSnapshot.getValue(Integer.class);
+                                System.out.println(dataSnapshot.getValue(Integer.class));
+                                //recalculate shelter capacity
+                                mDatabase.child("homeless_shelters").child(shelter).child("capacity").setValue(cap + num);
+                            }
+
+                            @Override
+                            public void onCancelled(DatabaseError databaseError) {
+
+                            }
+                        });
+
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+                });
+
+
+            }
+        });
+    }
 
     /**
      * customizable toast
@@ -131,11 +186,4 @@ public class HomeScreenActivity extends AppCompatActivity {
             Log.e(HomeScreenActivity.TAG, "error reading assets", e);
         }
     }
-
-
-//    public FirebaseUser getFirebaseUser() {
-//        return FirebaseAuth.getInstance().getCurrentUser();
-//    }
-
-
 }
