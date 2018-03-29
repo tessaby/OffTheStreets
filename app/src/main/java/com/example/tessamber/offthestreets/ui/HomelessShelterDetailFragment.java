@@ -6,12 +6,7 @@ package com.example.tessamber.offthestreets.ui;
 
 import android.app.Activity;
 
-import android.app.AlertDialog;
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.util.Log;
 import android.view.LayoutInflater;
