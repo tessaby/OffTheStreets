@@ -1,5 +1,6 @@
 package com.example.tessamber.offthestreets.ui;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -26,6 +27,7 @@ public class HomeScreenActivity extends AppCompatActivity {
     // DECLARE BUTTONS
     Button bLogout;
     Button bLoadShelters;
+    Button mapButton;
 
     // DECLARE FirebaseAuth
     private FirebaseAuth mAuth;
@@ -40,6 +42,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         // BUTTONS
         bLogout = findViewById(R.id.bLogout);
         bLoadShelters = findViewById(R.id.bLoadFile);
+        mapButton = findViewById(R.id.mapButton);
 
         // FIREBASE Authentication
         mAuth = FirebaseAuth.getInstance();
@@ -61,6 +64,14 @@ public class HomeScreenActivity extends AppCompatActivity {
                 readSDFile();
                 android.content.Intent myIntent2 = new android.content.Intent(view.getContext(), HomelessShelterListActivity.class);
                 startActivityForResult(myIntent2, 0);
+            }
+        });
+
+        mapButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                android.content.Intent myIntent3 = new android.content.Intent(view.getContext(), MapsActivity.class);
+                startActivityForResult(myIntent3,0);
             }
         });
     }
