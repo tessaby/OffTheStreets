@@ -21,11 +21,6 @@ import android.widget.TextView;
 import com.example.tessamber.offthestreets.R;
 import com.example.tessamber.offthestreets.model.HomelessShelter;
 import com.example.tessamber.offthestreets.model.ShelterCollection;
-import com.google.firebase.database.DataSnapshot;
-import com.google.firebase.database.DatabaseError;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,56 +30,41 @@ import java.util.List;
  */
 public class HomelessShelterListActivity extends AppCompatActivity {
 
-    // DECLARE RECYCLERVIEW ADAPTER
     SimpleItemRecyclerViewAdapter myAdapter;
-
-    // DECLARE SHELTER COLLECTIO
     final ShelterCollection model = ShelterCollection.INSTANCE;
 
-    // DECLARE VIEWS
     private Spinner spGender;
     private Spinner spAgeRage;
     private EditText etShelterName;
-
-    // DECLARE BUTTONS
-    Button bSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homeless_shelter_list);
 
-        // INITIALIZE: VIEWS
-
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        final View recyclerView = findViewById(R.id.shelter_list);
-        assert recyclerView != null;
-        setupRecyclerView((RecyclerView) recyclerView);
-
-        //SEARCH PART
-
-        // SPINNERS
-
         spGender = findViewById(R.id.spGender);
         String[] genders = {"", "Men", "Women", "Both"};
-        ArrayAdapter<String> gendersAdapter = new ArrayAdapter<>(this,
+        ArrayAdapter<String> gendersAdapter = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item, genders);
         spGender.setAdapter(gendersAdapter);
 
         spAgeRage = findViewById(R.id.spAgeRange);
         String[] ageRanges = {"", "Families with newborns", "Children", "Young Adults", "Anyone"};
-        ArrayAdapter<String> ageAdapter = new ArrayAdapter<>(this,
+        ArrayAdapter<String> ageAdapter = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item, ageRanges);
         spAgeRage.setAdapter(ageAdapter);
 
-        // EDIT TEXT
         etShelterName = findViewById(R.id.etShelterName);
 
-        // BUTTONS
-        bSearch = findViewById(R.id.bSearch);
+        final View recyclerView = findViewById(R.id.shelter_list);
+        assert recyclerView != null;
+        setupRecyclerView((RecyclerView) recyclerView);
+
+        Button bSearch = findViewById(R.id.bSearch);
         bSearch.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 //figure out how to display new list of shelters according to search...
@@ -96,13 +76,12 @@ public class HomelessShelterListActivity extends AppCompatActivity {
                 myAdapter.notifyDataSetChanged();
             }
         });
-
-        setCapacityFromFirebase();
     }
 
     /**
-     * Set up the recycler view for the list to show the shelters
-     * @param recyclerView to display list of homeless shelters to user
+     * Set up the list to show the shelters
+     *
+     * @param recyclerView
      */
 
     private void setupRecyclerView(@NonNull RecyclerView recyclerView) {
@@ -110,9 +89,6 @@ public class HomelessShelterListActivity extends AppCompatActivity {
         recyclerView.setAdapter(myAdapter);
     }
 
-    /**
-     * Inner class SimpleItemRecyclerViewAdapter
-     */
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
@@ -123,16 +99,6 @@ public class HomelessShelterListActivity extends AppCompatActivity {
         }
 
         public void setmValues(ArrayList<HomelessShelter> newlist) { mValues = newlist; }
-
-        @Override
-        public long getItemId(int position) {
-            return position;
-        }
-
-        @Override
-        public int getItemViewType(int position) {
-            return position;
-        }
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -174,8 +140,8 @@ public class HomelessShelterListActivity extends AppCompatActivity {
             public ViewHolder(View view) {
                 super(view);
                 mView = view;
-                mIdView = view.findViewById(R.id.id);
-                mContentView = view.findViewById(R.id.content);
+                mIdView = (TextView) view.findViewById(R.id.id);
+                mContentView = (TextView) view.findViewById(R.id.content);
             }
 
             @Override
@@ -185,43 +151,21 @@ public class HomelessShelterListActivity extends AppCompatActivity {
         }
     }
 
-    public void setCapacityFromFirebase() {
-        // FIREBASE
-        // DECLARE & INITIALIZE FIREBASE DATABASE REFERENCES FOR SHELTERS
-        FirebaseDatabase hFirebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference hDatabaseReference = hFirebaseDatabase.getReference("OffTheStreetsDatabase");
-        DatabaseReference sheltersRef = hDatabaseReference.child("homeless_shelters");
-        // Attach a listener to read the data at our posts reference
-        sheltersRef.addListenerForSingleValueEvent(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
-                // ...
-
-                for (HomelessShelter shelter : model.getShelters()) {
-                    int id = shelter.getId();
-                    String name = shelter.getShelterName();
-                    String concatenate = (id + name);
-                    Long lon = (Long) dataSnapshot.child(concatenate).child("capacity").getValue();
-                    if (lon != null ) {
-                        int cap = lon.intValue();
-                        shelter.setCapacity(cap);}
-                }
-
-//                System.out.println(dataSnapshot.child(concatenate).child("capacity").getValue());
-//                //System.out.println(dataSnapshot.child(concatenate).child("capacity").getValue().getClass());
-//                //Long mylong = (Long) dataSnapshot.child(concatenate).child("capacity").getValue();
-//                Long lon = (Long) dataSnapshot.child(concatenate).child("capacity").getValue();
-//                cap = lon.intValue();
-//                System.out.println("this" + cap);
-//                Log.d(TAG, "retrieving capacity: complete" + cap);
+    public ArrayList<HomelessShelter> searchShelterList(List<HomelessShelter> shelterList,
+                                                   String gender, String ageRange, String name) {
+        ArrayList<HomelessShelter> displayList = new ArrayList<HomelessShelter>();
+        for (int i = 0; i < shelterList.size(); i++) {
+            HomelessShelter shelt = shelterList.get(i);
+            // the replace all is so it can match famillies with newborns"
+            if((ageRange.equalsIgnoreCase("all") || ageRange.equalsIgnoreCase("anyone") ||
+                    shelt.getRestrictions().replaceAll("w/", "with").toLowerCase()
+                            .contains(ageRange.toLowerCase()))&& (name.equals("") ||
+                    shelt.getShelterName().equalsIgnoreCase(name)) && (
+                    gender.equalsIgnoreCase("both") ||
+                            shelt.getGender().equalsIgnoreCase(gender))) {
+                displayList.add(shelt);
             }
-
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
-                // ...
-                System.out.println("The read failed: " + databaseError.getCode());
-            }
-        });
+        }
+        return displayList;
     }
-
 }

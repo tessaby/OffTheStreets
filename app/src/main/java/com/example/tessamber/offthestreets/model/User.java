@@ -24,7 +24,7 @@ public class User {
     private String phone;
     private String password;
     private int bedsBooked = 0;
-    private String shelterBookedAt = "" ;
+    private Booking booking;
 
     public User() {
     }
@@ -50,21 +50,25 @@ public class User {
 
     public String getPhoneNumber() { return phone; }
 
-    public int getBedsBooked() {
-        return bedsBooked;
-    }
-
-    public String getShelterBookedAt() {
-        return shelterBookedAt;
-    }
-
-    public void clearBooking() {
-        this.clearBedsBooked();
-        this.clearShelterBookAt();
-    }
+    public int getNumberOfBedsBooked() { return bedsBooked; }
 
     public void clearBedsBooked() { bedsBooked = 0; }
 
-    public void clearShelterBookAt() { shelterBookedAt = null; }
+    public class Booking {
+        private int beds;
+        private HomelessShelter shelterBooked;
 
+        public Booking() {
+        }
+
+        public Booking(int beds, HomelessShelter shelter) {
+            this.beds = beds;
+            shelterBooked = shelter;
+        }
+
+        public void clearBooking() {
+            beds = 0;
+            shelterBooked = null;
+        }
+    }
 }

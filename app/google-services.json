@@ -15,14 +15,6 @@
       },
       "oauth_client": [
         {
-          "client_id": "545250051107-rfbg43jvl32g4h5g66gjcg3u31jb8hrk.apps.googleusercontent.com",
-          "client_type": 1,
-          "android_info": {
-            "package_name": "com.example.tessamber.offthestreets",
-            "certificate_hash": "17c297d1bcefb85b33539a85cfdd0f7984928b42"
-          }
-        },
-        {
           "client_id": "545250051107-k8n1h0u7qlv85vntpng66fblpn7gcipd.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
