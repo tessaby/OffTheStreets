@@ -9,9 +9,15 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.support.v4.content.ContextCompat;
 import android.util.Log;
+import android.widget.ArrayAdapter;
+import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.tessamber.offthestreets.R;
+import com.example.tessamber.offthestreets.model.HomelessShelter;
+import com.example.tessamber.offthestreets.model.ShelterCollection;
+import com.google.android.gms.maps.CameraUpdate;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -25,6 +31,15 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Boolean mLocationPermissionsGranted = false;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
 
+    private Spinner spGender;
+    private Spinner spAgeRange;
+    private EditText etShelterName;
+
+    ShelterCollection shelter = ShelterCollection.INSTANCE;
+
+    public HomelessShelterListActivity list = new HomelessShelterListActivity();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +49,19 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         getLocationPermission();
+
+        spGender = findViewById(R.id.spinnerGender);
+        String[] genders = {"", "Men", "Women", "Both"};
+        ArrayAdapter<String> gendersAdapter = new ArrayAdapter<String>(this,
+                R.layout.support_simple_spinner_dropdown_item, genders);
+        spGender.setAdapter(gendersAdapter);
+        spAgeRange = findViewById(R.id.spinnerAgeRange);
+        String[] ageRanges = {"", "Families with newborns", "Children", "Young Adults", "Anyone"};
+        ArrayAdapter<String> ageAdapter = new ArrayAdapter<String>(this,
+                R.layout.support_simple_spinner_dropdown_item, ageRanges);
+        spAgeRange.setAdapter(ageAdapter);
+        etShelterName = findViewById(R.id.etShelterName);
+
     }
 
     private void initMap(){
@@ -64,10 +92,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         Log.d("TAG", "onMapReady: on map ready");
         mMap = googleMap;
 
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        //Adds pin based on lat and lon
+        LatLng Atl = new LatLng(33.777175,-84.396543);
+        //Displays data when clicked
+        mMap.addMarker(new MarkerOptions().position(Atl).title("Atlanta"));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(Atl));
+
+
+
     }
 
 
@@ -112,4 +144,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
     }
+
+//    private void getDeviceLocation(){
+//        Log.d("TAG", "get device location: getting current device location");
+//
+//    }
+
+
 }

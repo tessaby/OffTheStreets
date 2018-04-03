@@ -30,8 +30,8 @@
         android:theme="@style/AppTheme">
 
         <meta-data
-            android:name="com.google.com.geo.API.KEY"
-            android:value="AIzaSyCed1ucSMYTcCxbrNPhqvDRu7jqn6M9ohQ" />
+            android:name="com.google.android.geo.API.KEY"
+            android:value="AIzaSyD8Ht2hoSeZ2PdHITy1l5thnNArUUxLQaE" />
 
         <meta-data
             android:name="com.google.android.gms.version"

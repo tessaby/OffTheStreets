@@ -67,11 +67,15 @@ public class HomeScreenActivity extends AppCompatActivity {
             }
         });
 
-        mapButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                android.content.Intent myIntent3 = new android.content.Intent(view.getContext(), MapsActivity.class);
-                startActivityForResult(myIntent3,0);
+        init();
+    }
+
+    private void init(){
+        Button button = (Button) findViewById(R.id.mapButton);
+        button.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View view){
+                Intent intent = new Intent(HomeScreenActivity.this, MapsActivity.class);
+                startActivity(intent);
             }
         });
     }
@@ -138,11 +142,5 @@ public class HomeScreenActivity extends AppCompatActivity {
             Log.e(HomeScreenActivity.TAG, "error reading assets", e);
         }
     }
-
-
-//    public FirebaseUser getFirebaseUser() {
-//        return FirebaseAuth.getInstance().getCurrentUser();
-//    }
-
 
 }

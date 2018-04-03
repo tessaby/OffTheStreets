@@ -46,13 +46,13 @@ public class HomelessShelterListActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         toolbar.setTitle(getTitle());
 
-        spGender = findViewById(R.id.spGender);
+        spGender = findViewById(R.id.mGender);
         String[] genders = {"", "Men", "Women", "Both"};
         ArrayAdapter<String> gendersAdapter = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item, genders);
         spGender.setAdapter(gendersAdapter);
 
-        spAgeRage = findViewById(R.id.spAgeRange);
+        spAgeRage = findViewById(R.id.mAgeRange);
         String[] ageRanges = {"", "Families with newborns", "Children", "Young Adults", "Anyone"};
         ArrayAdapter<String> ageAdapter = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item, ageRanges);
