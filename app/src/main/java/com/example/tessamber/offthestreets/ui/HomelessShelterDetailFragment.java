@@ -143,7 +143,7 @@ public class HomelessShelterDetailFragment extends Fragment {
                     final int number = Integer.parseInt(toBook.getText().toString());
                     // POSITIVE, AND LESS THAN SHELTER CAPACITY
                     if (number > 0 && number <= mItem.getCapacity()) {
-                        Toast.makeText(getActivity(), "Preparing to book " + number + "bed", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Preparing to book " + number + " bed(s)", Toast.LENGTH_SHORT).show();
 
                         //make sure that user's booking is empty first.
                         //otherwise they can't book.
@@ -164,7 +164,7 @@ public class HomelessShelterDetailFragment extends Fragment {
                                 System.out.println("READY!?!" + num);
 
                                 if (num != 0) {
-                                    Toast.makeText(getActivity(), "Already booked. Must clear booking." + num , Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), "Booking unsuccessful. Must clear previous booking of " + num + "bed(s)" , Toast.LENGTH_SHORT).show();
                                 } else {
                                     System.out.println(num);
 

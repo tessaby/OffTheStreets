@@ -121,10 +121,20 @@ public class HomelessShelterListActivity extends AppCompatActivity {
 
         private ArrayList<HomelessShelter> mValues;
 
+
+        /**
+         * Constructor for simple item recycler view adapter that takes in arraylist of items
+         * and stores it.
+         * @param items array list of shelters
+         */
         public SimpleItemRecyclerViewAdapter(ArrayList<HomelessShelter> items) {
             mValues = items;
         }
 
+        /**
+         * method that resets values of arraylist in simple item recycler view adapter
+         * @param newlist arraylist of shelters
+         */
         public void setmValues(ArrayList<HomelessShelter> newlist) { mValues = newlist; }
 
         @Override
@@ -169,12 +179,12 @@ public class HomelessShelterListActivity extends AppCompatActivity {
         public int getItemCount() { return mValues.size(); }
 
         public class ViewHolder extends RecyclerView.ViewHolder {
-            public final View mView;
-            public final TextView mIdView;
-            public final TextView mContentView;
+            final View mView;
+            final TextView mIdView;
+            final TextView mContentView;
             public HomelessShelter mItem;
 
-            public ViewHolder(View view) {
+            ViewHolder(View view) {
                 super(view);
                 mView = view;
                 mIdView = view.findViewById(R.id.id);
@@ -219,5 +229,4 @@ public class HomelessShelterListActivity extends AppCompatActivity {
             }
         });
     }
-
 }

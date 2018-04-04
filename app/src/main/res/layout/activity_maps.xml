@@ -67,7 +67,7 @@
             android:layout_alignParentStart="true"
             android:layout_marginBottom="15dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mGender" />
+            app:layout_constraintTop_toBottomOf="@+id/spGender" />
 
         <EditText
             android:id="@+id/mapTextShelterName"
@@ -79,7 +79,7 @@
             android:hint="Shelter Name"
             android:inputType="text"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mAgeRange" />
+            app:layout_constraintTop_toBottomOf="@+id/spAgeRange" />
 
         <Button
             android:id="@+id/mapSearch"

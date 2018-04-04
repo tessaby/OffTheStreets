@@ -31,8 +31,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Boolean mLocationPermissionsGranted = false;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
 
-    private Spinner spGender;
-    private Spinner spAgeRange;
+    private Spinner mGender;
+    private Spinner mAgeRange;
     private EditText etShelterName;
 
     ShelterCollection shelter = ShelterCollection.INSTANCE;
@@ -50,17 +50,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mapFragment.getMapAsync(this);
         getLocationPermission();
 
-        spGender = findViewById(R.id.spinnerGender);
+        mGender = findViewById(R.id.spinnerGender);
         String[] genders = {"", "Men", "Women", "Both"};
         ArrayAdapter<String> gendersAdapter = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item, genders);
-        spGender.setAdapter(gendersAdapter);
-        spAgeRange = findViewById(R.id.spinnerAgeRange);
+        mGender.setAdapter(gendersAdapter);
+        mAgeRange = findViewById(R.id.spinnerAgeRange);
         String[] ageRanges = {"", "Families with newborns", "Children", "Young Adults", "Anyone"};
         ArrayAdapter<String> ageAdapter = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item, ageRanges);
-        spAgeRange.setAdapter(ageAdapter);
-        etShelterName = findViewById(R.id.etShelterName);
+        mAgeRange.setAdapter(ageAdapter);
+        etShelterName = findViewById(R.id.mapTextShelterName);
 
     }
 
