@@ -49,9 +49,4 @@ dependencies {
     //implementation 'com.google.android.gms:play-services:11.4.2'
 }
 
-// apply plugin: 'com.google.gms.google-services'
-//this has been causing me errors.. 'compile' obsolete
-
-//compile 'com.google.gms:google-services:3.2.1'
-
 apply plugin: 'com.google.gms.google-services'

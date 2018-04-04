@@ -1,6 +1,5 @@
 package com.example.tessamber.offthestreets.ui;
 
-//import android.app.Fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -28,7 +27,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * An activity representing a list of Homeless Shelters .
@@ -38,7 +36,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
     // DECLARE RECYCLERVIEW ADAPTER
     SimpleItemRecyclerViewAdapter myAdapter;
 
-    // DECLARE SHELTER COLLECTIO
+    // DECLARE SHELTER COLLECTION
     final ShelterCollection model = ShelterCollection.INSTANCE;
 
     // DECLARE VIEWS
@@ -53,6 +51,11 @@ public class HomelessShelterListActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homeless_shelter_list);
+
+        /**
+         * Method to add shelter array list to firebase homeless_shelters database
+         */
+//        ShelterCollection.addShelterCollectionToFirebase(model.getShelters());
 
         // INITIALIZE: VIEWS
 
@@ -207,13 +210,6 @@ public class HomelessShelterListActivity extends AppCompatActivity {
                         shelter.setCapacity(cap);}
                 }
 
-//                System.out.println(dataSnapshot.child(concatenate).child("capacity").getValue());
-//                //System.out.println(dataSnapshot.child(concatenate).child("capacity").getValue().getClass());
-//                //Long mylong = (Long) dataSnapshot.child(concatenate).child("capacity").getValue();
-//                Long lon = (Long) dataSnapshot.child(concatenate).child("capacity").getValue();
-//                cap = lon.intValue();
-//                System.out.println("this" + cap);
-//                Log.d(TAG, "retrieving capacity: complete" + cap);
             }
 
             @Override
