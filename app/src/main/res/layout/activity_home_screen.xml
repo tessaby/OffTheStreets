@@ -28,11 +28,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/mapButton"
+        android:id="@+id/bClear"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Map"
-        tools:layout_editor_absoluteX="33dp"
-        tools:layout_editor_absoluteY="84dp" />
+        android:layout_marginBottom="136dp"
+        android:layout_marginEnd="139dp"
+        android:layout_marginStart="115dp"
+        android:text="Clear Booking"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </android.support.constraint.ConstraintLayout>

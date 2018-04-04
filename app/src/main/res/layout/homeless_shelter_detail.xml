@@ -67,4 +67,19 @@
         android:layout_margin="16dp"
         android:textAppearance="?attr/textAppearanceListItem" />
 
+    <Button
+        android:id="@+id/bookButton"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Book" />
+
+    <EditText
+        android:id="@+id/numberToBook"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="0"
+        android:inputType="number" />
+
+
 </LinearLayout>
