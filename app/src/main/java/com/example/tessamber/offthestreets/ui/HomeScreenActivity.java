@@ -12,7 +12,6 @@ import com.example.tessamber.offthestreets.R;
 import com.example.tessamber.offthestreets.model.HomelessShelter;
 import com.example.tessamber.offthestreets.model.ShelterCollection;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -124,12 +123,12 @@ public class HomeScreenActivity extends AppCompatActivity {
 
         mapButton.setOnClickListener(new View.OnClickListener(){
             public void onClick(View view){
+                readSDFile();
                 Intent intent = new Intent(HomeScreenActivity.this, MapsActivity.class);
                 startActivity(intent);
             }
         });
     }
-
 
     /**
      * customizable toast
@@ -138,7 +137,6 @@ public class HomeScreenActivity extends AppCompatActivity {
     private void toastMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
-
 
     //READ CSV FILE OF HOMELESS SHELTERS.
     private void readSDFile() {
@@ -196,5 +194,4 @@ public class HomeScreenActivity extends AppCompatActivity {
             Log.e(HomeScreenActivity.TAG, "error reading assets", e);
         }
     }
-
 }

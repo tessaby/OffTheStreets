@@ -23,12 +23,12 @@
         android:layout_alignParentTop="true">
 
         <TextView
-            android:id="@+id/mapGender"
+            android:id="@+id/tvGender"
             android:layout_width="150dp"
             android:layout_height="22dp"
-            android:layout_above="@+id/spinnerGender"
             android:layout_alignParentStart="true"
-            android:layout_marginBottom="-43dp"
+            android:layout_alignTop="@+id/spinnerGender"
+            android:layout_marginStart="22dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Gender"
@@ -37,11 +37,11 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/mapAge"
+            android:id="@+id/tvAgeRange"
             android:layout_width="150dp"
             android:layout_height="22dp"
-            android:layout_above="@+id/spinnerAgeRange"
-            android:layout_alignParentStart="true"
+            android:layout_alignStart="@+id/tvGender"
+            android:layout_alignTop="@+id/spinnerAgeRange"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="Age Range"
@@ -53,9 +53,10 @@
             android:id="@+id/spinnerGender"
             android:layout_width="182dp"
             android:layout_height="22dp"
-            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
             android:layout_alignParentTop="true"
-            android:layout_marginTop="43dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginTop="14dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -63,9 +64,9 @@
             android:id="@+id/spinnerAgeRange"
             android:layout_width="182dp"
             android:layout_height="24dp"
-            android:layout_alignParentBottom="true"
-            android:layout_alignParentStart="true"
-            android:layout_marginBottom="15dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/spinnerGender"
+            android:layout_marginTop="51dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spGender" />
 
@@ -73,8 +74,10 @@
             android:id="@+id/mapTextShelterName"
             android:layout_width="204dp"
             android:layout_height="42dp"
-            android:layout_alignParentEnd="true"
-            android:layout_centerVertical="true"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginBottom="20dp"
+            android:layout_marginStart="15dp"
             android:ems="10"
             android:hint="Shelter Name"
             android:inputType="text"
@@ -86,9 +89,9 @@
             style="@style/Widget.AppCompat.Button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
+            android:layout_alignBottom="@+id/mapTextShelterName"
             android:layout_alignParentEnd="true"
-            android:layout_marginEnd="51dp"
+            android:layout_marginEnd="39dp"
             android:text="Search"
             app:layout_constraintBottom_toTopOf="@+id/shelter_list"
             app:layout_constraintHorizontal_bias="0.0"

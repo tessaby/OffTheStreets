@@ -219,7 +219,6 @@ public class HomelessShelterListActivity extends AppCompatActivity {
                         int cap = lon.intValue();
                         shelter.setCapacity(cap);}
                 }
-
             }
 
             @Override

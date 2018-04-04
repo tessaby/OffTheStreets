@@ -7,7 +7,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 /**
  * Created by tess.amber on 3/13/18.
@@ -130,7 +130,7 @@ public class ShelterCollection {
     }
 
     /**
-     * Method called to write complete list of shelter to FireBase database
+     * Method called to write complete list of shelterS to FireBase database
      * OffTheStreets child homeless_shelters
      * @param shelters ArrayList of shelters from csv file
      */
