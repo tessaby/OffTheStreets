@@ -23,6 +23,7 @@ import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
@@ -126,10 +127,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             double lat = displayList.get(i).getLatitude();
             double lon = displayList.get(i).getLongitude();
             coordinates = new LatLng(lat, lon);
-            mMap.addMarker(new MarkerOptions().position(coordinates).title(displayList.get(i).getShelterName()));
+            mMap.addMarker(new MarkerOptions().position(coordinates).title(
+                    displayList.get(i).getShelterName()).snippet(displayList.get(i).getPhoneNumber()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(coordinates));
             Toast.makeText(this, "Adding marker" + i, Toast.LENGTH_SHORT).show();
-
+            //googleMap.setOnMarkerClickListener(onMarkerClick());
         }
         mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
         mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
@@ -141,6 +143,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    public boolean onMarkerClick(final Marker marker) {
+        return true;
+    }
 
     private void getLocationPermission(){
         Log.d("TAG", "getLocationPermissions Ready");
