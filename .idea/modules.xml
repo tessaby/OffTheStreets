@@ -3,6 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/OffTheStreets.iml" filepath="$PROJECT_DIR$/OffTheStreets.iml" />
+      <module fileurl="file://$PROJECT_DIR$/OffTheStreets.iml" filepath="$PROJECT_DIR$/OffTheStreets.iml" />
+      <module fileurl="file://C:\Users\Ali\Downloads\OffTheStreets\.idea\OffTheStreets.iml" filepath="C:\Users\Ali\Downloads\OffTheStreets\.idea\OffTheStreets.iml" />
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>
