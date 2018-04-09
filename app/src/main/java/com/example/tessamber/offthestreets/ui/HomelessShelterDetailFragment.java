@@ -137,7 +137,7 @@ public class HomelessShelterDetailFragment extends Fragment {
         // CLICK BUTTON TO BOOK BEDS
         bookButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                if (currentUser != null) {
+                if (currentUser != null && !toBook.getText().toString().equals("")) {
 
                     // NUMBER
                     final int number = Integer.parseInt(toBook.getText().toString());
@@ -189,7 +189,11 @@ public class HomelessShelterDetailFragment extends Fragment {
                         Toast.makeText(getActivity(), "Invalid number", Toast.LENGTH_SHORT).show();
                     }
 
-                } else {
+                }
+                if(toBook.getText().toString().equals("")) {
+                    Toast.makeText(getActivity(), "must specify number of beds",Toast.LENGTH_SHORT).show();
+                }
+                else {
                     Toast.makeText(getActivity(), "Must log in first!", Toast.LENGTH_SHORT).show();
                 }
             }
