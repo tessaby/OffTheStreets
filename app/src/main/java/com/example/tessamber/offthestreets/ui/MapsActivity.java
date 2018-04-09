@@ -132,7 +132,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         }
         mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
-        mMap.animateCamera(CameraUpdateFactory.zoomTo(10), 2000, null);
 //        //Adds pin based on lat and lon
 //        LatLng Atl = new LatLng(33.777175,-84.396543);
 //        //Displays data when clicked
