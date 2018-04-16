@@ -134,7 +134,7 @@ public class ShelterCollection {
      * OffTheStreets child homeless_shelters
      * @param shelters ArrayList of shelters from csv file
      */
-    public static void addShelterCollectionToFirebase(ArrayList<HomelessShelter> shelters) {
+    public static void addShelterCollectionToFirebase(Iterable<HomelessShelter> shelters) {
 
         FirebaseDatabase hFirebaseDatabase = FirebaseDatabase.getInstance();
         DatabaseReference hDatabaseReference = hFirebaseDatabase.getReference("OffTheStreetsDatabase");

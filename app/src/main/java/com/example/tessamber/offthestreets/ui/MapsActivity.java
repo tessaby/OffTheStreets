@@ -13,6 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.example.tessamber.offthestreets.R;
@@ -63,14 +64,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //SET UP GENDER SPINNER
         mGender = findViewById(R.id.spinnerGender);
         String[] genders = {"", "Men", "Women", "Both"};
-        ArrayAdapter<String> gendersAdapter = new ArrayAdapter<String>(this,
+        SpinnerAdapter gendersAdapter = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item, genders);
         mGender.setAdapter(gendersAdapter);
 
         //SET UP AGE RANGE SPINNER
         mAgeRange = findViewById(R.id.spinnerAgeRange);
         String[] ageRanges = {"", "Families with newborns", "Children", "Young Adults", "Anyone"};
-        ArrayAdapter<String> ageAdapter = new ArrayAdapter<String>(this,
+        SpinnerAdapter ageAdapter = new ArrayAdapter<String>(this,
                 R.layout.support_simple_spinner_dropdown_item, ageRanges);
         mAgeRange.setAdapter(ageAdapter);
 
