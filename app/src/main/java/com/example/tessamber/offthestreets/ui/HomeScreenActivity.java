@@ -56,7 +56,8 @@ public class HomeScreenActivity extends AppCompatActivity {
                 System.out.println(FirebaseAuth.getInstance().getCurrentUser() == null);
 
 
-                android.content.Intent myIntent = new android.content.Intent(view.getContext(), WelcomeScreenActivity.class);
+                android.content.Intent myIntent = new android.content.Intent(view.getContext(),
+                        WelcomeScreenActivity.class);
                 startActivityForResult(myIntent, 0);
             }
         });
@@ -64,7 +65,8 @@ public class HomeScreenActivity extends AppCompatActivity {
         bLoadShelters.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 readSDFile();
-                android.content.Intent myIntent2 = new android.content.Intent(view.getContext(), HomelessShelterListActivity.class);
+                android.content.Intent myIntent2 = new android.content.Intent(view.getContext(),
+                        HomelessShelterListActivity.class);
                 startActivityForResult(myIntent2, 0);
             }
         });
@@ -75,7 +77,8 @@ public class HomeScreenActivity extends AppCompatActivity {
                 final String emailRef = email.replace(".", ",");
                 mDatabase = FirebaseDatabase.getInstance().getReference("OffTheStreetsDatabase");
 
-                mDatabase.child("users").child(emailRef).addListenerForSingleValueEvent(new ValueEventListener() {
+                mDatabase.child("users").child(emailRef)
+                        .addListenerForSingleValueEvent(new ValueEventListener() {
 
                     @Override
                     public void onDataChange(DataSnapshot snapshot) {
@@ -84,11 +87,14 @@ public class HomeScreenActivity extends AppCompatActivity {
 
                         final Integer num = snapshot.child("bedsBooked").getValue(Integer.class);
                         mDatabase.child("users").child(emailRef).child("bedsBooked").setValue(0);
-                        final String shelter = snapshot.child("shelterBookedAt").getValue(String.class);
-                        mDatabase.child("users").child(emailRef).child("shelterBookedAt").setValue("");
+                        final String shelter = snapshot.child("shelterBookedAt")
+                                .getValue(String.class);
+                        mDatabase.child("users").child(emailRef).child("shelterBookedAt")
+                                .setValue("");
                         toastMessage("successfully cleared booking");
 
-                        mDatabase.child("homeless_shelters").child("capacity").addListenerForSingleValueEvent(new ValueEventListener() {
+                        mDatabase.child("homeless_shelters").child("capacity")
+                                .addListenerForSingleValueEvent(new ValueEventListener() {
 
                             @Override
                             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -96,7 +102,8 @@ public class HomeScreenActivity extends AppCompatActivity {
                                 //dataSnapshot.getValue(Integer.class);
                                 System.out.println(dataSnapshot.getValue(Integer.class));
                                 //recalculate shelter capacity
-                                mDatabase.child("homeless_shelters").child(shelter).child("capacity").setValue(cap + num);
+                                mDatabase.child("homeless_shelters").child(shelter)
+                                        .child("capacity").setValue(cap + num);
                             }
 
                             @Override
@@ -144,7 +151,8 @@ public class HomeScreenActivity extends AppCompatActivity {
             InputStream is = getResources().openRawResource(R.raw.shelterdatabase);
             //From here we probably should call a model method and pass the InputStream
             //Wrap it in a BufferedReader so that we get the readLine() method
-            BufferedReader br = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8));
+            BufferedReader br = new BufferedReader(new InputStreamReader(is,
+                    StandardCharsets.UTF_8));
 
             String line;
             br.readLine(); //get rid of header line

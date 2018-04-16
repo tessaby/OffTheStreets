@@ -48,7 +48,8 @@ public class HomelessShelter {
     public String getPhoneNumber() { return phoneNumber; }
 
     public String getGender() {
-        if (restrictions.toLowerCase().indexOf("men") != -1 && restrictions.toLowerCase().indexOf("women") == -1) {
+        if (restrictions.toLowerCase().indexOf("men") != -1
+                && restrictions.toLowerCase().indexOf("women") == -1) {
             return "men";
         } else if (restrictions.toLowerCase().indexOf("women") != -1) {
             return "women";
@@ -62,7 +63,8 @@ public class HomelessShelter {
     }
 
     public String toString() {
-        return uniqueKey + " " + shelterName + " " + capacity + " " + restrictions + " " + longitude + " " + latitude + " " + address
-                + " " + specialNotes + " " + phoneNumber;
+        return uniqueKey + " " + shelterName + " " + capacity + " " + restrictions + " "
+                + longitude + " " + latitude + " " + address + " " + specialNotes
+                + " " + phoneNumber;
     }
 }
