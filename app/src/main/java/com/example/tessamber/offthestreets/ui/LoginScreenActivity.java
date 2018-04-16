@@ -33,10 +33,6 @@ public class LoginScreenActivity extends AppCompatActivity {
     // DECLARE text view message
     //private TextView tvMessage;
 
-    // DECLARE buttons
-    Button bLogin;
-    Button bBack;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,15 +43,15 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         // VIEWS
         //email (username)
-        etUsername = (EditText) findViewById(R.id.etUsername);
+        etUsername = findViewById(R.id.etUsername);
         //password
-        etPassword = (EditText) findViewById(R.id.etPassword);
+        etPassword = findViewById(R.id.etPassword);
         //text view message
         //tvMessage = (TextView) findViewById(R.id.tvMessage);
 
         // BUTTONS
-        bLogin = findViewById(R.id.bLogin);
-        bBack = findViewById(R.id.bBack);
+        Button bLogin = findViewById(R.id.bLogin);
+        Button bBack = findViewById(R.id.bBack);
 
         // FIREBASE Authentication
         mAuth = FirebaseAuth.getInstance();

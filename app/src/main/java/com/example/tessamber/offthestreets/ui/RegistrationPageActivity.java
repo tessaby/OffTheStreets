@@ -30,9 +30,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
     // DECLARE an instance of FirebaseAuth
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    FirebaseDatabase uFirebaseDatabase;
-    DatabaseReference uDatabaseReference;
-    DatabaseReference usersRef;
+    private DatabaseReference usersRef;
 
     // DECLARE TEXT VIEWS
     private EditText etName;
@@ -41,11 +39,6 @@ public class RegistrationPageActivity extends AppCompatActivity {
     private EditText etPassword;
     private EditText etPassword2;
     private TextView tvRegistration;
-    private Spinner spUserType;
-
-    // DECLARE BUTTONS
-    Button bRegister;
-    Button bCancel;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,24 +47,24 @@ public class RegistrationPageActivity extends AppCompatActivity {
 
         // INITIALIZE REGISTRATION INFO:
         // name, email, phone number, and password
-        etName = (EditText) findViewById(R.id.etName);
-        etEmailR = (EditText) findViewById(R.id.etEmailR);
-        etPhoneNum = (EditText) findViewById(R.id.etPhoneNum);
-        etPassword = (EditText) findViewById(R.id.etPassword);
-        etPassword2 = (EditText) findViewById(R.id.etPassword2);
-        tvRegistration = (TextView) findViewById(R.id.tvRegistration);
-        spUserType = (Spinner) findViewById(R.id.spUserType);
+        etName = findViewById(R.id.etName);
+        etEmailR = findViewById(R.id.etEmailR);
+        etPhoneNum = findViewById(R.id.etPhoneNum);
+        etPassword = findViewById(R.id.etPassword);
+        etPassword2 = findViewById(R.id.etPassword2);
+        tvRegistration = findViewById(R.id.tvRegistration);
+        Spinner spUserType = findViewById(R.id.spUserType);
 
         // INITIALIZE BUTTONS
-        bRegister = findViewById(R.id.bRegister);
-        bCancel = findViewById(R.id.bCancel);
+        Button bRegister = findViewById(R.id.bRegister);
+        Button bCancel = findViewById(R.id.bCancel);
 
         // INITIALIZE FIREBASE AUTH
         mAuth = FirebaseAuth.getInstance();
 
         //INITIALIZE FIREBASE REFERENCES for users database
-        uFirebaseDatabase = FirebaseDatabase.getInstance();
-        uDatabaseReference = uFirebaseDatabase.getReference("OffTheStreetsDatabase");
+        FirebaseDatabase uFirebaseDatabase = FirebaseDatabase.getInstance();
+        DatabaseReference uDatabaseReference = uFirebaseDatabase.getReference("OffTheStreetsDatabase");
         usersRef = uDatabaseReference.child("users");
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -93,7 +86,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
         /*
           Set up the adapter to display the allowable majors in the spinner
          */
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, User.userTypes);
+        @SuppressWarnings("unchecked") ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, User.userTypes);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spUserType.setAdapter(adapter);
 
@@ -143,7 +136,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
         });
     }
 
-    public String EncodeString(String string) {
+    private String EncodeString(String string) {
         return string.replace(".", ",");
     }
 
@@ -155,7 +148,8 @@ public class RegistrationPageActivity extends AppCompatActivity {
      * customizable toast
      * @param message message to be displayed
      */
-    private void toastMessage(String message) {
+    @SuppressWarnings("SameParameterValue")
+    private void toastMessage(@SuppressWarnings("SameParameterValue") String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 

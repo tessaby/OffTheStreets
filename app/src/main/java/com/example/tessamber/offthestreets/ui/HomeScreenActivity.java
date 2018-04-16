@@ -28,16 +28,10 @@ public class HomeScreenActivity extends AppCompatActivity {
 
     private static final String TAG = "OffTheStreets";
 
-    // DECLARE BUTTONS
-    Button bLogout;
-    Button bLoadShelters;
-    Button bClear;
-    Button mapButton;
-
     // DECLARE FirebaseAuth
     private FirebaseAuth mAuth;
 
-    DatabaseReference mDatabase;
+    private DatabaseReference mDatabase;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,10 +41,10 @@ public class HomeScreenActivity extends AppCompatActivity {
         // INITIALIZE:
 
         // BUTTONS
-        bLogout = findViewById(R.id.bLogout);
-        bLoadShelters = findViewById(R.id.bLoadFile);
-        bClear = findViewById(R.id.bClear);
-        mapButton = findViewById(R.id.mapButton);
+        Button bLogout = findViewById(R.id.bLogout);
+        Button bLoadShelters = findViewById(R.id.bLoadFile);
+        Button bClear = findViewById(R.id.bClear);
+        Button mapButton = findViewById(R.id.mapButton);
 
         // FIREBASE Authentication
         mAuth = FirebaseAuth.getInstance();

@@ -14,20 +14,15 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
     private static final String TAG = "WelcomeScreen";
 
-    // DECLARE BUTTONS
-    Button bWelcomeLogin;
-    Button bRegister;
-    Button bGuest;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome_screen);
 
         // INITIALIZE BUTTONS
-        bWelcomeLogin = findViewById(R.id.bWelcomLogin);
-        bRegister = findViewById(R.id.bRegister);
-        bGuest = findViewById(R.id.bGuest);
+        Button bWelcomeLogin = findViewById(R.id.bWelcomLogin);
+        Button bRegister = findViewById(R.id.bRegister);
+        Button bGuest = findViewById(R.id.bGuest);
 
         bWelcomeLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
