@@ -13,7 +13,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import com.example.tessamber.offthestreets.R;
@@ -64,14 +63,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //SET UP GENDER SPINNER
         mGender = findViewById(R.id.spinnerGender);
         String[] genders = {"", "Men", "Women", "Both"};
-        SpinnerAdapter gendersAdapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> gendersAdapter = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item, genders);
         mGender.setAdapter(gendersAdapter);
 
         //SET UP AGE RANGE SPINNER
         mAgeRange = findViewById(R.id.spinnerAgeRange);
         String[] ageRanges = {"", "Families with newborns", "Children", "Young Adults", "Anyone"};
-        SpinnerAdapter ageAdapter = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> ageAdapter = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item, ageRanges);
         mAgeRange.setAdapter(ageAdapter);
 
@@ -173,8 +172,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         switch(requestCode){
             case LOCATION_PERMISSION_REQUEST_CODE:{
                 if(grantResults.length > 0){
-                    for(int i = 0; i <grantResults.length; i++){
-                        if(grantResults[i] != PackageManager.PERMISSION_GRANTED){
+                    //for(int i = 0; i <grantResults.length; i++){
+                        for(int x: grantResults){
+                        if(grantResults[x] != PackageManager.PERMISSION_GRANTED){
                             mLocationPermissionsGranted = false;
                             Log.d("TAG", "onRequestPermission Failed");
                             return;

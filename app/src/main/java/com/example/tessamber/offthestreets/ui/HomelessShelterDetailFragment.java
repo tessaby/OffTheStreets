@@ -1,9 +1,5 @@
 package com.example.tessamber.offthestreets.ui;
 
-/**
- * Created by tess.amber on 3/13/18.
- */
-
 import android.app.Activity;
 
 import android.os.Bundle;

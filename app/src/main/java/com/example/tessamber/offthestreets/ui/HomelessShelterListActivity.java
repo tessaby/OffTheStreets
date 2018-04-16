@@ -54,10 +54,6 @@ public class HomelessShelterListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_homeless_shelter_list);
 
-        /**
-         * Method to add shelter array list to firebase homeless_shelters database
-         */
-//        ShelterCollection.addShelterCollectionToFirebase(model.getShelters());
 
         // INITIALIZE: VIEWS
 

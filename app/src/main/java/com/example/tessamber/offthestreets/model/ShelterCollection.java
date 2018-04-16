@@ -61,10 +61,9 @@ public class ShelterCollection {
      * helper method that searches through arraylist of shelters based on specified gender
      * @param s specific search to check
      * @param gender specified gender
-     * @param ageRange i.e. children
      * @return true if the shelter satisfies criteria, false otherwise
      */
-    private boolean searchForGender(HomelessShelter s, String gender, String ageRange) {
+    private boolean searchForGender(HomelessShelter s, String gender) {
         //if its empty return true
         if (gender.isEmpty()) {
             return true;
@@ -121,7 +120,7 @@ public class ShelterCollection {
         boolean flag2;
         for (HomelessShelter s : shelters) {
 
-            flag1 = (gender.isEmpty() || searchForGender(s, gender, ageRange));
+            flag1 = (gender.isEmpty() || searchForGender(s, gender));
             flag2 = (ageRange.isEmpty() || searchForAgeRange(s, ageRange));
 
             if (flag1 && flag2) { displayList.add(s); }
