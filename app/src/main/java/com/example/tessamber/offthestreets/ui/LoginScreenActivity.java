@@ -115,7 +115,7 @@ public class LoginScreenActivity extends AppCompatActivity {
      * customizable toast
      * @param message message to be displayed
      */
-    private void toastMessage(String message) {
+    private void toastMessage(CharSequence message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 

@@ -35,9 +35,10 @@ public class HomelessShelter {
      * @param specialNotes other restrictions
      * @param phoneNumber shelter phone number
      */
+    @SuppressWarnings("ConstructorWithTooManyParameters")
     public HomelessShelter(int uniqueKey, String shelterName, int capacity, String restrictions,
-                double longitude, double latitude, String address, String specialNotes,
-                String phoneNumber) {
+                           double longitude, double latitude, String address, String specialNotes,
+                           String phoneNumber) {
 
         this.uniqueKey = uniqueKey;
         this.shelterName = shelterName;

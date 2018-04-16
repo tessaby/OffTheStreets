@@ -167,7 +167,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
      * @param message message to be displayed
      */
     @SuppressWarnings("SameParameterValue")
-    private void toastMessage(@SuppressWarnings("SameParameterValue") String message) {
+    private void toastMessage(@SuppressWarnings("SameParameterValue") CharSequence message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 

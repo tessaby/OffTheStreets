@@ -141,7 +141,7 @@ public class HomelessShelterDetailFragment extends Fragment {
         bookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (currentUser != null && !toBook.getText().toString().isEmpty()) {
+                if ((currentUser != null) && !toBook.getText().toString().isEmpty()) {
 
                     // NUMBER
                     final int number = Integer.parseInt(toBook.getText().toString());

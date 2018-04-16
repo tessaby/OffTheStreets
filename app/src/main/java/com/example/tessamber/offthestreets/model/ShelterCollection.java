@@ -17,7 +17,7 @@ public class ShelterCollection {
 
     public static final ShelterCollection INSTANCE = new ShelterCollection();
 
-    private final ArrayList<HomelessShelter> shelters;
+    private ArrayList<HomelessShelter> shelters;
 
     private ShelterCollection() {
         shelters = new ArrayList<>();

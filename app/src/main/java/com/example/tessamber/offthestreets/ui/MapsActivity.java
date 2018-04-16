@@ -46,7 +46,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Spinner mGender;
     private Spinner mAgeRange;
     private EditText etShelterName;
-    Button bSearchMap;
+    private Button bSearchMap;
 
     private List<HomelessShelter> displayList = new ArrayList<>();
 
@@ -78,7 +78,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mAgeRange.setAdapter(ageAdapter);
 
         //NAME TEXT VIEW
-        etShelterName = findViewById(R.id.mapTextShelterName);
+        etShelterName = findViewById(R.id.mapEtShelterName);
 
         bSearchMap = findViewById(R.id.mapSearch);
         bSearchMap.setOnClickListener(new View.OnClickListener() {

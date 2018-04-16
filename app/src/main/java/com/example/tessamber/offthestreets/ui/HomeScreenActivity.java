@@ -24,7 +24,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
-@SuppressWarnings("CyclicClassDependency")
+
 /**
  * HomeScreen Activity after logging into app
  * allowing options to enter shelter list page, update booking, logout, etc.
@@ -145,7 +145,7 @@ public class HomeScreenActivity extends AppCompatActivity {
      * customizable toast
      * @param message message to be displayed
      */
-    private void toastMessage(String message) {
+    private void toastMessage(CharSequence message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 
