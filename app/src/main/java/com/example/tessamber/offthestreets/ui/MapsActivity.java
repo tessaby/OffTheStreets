@@ -34,7 +34,6 @@ import java.util.List;
  * Activity displaying Map from Google Maps Api with markers showing shelter locations and
  * info after search based on search criteria entered
  */
-
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;

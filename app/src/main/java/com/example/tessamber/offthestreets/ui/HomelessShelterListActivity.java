@@ -203,7 +203,6 @@ public class HomelessShelterListActivity extends AppCompatActivity {
      * since the database is persistent
      * and updates value to shelter in arraylist of shelters from shelter collection
      */
-
     public void setCapacityFromFirebase() {
         // FIREBASE
         // DECLARE & INITIALIZE FIREBASE DATABASE REFERENCES FOR SHELTERS
