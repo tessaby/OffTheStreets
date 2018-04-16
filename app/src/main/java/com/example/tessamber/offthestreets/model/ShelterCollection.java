@@ -32,7 +32,7 @@ public class ShelterCollection {
 
     public HomelessShelter findItemById(int id) {
         for (HomelessShelter h : shelters) {
-            if (h.getId() == id) return h;
+            if (h.getId() == id) { return h; }
         }
         Log.d("MYAPP", "Warning - Failed to find id: " + id);
         return null;
@@ -67,12 +67,12 @@ public class ShelterCollection {
             return true;
         }
         //if it says men or women.. check if it matches the homeless shelter restriction..
-        if (gender.equalsIgnoreCase("women") || gender.equalsIgnoreCase("men")) {
+        if ("women".equalsIgnoreCase(gender) || "men".equalsIgnoreCase(gender)) {
             //differentiate between men and women...
             return (s.getGender().equalsIgnoreCase(gender));
         } else {
-            return !(s.getGender().equalsIgnoreCase("men"))
-                    && !(s.getGender().equalsIgnoreCase("women"));
+            return !("men".equalsIgnoreCase(s.getGender()))
+                    && !("women".equalsIgnoreCase(s.getGender()));
         }
         //if it doesn't say men or women, don't bother, everything is true..
         // unless it specifies children..?
@@ -85,7 +85,7 @@ public class ShelterCollection {
      * @return true if it does, false otherwise
      */
     private boolean searchForAgeRange(HomelessShelter s, String ageRange) {
-        if (ageRange.equalsIgnoreCase("Anyone")) {
+        if ("Anyone".equalsIgnoreCase(ageRange)) {
             return true ;
         } else if (ageRange.toLowerCase().contains("children")
                 && s.getRestrictions().toLowerCase().contains("children")) {

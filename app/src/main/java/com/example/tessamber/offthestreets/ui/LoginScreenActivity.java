@@ -131,7 +131,7 @@ public class LoginScreenActivity extends AppCompatActivity {
     private void signIn(String email, String password) {
         Log.d(TAG, "signing in with:" + email);
 
-        if (!email.equals("") && !password.equals("")) {
+        if (!email.isEmpty() && !password.isEmpty()) {
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override
