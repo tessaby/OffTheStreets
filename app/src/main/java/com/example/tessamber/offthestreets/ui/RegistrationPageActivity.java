@@ -157,7 +157,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
 
     /**
      * customizable toast
-     * @param message
+     * @param message message to be displayed
      */
     private void toastMessage(String message) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
@@ -166,7 +166,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
     /**
      * private method to help validate email and register user to authentication for Firebase
      * also adds user info to users database which is the child of OffTheStreetsDatabase
-     * @param user
+     * @param user the user to be registered
      */
 
     private void registerUser(User user) {
