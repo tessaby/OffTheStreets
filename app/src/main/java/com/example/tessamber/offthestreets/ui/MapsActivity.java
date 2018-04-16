@@ -82,6 +82,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
         Button bSearchMap = findViewById(R.id.mapSearch);
         bSearchMap.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 //figure out how to display new list of shelters according to search...
                 String gender = mGender.getSelectedItem().toString();

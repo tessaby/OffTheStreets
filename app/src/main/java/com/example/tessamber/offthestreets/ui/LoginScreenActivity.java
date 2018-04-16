@@ -73,6 +73,7 @@ public class LoginScreenActivity extends AppCompatActivity {
         };
 
         bLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 //get username
                 String email = String.valueOf(etUsername.getText());
@@ -96,6 +97,7 @@ public class LoginScreenActivity extends AppCompatActivity {
         });
 
         bBack.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 android.content.Intent myIntent2 = new android.content.Intent(view.getContext(),
                         WelcomeScreenActivity.class);

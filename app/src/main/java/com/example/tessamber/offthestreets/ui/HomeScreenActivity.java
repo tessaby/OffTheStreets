@@ -50,6 +50,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         bLogout.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 mAuth.signOut();
                 toastMessage("Signing Out...");
@@ -63,6 +64,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         });
 
         bLoadShelters.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 readSDFile();
                 android.content.Intent myIntent2 = new android.content.Intent(view.getContext(),
@@ -72,6 +74,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         });
 
         bClear.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
                 final String emailRef = email.replace(".", ",");
@@ -123,6 +126,7 @@ public class HomeScreenActivity extends AppCompatActivity {
         });
 
         mapButton.setOnClickListener(new View.OnClickListener(){
+            @Override
             public void onClick(View view){
                 readSDFile();
                 Intent intent = new Intent(HomeScreenActivity.this, MapsActivity.class);

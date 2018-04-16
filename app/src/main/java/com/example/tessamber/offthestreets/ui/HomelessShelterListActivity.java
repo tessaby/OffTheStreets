@@ -83,6 +83,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
         // BUTTONS
         Button bSearch = findViewById(R.id.bSearch);
         bSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 //figure out how to display new list of shelters according to search...
                 String gender = spGender.getSelectedItem().toString();

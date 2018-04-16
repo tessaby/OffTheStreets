@@ -101,25 +101,34 @@ public class HomelessShelterDetailFragment extends Fragment {
         currentUser = FirebaseAuth.getInstance().getCurrentUser();
 
         // Show the dummy content as text in a TextView.
-        View rootView = inflater.inflate(R.layout.homeless_shelter_detail, container, false);
+        View rootView = inflater.inflate(R.layout.homeless_shelter_detail, container,
+                false);
         Log.d("MYAPP", "Getting ready to set data");
         if (mItem != null) {
             Log.d("MYAPP", "Getting ready to set id");
-            ((TextView) rootView.findViewById(R.id.id2)).setText("Unique Key: " + Integer.toString(mItem.getId()));
+            ((TextView) rootView.findViewById(R.id.id2)).setText("Unique Key: "
+                    + Integer.toString(mItem.getId()));
             Log.d("MYAPP", "Getting ready to set name");
             ((TextView) rootView.findViewById(R.id.name)).setText(mItem.getShelterName());
 
             tvCap = rootView.findViewById(R.id.capacity);
             tvCap.setText("Capacity: " + Integer.toString(mItem.getCapacity()));
 
-            ((TextView) rootView.findViewById(R.id.restrictions)).setText("Restrictions: " + mItem.getRestrictions());
-            ((TextView) rootView.findViewById(R.id.address)).setText("Address: " + mItem.getAddress());
-            ((TextView) rootView.findViewById(R.id.longitude)).setText("Longitude: " + Double.toString(mItem.getLongitude()));
-            ((TextView) rootView.findViewById(R.id.latitude)).setText("Latitude: " + Double.toString(mItem.getLatitude()));
-            ((TextView) rootView.findViewById(R.id.specialNotes)).setText("Note: " + mItem.getSpecialNotes());
-            ((TextView) rootView.findViewById(R.id.phoneNumber)).setText("Phone Number: " + mItem.getPhoneNumber());
+            ((TextView) rootView.findViewById(R.id.restrictions)).setText("Restrictions: "
+                    + mItem.getRestrictions());
+            ((TextView) rootView.findViewById(R.id.address)).setText("Address: "
+                    + mItem.getAddress());
+            ((TextView) rootView.findViewById(R.id.longitude)).setText("Longitude: "
+                    + Double.toString(mItem.getLongitude()));
+            ((TextView) rootView.findViewById(R.id.latitude)).setText("Latitude: "
+                    + Double.toString(mItem.getLatitude()));
+            ((TextView) rootView.findViewById(R.id.specialNotes)).setText("Note: "
+                    + mItem.getSpecialNotes());
+            ((TextView) rootView.findViewById(R.id.phoneNumber)).setText("Phone Number: "
+                    + mItem.getPhoneNumber());
             if (currentUser == null) {
-                Toast.makeText(getActivity(), "Please log in before booking", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(), "Please log in before booking",
+                        Toast.LENGTH_SHORT).show();
             }
         }
 
@@ -130,6 +139,7 @@ public class HomelessShelterDetailFragment extends Fragment {
 
         // CLICK BUTTON TO BOOK BEDS
         bookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 if (currentUser != null && !toBook.getText().toString().equals("")) {
 
@@ -137,7 +147,8 @@ public class HomelessShelterDetailFragment extends Fragment {
                     final int number = Integer.parseInt(toBook.getText().toString());
                     // POSITIVE, AND LESS THAN SHELTER CAPACITY
                     if (number > 0 && number <= mItem.getCapacity()) {
-                        Toast.makeText(getActivity(), "Preparing to book " + number + " bed(s)", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Preparing to book " + number
+                                + " bed(s)", Toast.LENGTH_SHORT).show();
 
                         //make sure that user's booking is empty first.
                         //otherwise they can't book.
@@ -147,10 +158,12 @@ public class HomelessShelterDetailFragment extends Fragment {
                         String email = FirebaseAuth.getInstance().getCurrentUser().getEmail();
                         final String emailRef = email.replace(".", ",");
 
-                        mDatabase = FirebaseDatabase.getInstance().getReference("OffTheStreetsDatabase");
+                        mDatabase = FirebaseDatabase.getInstance()
+                                .getReference("OffTheStreetsDatabase");
 
 
-                        mDatabase.child("users").child(emailRef).child("bedsBooked").addListenerForSingleValueEvent(new ValueEventListener() {
+                        mDatabase.child("users").child(emailRef).child("bedsBooked")
+                                .addListenerForSingleValueEvent(new ValueEventListener() {
 
                             @Override
                             public void onDataChange(DataSnapshot snapshot) {
@@ -158,18 +171,26 @@ public class HomelessShelterDetailFragment extends Fragment {
                                 System.out.println("READY!?!" + num);
 
                                 if (num != 0) {
-                                    Toast.makeText(getActivity(), "Booking unsuccessful. Must clear previous booking of " + num + "bed(s)" , Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), "Booking unsuccessful. " +
+                                            "Must clear previous booking of " + num + "bed(s)" ,
+                                            Toast.LENGTH_SHORT).show();
                                 } else {
                                     System.out.println(num);
 
-                                    mDatabase.child("users").child(emailRef).child("shelterBookedAt").setValue(mItem.getId() + mItem.getShelterName());
-                                    mDatabase.child("users").child(emailRef).child("bedsBooked").setValue(number);
+                                    mDatabase.child("users").child(emailRef)
+                                            .child("shelterBookedAt").setValue(mItem.getId()
+                                            + mItem.getShelterName());
+                                    mDatabase.child("users").child(emailRef)
+                                            .child("bedsBooked").setValue(number);
 
-                                    mDatabase.child("homeless_shelters").child(mItem.getId() + mItem.getShelterName()).child("capacity").setValue(mItem.getCapacity() - number);
+                                    mDatabase.child("homeless_shelters").child(mItem.getId()
+                                            + mItem.getShelterName()).child("capacity")
+                                            .setValue(mItem.getCapacity() - number);
                                     mItem.setCapacity(mItem.getCapacity() - number);
                                     tvCap.setText("Capacity: " + (mItem.getCapacity()));
 
-                                    Toast.makeText(getActivity(), "Successfully booked!", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(getActivity(), "Successfully booked!",
+                                            Toast.LENGTH_SHORT).show();
                                 }
                             }
                             @Override
@@ -180,15 +201,18 @@ public class HomelessShelterDetailFragment extends Fragment {
                         });
 
                     } else {
-                        Toast.makeText(getActivity(), "Invalid number", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getActivity(), "Invalid number",
+                                Toast.LENGTH_SHORT).show();
                     }
 
                 }
                 if(toBook.getText().toString().equals("")) {
-                    Toast.makeText(getActivity(), "must specify number of beds",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "must specify number of beds",
+                            Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    Toast.makeText(getActivity(), "Must log in first!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getActivity(), "Must log in first!",
+                            Toast.LENGTH_SHORT).show();
                 }
             }
         });
