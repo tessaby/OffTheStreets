@@ -10,15 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * Created by tess.amber on 3/13/18.
- */
-
+@SuppressWarnings("unused")
 public class ShelterCollection {
 
     public static final ShelterCollection INSTANCE = new ShelterCollection();
 
-    private ArrayList<HomelessShelter> shelters;
+    private final ArrayList<HomelessShelter> shelters;
 
     private ShelterCollection() {
         shelters = new ArrayList<>();
@@ -48,7 +45,7 @@ public class ShelterCollection {
      */
     public HomelessShelter findItemById(int id) {
         for (HomelessShelter h : shelters) {
-            if (h.getId() == id) return h;
+            if (h.getId() == id) { return h; }
         }
         Log.d("MYAPP", "Warning - Failed to find id: " + id);
         return null;
@@ -59,8 +56,8 @@ public class ShelterCollection {
      * @param name name of Homeless shelter
      * @return arraylist with shelter with specified name if it exists in the list
      */
-    private ArrayList<HomelessShelter> searchByName(String name) {
-        ArrayList<HomelessShelter> displayList = new ArrayList<>();
+    private List<HomelessShelter> searchByName(String name) {
+        List<HomelessShelter> displayList = new ArrayList<>();
         for (int i = 0; i < shelters.size(); i++) {
             HomelessShelter shelt = shelters.get(i);
             // the replace all is so it can match families with newborns"
@@ -83,12 +80,12 @@ public class ShelterCollection {
             return true;
         }
         //if it says men or women.. check if it matches the homeless shelter restriction..
-        if (gender.equalsIgnoreCase("women") || gender.equalsIgnoreCase("men")) {
+        if ("women".equalsIgnoreCase(gender) || "men".equalsIgnoreCase(gender)) {
             //differentiate between men and women...
             return (s.getGender().equalsIgnoreCase(gender));
         } else {
-            return !(s.getGender().equalsIgnoreCase("men"))
-                    && !(s.getGender().equalsIgnoreCase("women"));
+            return !("men".equalsIgnoreCase(s.getGender()))
+                    && !("women".equalsIgnoreCase(s.getGender()));
         }
         //if it doesn't say men or women, don't bother, everything is true..
         // unless it specifies children..?
@@ -102,7 +99,7 @@ public class ShelterCollection {
      */
     @SuppressWarnings("SimplifiableIfStatement")
     private boolean searchForAgeRange(HomelessShelter s, String ageRange) {
-        if (ageRange.equalsIgnoreCase("Anyone")) {
+        if ("Anyone".equalsIgnoreCase(ageRange)) {
             return true ;
         } else if (ageRange.toLowerCase().contains("children")
                 && s.getRestrictions().toLowerCase().contains("children")) {
@@ -125,7 +122,7 @@ public class ShelterCollection {
      */
     public List<HomelessShelter> searchShelterList(String gender, String ageRange, String name) {
 
-        ArrayList<HomelessShelter> displayList = new ArrayList<>();
+        List<HomelessShelter> displayList = new ArrayList<>();
         // if all the search boxes are empty
         if (TextUtils.isEmpty(gender) && TextUtils.isEmpty(ageRange) && TextUtils.isEmpty(name)) {
             Log.d("ifSearchBoxesAreEmpty", "display whole list of shelters");

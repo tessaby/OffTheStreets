@@ -73,13 +73,13 @@ public class HomelessShelterDetailFragment extends Fragment {
             // arguments. In a real-world scenario, use a Loader
             // to load content from a content provider.
             int item_id = getArguments().getInt(ARG_ITEM_ID);
-            System.out.println("found this: " + item_id);
+            //System.out.println("found this: " + item_id);
             Log.d("MYAPP", "Start details for: " + item_id);
 
             //THE SHELTER BEING VIEWED ON THE DETAILS PAGE
             mItem = ShelterCollection.INSTANCE.findItemById(item_id);
 
-            if (mItem == null) found = false;
+            if (mItem == null) { found = false; }
 
             Activity activity = this.getActivity();
             CollapsingToolbarLayout appBarLayout = activity.findViewById(R.id.toolbar_layout);
@@ -141,12 +141,12 @@ public class HomelessShelterDetailFragment extends Fragment {
         bookButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (currentUser != null && !toBook.getText().toString().equals("")) {
+                if (currentUser != null && !toBook.getText().toString().isEmpty()) {
 
                     // NUMBER
                     final int number = Integer.parseInt(toBook.getText().toString());
                     // POSITIVE, AND LESS THAN SHELTER CAPACITY
-                    if (number > 0 && number <= mItem.getCapacity()) {
+                    if ((number > 0) && (number <= mItem.getCapacity())) {
                         Toast.makeText(getActivity(), "Preparing to book " + number
                                 + " bed(s)", Toast.LENGTH_SHORT).show();
 
@@ -168,14 +168,14 @@ public class HomelessShelterDetailFragment extends Fragment {
                             @Override
                             public void onDataChange(DataSnapshot snapshot) {
                                 Integer num = snapshot.getValue(Integer.class);
-                                System.out.println("READY!?!" + num);
+                                //System.out.println("READY!?!" + num);
 
                                 if (num != 0) {
                                     Toast.makeText(getActivity(), "Booking unsuccessful. " +
                                             "Must clear previous booking of " + num + "bed(s)" ,
                                             Toast.LENGTH_SHORT).show();
                                 } else {
-                                    System.out.println(num);
+                                    //System.out.println(num);
 
                                     mDatabase.child("users").child(emailRef)
                                             .child("shelterBookedAt").setValue(mItem.getId()
@@ -206,7 +206,7 @@ public class HomelessShelterDetailFragment extends Fragment {
                     }
 
                 }
-                if(toBook.getText().toString().equals("")) {
+                if(toBook.getText().toString().isEmpty()) {
                     Toast.makeText(getActivity(), "must specify number of beds",
                             Toast.LENGTH_SHORT).show();
                 }

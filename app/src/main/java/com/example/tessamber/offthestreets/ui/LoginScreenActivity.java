@@ -28,7 +28,7 @@ public class LoginScreenActivity extends AppCompatActivity {
     // DECLARE an instance of FirebaseAuth
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private FirebaseUser user;
+    //private FirebaseUser user;
 
     // DECLARE email and password fields
     private EditText etUsername;
@@ -134,7 +134,7 @@ public class LoginScreenActivity extends AppCompatActivity {
     private void signIn(String email, String password) {
         Log.d(TAG, "signing in with:" + email);
 
-        if (!email.equals("") && !password.equals("")) {
+        if (!email.isEmpty() && !password.isEmpty()) {
             mAuth.signInWithEmailAndPassword(email, password)
                     .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                         @Override

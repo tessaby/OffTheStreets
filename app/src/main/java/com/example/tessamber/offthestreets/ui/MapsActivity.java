@@ -30,6 +30,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unused")
 /**
  * Activity displaying Map from Google Maps Api with markers showing shelter locations and
  * info after search based on search criteria entered
@@ -37,6 +38,7 @@ import java.util.List;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    @SuppressWarnings("unused")
     private Boolean mLocationPermissionsGranted = false;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
 
@@ -47,9 +49,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private EditText etShelterName;
     Button bSearchMap;
 
-    List<HomelessShelter> displayList = new ArrayList<>();
+    private List<HomelessShelter> displayList = new ArrayList<>();
 
-    ShelterCollection model = ShelterCollection.INSTANCE;
+    private final ShelterCollection model = ShelterCollection.INSTANCE;
+
+    @SuppressWarnings("unused")
+    public HomelessShelterListActivity list = new HomelessShelterListActivity();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -146,6 +152,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        mMap.addMarker(new MarkerOptions().position(Atl).title("Atlanta"));
 //        mMap.moveCamera(CameraUpdateFactory.newLatLng(Atl));
 
+    }
+
+    @SuppressWarnings("SameReturnValue")
+    public boolean onMarkerClick(@SuppressWarnings("unused") final Marker marker) {
+        return true;
     }
 
     private void getLocationPermission(){

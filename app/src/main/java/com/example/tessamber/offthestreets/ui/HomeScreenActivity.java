@@ -58,7 +58,7 @@ public class HomeScreenActivity extends AppCompatActivity {
             public void onClick(View view) {
                 mAuth.signOut();
                 toastMessage("Signing Out...");
-                System.out.println(FirebaseAuth.getInstance().getCurrentUser() == null);
+                //System.out.println(FirebaseAuth.getInstance().getCurrentUser() == null);
 
 
                 android.content.Intent myIntent = new android.content.Intent(view.getContext(),
@@ -107,7 +107,7 @@ public class HomeScreenActivity extends AppCompatActivity {
                             public void onDataChange(DataSnapshot dataSnapshot) {
                                 Integer cap = 0;
                                 //dataSnapshot.getValue(Integer.class);
-                                System.out.println(dataSnapshot.getValue(Integer.class));
+                                //System.out.println(dataSnapshot.getValue(Integer.class));
                                 //recalculate shelter capacity
                                 mDatabase.child("homeless_shelters").child(shelter)
                                         .child("capacity").setValue(cap + num);
@@ -178,16 +178,16 @@ public class HomeScreenActivity extends AppCompatActivity {
                 int passInt = 0;
                 String address = "";
                 String notes = "";
-                if(!(shelterDetails[2].equals(""))) {
+                if(!(shelterDetails[2].isEmpty())) {
                     passInt = Integer.parseInt(shelterDetails[2].replaceAll("[\\D]", ""));
                 }
-                if(!(shelterDetails[6].equals(""))) {
+                if(!(shelterDetails[6].isEmpty())) {
                     address = shelterDetails[6].replaceAll("\"", "");
                 }
-                if(!(shelterDetails[7].equals(""))) {
+                if(!(shelterDetails[7].isEmpty())) {
                     notes = shelterDetails[7].replaceAll("\"", "");
                 }
-                System.out.println(address);
+                //System.out.println(address);
 
                 String name = shelterDetails[1].trim();
 

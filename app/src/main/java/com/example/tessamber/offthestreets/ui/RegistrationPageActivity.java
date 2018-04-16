@@ -179,7 +179,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
     private void registerUser(User user) {
         final String email = user.getEmail();
         final String pass = user.getPass();
-        System.out.println("trying to register user");
+        //System.out.println("trying to register user");
 
 
         //validate that email does not already exist in user database...
@@ -190,7 +190,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in success, update UI with the signed-in user's information
                             Log.d(TAG, "createUserWithEmail:success");
-                            System.out.println("task was successful");
+                            //System.out.println("task was successful");
                             //gets the currently signed in user
                             //ADD USER INFO TO:
                             //OffTheStreetsDatabase:users:
@@ -218,13 +218,13 @@ public class RegistrationPageActivity extends AppCompatActivity {
                         if (task.isSuccessful()) {
                             // Sign in successful
                             Log.d(TAG, "signInWithEmail: successful");
-                            System.out.println("signed in after registering.");
+                            //System.out.println("signed in after registering.");
                             //toastMessage("Successfully signed in!");
                         } else {
                             // If sign in fails, display a message to the user.
                             Log.w(TAG, "signInWithEmail: failed", task.getException());
                             //toastMessage("SignIn unsuccessful! Authentication failed.");
-                            System.out.println("signing in after registration failed.");
+                            //System.out.println("signing in after registration failed.");
                         }
                     }
                 });

@@ -1,8 +1,5 @@
 package com.example.tessamber.offthestreets.model;
 
-/**
- * Created by tess.amber on 3/13/18.
- */
 
 public class HomelessShelter {
 
@@ -111,10 +108,10 @@ public class HomelessShelter {
      * @return gender restriction specified by shelter, empty string if not specified
      */
     public String getGender() {
-        if (restrictions.toLowerCase().indexOf("men") != -1
-                && restrictions.toLowerCase().indexOf("women") == -1) {
+        if (restrictions.toLowerCase().contains("men")
+                && !restrictions.toLowerCase().contains("women")) {
             return "men";
-        } else if (restrictions.toLowerCase().indexOf("women") != -1) {
+        } else if (restrictions.toLowerCase().contains("women")) {
             return "women";
         } else {
             return "both";
