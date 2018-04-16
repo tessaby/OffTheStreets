@@ -18,8 +18,4 @@
     <string name="title_activity_homeless_shelter_detail">HomelessShelterDetail</string>
     <string name="title_activity_homeless_shelter_list">HomelessShelterList</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
-    <string name="title_activity_maps">Map</string>
-    <string name="title_activity_maps2">Map</string>
 </resources>
