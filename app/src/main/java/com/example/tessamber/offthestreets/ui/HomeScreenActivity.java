@@ -162,7 +162,7 @@ public class HomeScreenActivity extends AppCompatActivity {
 
             String line;
             br.readLine(); //get rid of header line
-            int count = 0;
+            //int count = 0;
             while ((line = br.readLine()) != null) {
                 Log.d(HomeScreenActivity.TAG, line);
                 String[] shelterDetails = line.split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");

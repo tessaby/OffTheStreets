@@ -18,6 +18,7 @@ public class HomelessShelter {
     private String phoneNumber;
 
 
+    @SuppressWarnings("unused")
     public HomelessShelter() {
     }
     //Homeless Shelter Constructor

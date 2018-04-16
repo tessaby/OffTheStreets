@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
 
 import com.example.tessamber.offthestreets.R;
@@ -70,13 +71,13 @@ public class HomelessShelterListActivity extends AppCompatActivity {
 
         spGender = findViewById(R.id.spGender);
         String[] genders = {"", "Men", "Women", "Both"};
-        ArrayAdapter<String> gendersAdapter = new ArrayAdapter<>(this,
+        SpinnerAdapter gendersAdapter = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item, genders);
         spGender.setAdapter(gendersAdapter);
 
         spAgeRage = findViewById(R.id.spAgeRange);
         String[] ageRanges = {"", "Families with newborns", "Children", "Young Adults", "Anyone"};
-        ArrayAdapter<String> ageAdapter = new ArrayAdapter<>(this,
+        SpinnerAdapter ageAdapter = new ArrayAdapter<>(this,
                 R.layout.support_simple_spinner_dropdown_item, ageRanges);
         spAgeRage.setAdapter(ageAdapter);
 
@@ -124,7 +125,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
          * and stores it.
          * @param items array list of shelters
          */
-        public SimpleItemRecyclerViewAdapter(ArrayList<HomelessShelter> items) {
+        public SimpleItemRecyclerViewAdapter(List<HomelessShelter> items) {
             mValues = items;
         }
 
@@ -132,7 +133,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
          * method that resets values of arraylist in simple item recycler view adapter
          * @param newlist arraylist of shelters
          */
-        public void setmValues(ArrayList<HomelessShelter> newlist) { mValues = newlist; }
+        public void setmValues(List<HomelessShelter> newlist) { mValues = newlist; }
 
         @Override
         public long getItemId(int position) {
