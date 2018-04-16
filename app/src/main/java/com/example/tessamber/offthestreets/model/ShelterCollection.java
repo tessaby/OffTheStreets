@@ -14,7 +14,7 @@ import java.util.List;
  * Created by tess.amber on 3/13/18.
  */
 
-public class ShelterCollection {
+public final class ShelterCollection {
 
     public static final ShelterCollection INSTANCE = new ShelterCollection();
 
@@ -46,8 +46,8 @@ public class ShelterCollection {
      * @param name name of Homeless shelter
      * @return arraylist with shelter with specified name if it exists in the list
      */
-    private ArrayList<HomelessShelter> searchByName(String name) {
-        ArrayList<HomelessShelter> displayList = new ArrayList<>();
+    private List<HomelessShelter> searchByName(String name) {
+        List<HomelessShelter> displayList = new ArrayList<>();
         for (int i = 0; i < shelters.size(); i++) {
             HomelessShelter shelt = shelters.get(i);
             // the replace all is so it can match families with newborns"
@@ -106,7 +106,7 @@ public class ShelterCollection {
      */
     public List<HomelessShelter> searchShelterList(String gender, String ageRange, String name) {
 
-        ArrayList<HomelessShelter> displayList = new ArrayList<>();
+        List<HomelessShelter> displayList = new ArrayList<>();
         // if all the search boxes are empty
         if (TextUtils.isEmpty(gender) && TextUtils.isEmpty(ageRange) && TextUtils.isEmpty(name)) {
             Log.d("ifSearchBoxesAreEmpty", "display whole list of shelters");
@@ -145,9 +145,9 @@ public class ShelterCollection {
             sheltersRef.child(key + hs.getShelterName()).setValue(hs);
         }
     }
-
+    /*
     public static void updateCapacity(int shelterID, int newCapacity) {
         HomelessShelter s = INSTANCE.findItemById(shelterID);
         s.setCapacity(newCapacity);
-    }
+    }*/
 }

@@ -47,9 +47,9 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         // VIEWS
         //email (username)
-        etUsername = (EditText) findViewById(R.id.etUsername);
+        etUsername = findViewById(R.id.etUsername);
         //password
-        etPassword = (EditText) findViewById(R.id.etPassword);
+        etPassword = findViewById(R.id.etPassword);
         //text view message
         //tvMessage = (TextView) findViewById(R.id.tvMessage);
 
@@ -77,6 +77,7 @@ public class LoginScreenActivity extends AppCompatActivity {
         };
 
         bLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 //get username
                 String email = String.valueOf(etUsername.getText());
@@ -99,6 +100,7 @@ public class LoginScreenActivity extends AppCompatActivity {
         });
 
         bBack.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 android.content.Intent myIntent2 = new android.content.Intent(view.getContext(), WelcomeScreenActivity.class);
                 startActivityForResult(myIntent2, 0);

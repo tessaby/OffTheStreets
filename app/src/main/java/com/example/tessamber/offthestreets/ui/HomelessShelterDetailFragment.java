@@ -83,7 +83,7 @@ public class HomelessShelterDetailFragment extends Fragment {
             if (mItem == null) found = false;
 
             Activity activity = this.getActivity();
-            CollapsingToolbarLayout appBarLayout = (CollapsingToolbarLayout) activity.findViewById(R.id.toolbar_layout);
+            CollapsingToolbarLayout appBarLayout = activity.findViewById(R.id.toolbar_layout);
             if (appBarLayout != null) {
                 if (found) {
                     appBarLayout.setTitle(mItem.getShelterName());
@@ -126,11 +126,12 @@ public class HomelessShelterDetailFragment extends Fragment {
 
         // INITIALIZE TEXT AND BUTTON:
 
-        toBook = (EditText) rootView.findViewById(R.id.numberToBook); // ENTER NUMBER OF BEDS TO BOOK
+        toBook = rootView.findViewById(R.id.numberToBook); // ENTER NUMBER OF BEDS TO BOOK
         bookButton = rootView.findViewById(R.id.bookButton);
 
         // CLICK BUTTON TO BOOK BEDS
         bookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 if (currentUser != null && !toBook.getText().toString().equals("")) {
 

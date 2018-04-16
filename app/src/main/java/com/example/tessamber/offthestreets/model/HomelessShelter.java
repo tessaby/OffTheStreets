@@ -48,9 +48,9 @@ public class HomelessShelter {
     public String getPhoneNumber() { return phoneNumber; }
 
     public String getGender() {
-        if (restrictions.toLowerCase().indexOf("men") != -1 && restrictions.toLowerCase().indexOf("women") == -1) {
+        if (restrictions.toLowerCase().contains("men") && !restrictions.toLowerCase().contains("women")) {
             return "men";
-        } else if (restrictions.toLowerCase().indexOf("women") != -1) {
+        } else if (restrictions.toLowerCase().contains("women")) {
             return "women";
         } else {
             return "both";

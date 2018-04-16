@@ -27,7 +27,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -87,6 +86,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
         // BUTTONS
         bSearch = findViewById(R.id.bSearch);
         bSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 //figure out how to display new list of shelters according to search...
                 String gender = spGender.getSelectedItem().toString();

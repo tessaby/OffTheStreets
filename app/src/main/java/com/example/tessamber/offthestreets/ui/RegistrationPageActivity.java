@@ -54,13 +54,13 @@ public class RegistrationPageActivity extends AppCompatActivity {
 
         // INITIALIZE REGISTRATION INFO:
         // name, email, phone number, and password
-        etName = (EditText) findViewById(R.id.etName);
-        etEmailR = (EditText) findViewById(R.id.etEmailR);
-        etPhoneNum = (EditText) findViewById(R.id.etPhoneNum);
-        etPassword = (EditText) findViewById(R.id.etPassword);
-        etPassword2 = (EditText) findViewById(R.id.etPassword2);
-        tvRegistration = (TextView) findViewById(R.id.tvRegistration);
-        spUserType = (Spinner) findViewById(R.id.spUserType);
+        etName = findViewById(R.id.etName);
+        etEmailR = findViewById(R.id.etEmailR);
+        etPhoneNum = findViewById(R.id.etPhoneNum);
+        etPassword = findViewById(R.id.etPassword);
+        etPassword2 = findViewById(R.id.etPassword2);
+        tvRegistration = findViewById(R.id.tvRegistration);
+        spUserType = findViewById(R.id.spUserType);
 
         // INITIALIZE BUTTONS
         bRegister = findViewById(R.id.bRegister);
@@ -98,6 +98,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
         spUserType.setAdapter(adapter);
 
         bRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
             //stores name
             String name = String.valueOf(etName.getText());
@@ -136,6 +137,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
         });
 
         bCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 android.content.Intent myIntent = new android.content.Intent(view.getContext(), WelcomeScreenActivity.class);
                 startActivityForResult(myIntent, 0);
