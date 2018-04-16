@@ -7,6 +7,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -103,7 +104,7 @@ public class ShelterCollection {
      * @param name specific shelter name requested
      * @return ArrayList of shelters satisfying search criteria
      */
-    public ArrayList<HomelessShelter> searchShelterList(String gender, String ageRange, String name) {
+    public List<HomelessShelter> searchShelterList(String gender, String ageRange, String name) {
 
         ArrayList<HomelessShelter> displayList = new ArrayList<>();
         // if all the search boxes are empty
