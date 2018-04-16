@@ -96,7 +96,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private void initMap(){
         Log.d("TAG", "initmap is ready");
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager().findFragmentById(R.id.mapButton);
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.mapButton);
         mapFragment.getMapAsync(new OnMapReadyCallback() {
             @Override
             public void onMapReady(GoogleMap googleMap) {
@@ -129,7 +130,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             double lon = displayList.get(i).getLongitude();
             coordinates = new LatLng(lat, lon);
             mMap.addMarker(new MarkerOptions().position(coordinates).title(
-                    displayList.get(i).getShelterName()).snippet(displayList.get(i).getPhoneNumber()));
+                    displayList.get(i).getShelterName()).snippet(displayList.get(i)
+                    .getPhoneNumber()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(coordinates));
             Toast.makeText(this, "Adding marker" + i, Toast.LENGTH_SHORT).show();
             //googleMap.setOnMarkerClickListener(onMarkerClick());
@@ -152,20 +154,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         String [] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,
         Manifest.permission.ACCESS_COARSE_LOCATION};
 
-        if(ContextCompat.checkSelfPermission(this.getApplicationContext(),Manifest.permission.ACCESS_FINE_LOCATION) ==
-                PackageManager.PERMISSION_GRANTED){
-            if(ContextCompat.checkSelfPermission(this.getApplicationContext(),Manifest.permission.ACCESS_COARSE_LOCATION) ==
-                    PackageManager.PERMISSION_GRANTED){
+        if(ContextCompat.checkSelfPermission(this.getApplicationContext(),Manifest.permission
+                .ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED){
+            if(ContextCompat.checkSelfPermission(this.getApplicationContext(),Manifest.permission
+                    .ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED){
                 mLocationPermissionsGranted = true;
             }
             else{
-                ActivityCompat.requestPermissions(this, permissions, LOCATION_PERMISSION_REQUEST_CODE);
+                ActivityCompat.requestPermissions(this, permissions,
+                        LOCATION_PERMISSION_REQUEST_CODE);
             }
         }
     }
 
     @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
         Log.d("TAG", "OnRequestPermissions called");
         mLocationPermissionsGranted = false;
 

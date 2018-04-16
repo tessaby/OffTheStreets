@@ -34,21 +34,24 @@ public class WelcomeScreenActivity extends AppCompatActivity {
 
         bWelcomeLogin.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                android.content.Intent myIntent = new android.content.Intent(view.getContext(), LoginScreenActivity.class);
+                android.content.Intent myIntent = new android.content.Intent(view.getContext(),
+                        LoginScreenActivity.class);
                 startActivityForResult(myIntent, 0);
             }
         });
 
         bRegister.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                android.content.Intent myIntent2 = new android.content.Intent(view.getContext(), RegistrationPageActivity.class);
+                android.content.Intent myIntent2 = new android.content.Intent(view.getContext(),
+                        RegistrationPageActivity.class);
                 startActivityForResult(myIntent2, 0);
             }
         });
 
         bGuest.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                android.content.Intent myIntent3 = new android.content.Intent(view.getContext(), HomeScreenActivity.class);
+                android.content.Intent myIntent3 = new android.content.Intent(view.getContext(),
+                        HomeScreenActivity.class);
                 startActivityForResult(myIntent3, 0);
             }
         });

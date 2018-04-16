@@ -97,7 +97,8 @@ public class RegistrationPageActivity extends AppCompatActivity {
         /*
           Set up the adapter to display the allowable majors in the spinner
          */
-        ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, User.userTypes);
+        ArrayAdapter<String> adapter = new ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, User.userTypes);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spUserType.setAdapter(adapter);
 
@@ -116,8 +117,10 @@ public class RegistrationPageActivity extends AppCompatActivity {
 
 
             //check that all text boxes are not empty
-            if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty() || password2.isEmpty()) {
-                tvRegistration.setText("Registration unsuccessful! Check that all information has been filled in.");
+            if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty()
+                    || password2.isEmpty()) {
+                tvRegistration.setText("Registration unsuccessful! "
+                        + "Check that all information has been filled in.");
 
                 //check that password and confirm password text are equal
             } else if (!password.equals(password2)) {
@@ -132,7 +135,8 @@ public class RegistrationPageActivity extends AppCompatActivity {
                 String ref = EncodeString(email);
                 if (FirebaseAuth.getInstance().getCurrentUser() != null) {
                     usersRef.child(ref).setValue(user);
-                    android.content.Intent myIntent = new android.content.Intent(view.getContext(), HomeScreenActivity.class);
+                    android.content.Intent myIntent = new android.content.Intent(view.getContext(),
+                            HomeScreenActivity.class);
                     startActivityForResult(myIntent, 0);
                 }
             }
@@ -141,17 +145,20 @@ public class RegistrationPageActivity extends AppCompatActivity {
 
         bCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                android.content.Intent myIntent = new android.content.Intent(view.getContext(), WelcomeScreenActivity.class);
+                android.content.Intent myIntent = new android.content.Intent(view.getContext(),
+                        WelcomeScreenActivity.class);
                 startActivityForResult(myIntent, 0);
             }
         });
     }
 
     public String EncodeString(String string) {
+
         return string.replace(".", ",");
     }
 
     public String DecodeString(String string) {
+
         return string.replace(",", ".");
     }
 
@@ -235,36 +242,5 @@ public class RegistrationPageActivity extends AppCompatActivity {
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
-
-
-    //ADD USER TO ARRAYLIST<USER> METHOD
-//    //check that username does not already exist in list
-//                if (MyArr1.size() != 0) {
-//        boolean flag = true;
-//        for (User myuser : MyArr1) {
-//            if (email.equals(myuser.getEmail())) {
-//                tvRegistration.setText("Registration unsuccessful! Email is already registered under another account.");
-//                flag = false;
-//            }
-//
-//            //email not previously registered, allow registration
-//              MyArr1.add(new User(name, email, phone, password));
-//        }
-//        if (flag) {
-//            //add User to database ArrayList
-////                        MyArr1.add(new User(name, email, phone, password));
-////                        usersRef.child(email).setValue(new User(name, email, phone, password));
-//            writeNewUser(name, email, phone, password, usersRef);
-//
-//            android.content.Intent myIntentRegister = new android.content.Intent(view.getContext(), WelcomeScreenActivity.class);
-//            startActivityForResult(myIntentRegister, 0);
-//        }
-//    } else {
-//        //list is empty, add first User to database ArrayList
-////                    MyArr1.add(new User(name, email, phone, password));
-////                    usersRef.child(email).setValue(new User(name, email, phone, password));
-//        android.content.Intent myIntentRegister = new android.content.Intent(view.getContext(), WelcomeScreenActivity.class);
-//        startActivityForResult(myIntentRegister, 0);
-//    }
 
 }

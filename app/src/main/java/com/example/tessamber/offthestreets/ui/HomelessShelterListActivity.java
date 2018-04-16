@@ -164,8 +164,10 @@ public class HomelessShelterListActivity extends AppCompatActivity {
 
                     Context context = v.getContext();
                     Intent intent3 = new Intent(context, HomelessShelterDetailActivity.class);
-                    Log.d("OffTheStreets", "Switch to detailed view for item: " + holder.mItem.toString());
-                    intent3.putExtra(HomelessShelterDetailFragment.ARG_ITEM_ID, holder.mItem.getId());
+                    Log.d("OffTheStreets", "Switch to detailed view for item: "
+                            + holder.mItem.toString());
+                    intent3.putExtra(HomelessShelterDetailFragment.ARG_ITEM_ID,
+                            holder.mItem.getId());
 
                     context.startActivity(intent3);
                 }
@@ -199,7 +201,8 @@ public class HomelessShelterListActivity extends AppCompatActivity {
         // FIREBASE
         // DECLARE & INITIALIZE FIREBASE DATABASE REFERENCES FOR SHELTERS
         FirebaseDatabase hFirebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference hDatabaseReference = hFirebaseDatabase.getReference("OffTheStreetsDatabase");
+        DatabaseReference hDatabaseReference = hFirebaseDatabase
+                .getReference("OffTheStreetsDatabase");
         DatabaseReference sheltersRef = hDatabaseReference.child("homeless_shelters");
         // Attach a listener to read the data at our posts reference
         sheltersRef.addListenerForSingleValueEvent(new ValueEventListener() {

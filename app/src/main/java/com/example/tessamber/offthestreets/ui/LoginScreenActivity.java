@@ -94,7 +94,8 @@ public class LoginScreenActivity extends AppCompatActivity {
                 //CHECKING CURRENT USER LOGIN STATUS TO CHANGE TO HOMEPAGE
                 Log.d(TAG, "current user is not null: " + isUserSignedIn());
                 if (isUserSignedIn()) {
-                    android.content.Intent myIntent = new android.content.Intent(view.getContext(), HomeScreenActivity.class);
+                    android.content.Intent myIntent = new android.content.Intent(view.getContext(),
+                            HomeScreenActivity.class);
                     startActivityForResult(myIntent, 0);
                 }
             }
@@ -102,7 +103,8 @@ public class LoginScreenActivity extends AppCompatActivity {
 
         bBack.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                android.content.Intent myIntent2 = new android.content.Intent(view.getContext(), WelcomeScreenActivity.class);
+                android.content.Intent myIntent2 = new android.content.Intent(view.getContext(),
+                        WelcomeScreenActivity.class);
                 startActivityForResult(myIntent2, 0);
             }
         });
@@ -159,27 +161,4 @@ public class LoginScreenActivity extends AppCompatActivity {
         return mAuth.getCurrentUser() != null;
     }
 
-    //HARDCODED TESTER "USER" & "PASS".
-    //validates the username and password for User, pass
-//                if (username.equals("User") && password.equals("pass")) {
-//                    android.content.Intent myIntent1 = new android.content.Intent(view.getContext(), HomeScreenActivity.class);
-//                    startActivityForResult(myIntent1, 0);
-
-    //CHECKS ARRAYLIST<User> STORAGE METHOD.
-    //validates that email matches one of the registered emails,
-    // and if true, that password matches the registered password for that email
-//                boolean flag = true;
-//                for (User myuser : User.MyArr1) {
-//                    if (myuser.getEmail().equals(email)) {
-//                        if (myuser.getPass().equals(password)) {
-//                            flag = false;
-//                            android.content.Intent myIntent1 = new android.content.Intent(view.getContext(), HomeScreenActivity.class);
-//                            startActivityForResult(myIntent1, 0);
-//                        }
-//                    }
-//                }
-//                if (flag) {
-//                    tvMessage.setText("Login Unsuccessful!");
-//                }
-//            }
 }

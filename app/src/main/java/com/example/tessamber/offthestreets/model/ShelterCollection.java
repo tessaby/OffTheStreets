@@ -73,9 +73,11 @@ public class ShelterCollection {
             //differentiate between men and women...
             return (s.getGender().equalsIgnoreCase(gender));
         } else {
-            return !(s.getGender().equalsIgnoreCase("men")) && !(s.getGender().equalsIgnoreCase("women"));
+            return !(s.getGender().equalsIgnoreCase("men"))
+                    && !(s.getGender().equalsIgnoreCase("women"));
         }
-        //if it doesn't say men or women, don't bother, everything is true.. unless it specifies children
+        //if it doesn't say men or women, don't bother, everything is true..
+        // unless it specifies children..?
     }
 
     /**
@@ -87,12 +89,15 @@ public class ShelterCollection {
     private boolean searchForAgeRange(HomelessShelter s, String ageRange) {
         if (ageRange.equalsIgnoreCase("Anyone")) {
             return true ;
-        } else if (ageRange.toLowerCase().contains("children") && s.getRestrictions().toLowerCase().contains("children")) {
+        } else if (ageRange.toLowerCase().contains("children")
+                && s.getRestrictions().toLowerCase().contains("children")) {
             return true;
-        } else if (ageRange.toLowerCase().contains("newborns") && s.getRestrictions().toLowerCase().contains("newborns")) {
+        } else if (ageRange.toLowerCase().contains("newborns")
+                && s.getRestrictions().toLowerCase().contains("newborns")) {
             return true;
         } else {
-            return (ageRange.toLowerCase().contains("young adults") && s.getRestrictions().toLowerCase().contains("young adults"));
+            return (ageRange.toLowerCase().contains("young adults")
+                    && s.getRestrictions().toLowerCase().contains("young adults"));
         }
     }
 
@@ -103,7 +108,8 @@ public class ShelterCollection {
      * @param name specific shelter name requested
      * @return ArrayList of shelters satisfying search criteria
      */
-    public ArrayList<HomelessShelter> searchShelterList(String gender, String ageRange, String name) {
+    public ArrayList<HomelessShelter> searchShelterList(String gender, String ageRange,
+                                                        String name) {
 
         ArrayList<HomelessShelter> displayList = new ArrayList<>();
         // if all the search boxes are empty
@@ -136,7 +142,8 @@ public class ShelterCollection {
     public static void addShelterCollectionToFirebase(ArrayList<HomelessShelter> shelters) {
 
         FirebaseDatabase hFirebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference hDatabaseReference = hFirebaseDatabase.getReference("OffTheStreetsDatabase");
+        DatabaseReference hDatabaseReference = hFirebaseDatabase
+                .getReference("OffTheStreetsDatabase");
         DatabaseReference sheltersRef = hDatabaseReference.child("homeless_shelters");
         int key;
         for (HomelessShelter hs : shelters) {
