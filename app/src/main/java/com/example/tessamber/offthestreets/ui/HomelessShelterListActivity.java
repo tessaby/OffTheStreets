@@ -27,6 +27,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * An activity representing a list of Homeless Shelters .
@@ -119,7 +120,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
     public class SimpleItemRecyclerViewAdapter
             extends RecyclerView.Adapter<SimpleItemRecyclerViewAdapter.ViewHolder> {
 
-        private ArrayList<HomelessShelter> mValues;
+        private List<HomelessShelter> mValues;
 
 
         /**

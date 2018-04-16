@@ -27,6 +27,7 @@ import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -41,7 +42,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private EditText etShelterName;
     private Button bSearchMap;
 
-    ArrayList<HomelessShelter> displayList = new ArrayList<>();
+    List<HomelessShelter> displayList = new ArrayList<>();
 
     ShelterCollection model = ShelterCollection.INSTANCE;
 

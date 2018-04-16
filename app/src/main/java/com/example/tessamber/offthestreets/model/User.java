@@ -16,7 +16,7 @@ public class User {
 
     public static List<String> userTypes = Arrays.asList("user", "admin");
 
-    public static ArrayList<User> MyArr1 = new ArrayList<User>();
+    public static List<User> MyArr1 = new ArrayList<User>();
 
     private static int count = 0; //number of users in arraylist
     private String name;
@@ -35,7 +35,6 @@ public class User {
         this.email = email;
         this.phone = phone;
         this.password = password;
-        count++;
     }
 
     public String getEmail() {
