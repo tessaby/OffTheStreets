@@ -25,7 +25,6 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.ValueEventListener;
 
-import org.w3c.dom.Text;
 
 /**
  * A fragment representing a single DataItem detail screen.

@@ -41,7 +41,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Spinner mGender;
     private Spinner mAgeRange;
     private EditText etShelterName;
-    private Button bSearchMap;
+    Button bSearchMap;
 
     List<HomelessShelter> displayList = new ArrayList<>();
 
