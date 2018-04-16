@@ -48,13 +48,12 @@ public class HomelessShelterDetailFragment extends Fragment {
 
     // DECLARE FIREBASE REF AND USER
     private DatabaseReference mDatabase;
-    FirebaseUser currentUser;
+    private FirebaseUser currentUser;
 
     //DECLARE BOOKING BUTTON AND TEXT VIEW
-    EditText toBook;
-    Button bookButton;
+    private EditText toBook;
 
-    TextView tvCap;
+    private TextView tvCap;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -127,7 +126,7 @@ public class HomelessShelterDetailFragment extends Fragment {
         // INITIALIZE TEXT AND BUTTON:
 
         toBook = rootView.findViewById(R.id.numberToBook); // ENTER NUMBER OF BEDS TO BOOK
-        bookButton = rootView.findViewById(R.id.bookButton);
+        Button bookButton = rootView.findViewById(R.id.bookButton);
 
         // CLICK BUTTON TO BOOK BEDS
         bookButton.setOnClickListener(new View.OnClickListener() {

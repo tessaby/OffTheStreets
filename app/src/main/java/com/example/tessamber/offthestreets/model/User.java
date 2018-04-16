@@ -12,7 +12,7 @@ import java.util.List;
 
 public class User {
 
-    public static List<String> userTypes = Arrays.asList("user", "admin");
+    public static final List<String> userTypes = Arrays.asList("user", "admin");
 
     public static List<User> MyArr1 = new ArrayList<>();
 
@@ -60,8 +60,8 @@ public class User {
         this.clearShelterBookAt();
     }
 
-    public void clearBedsBooked() { bedsBooked = 0; }
+    private void clearBedsBooked() { bedsBooked = 0; }
 
-    public void clearShelterBookAt() { shelterBookedAt = null; }
+    private void clearShelterBookAt() { shelterBookedAt = null; }
 
 }
