@@ -1,3 +1,4 @@
+<!--suppress LongLine -->
 <application>
   <component name="PathMacrosImpl">
     <macro name="KOTLIN_BUNDLED" value="/Applications/Android Studio.app/Contents/plugins/Kotlin/kotlinc" />
