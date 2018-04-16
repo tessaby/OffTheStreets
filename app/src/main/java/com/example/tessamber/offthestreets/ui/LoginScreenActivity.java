@@ -25,7 +25,7 @@ public class LoginScreenActivity extends AppCompatActivity {
     // DECLARE an instance of FirebaseAuth
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
-    private FirebaseUser user;
+    //private FirebaseUser user;
 
     // DECLARE email and password fields
     private EditText etUsername;

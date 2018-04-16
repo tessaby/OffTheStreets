@@ -30,9 +30,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    @SuppressWarnings("unused")
     private Boolean mLocationPermissionsGranted = false;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
 
@@ -42,10 +44,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Spinner mAgeRange;
     private EditText etShelterName;
 
-    List<HomelessShelter> displayList = new ArrayList<>();
+    private List<HomelessShelter> displayList = new ArrayList<>();
 
-    ShelterCollection model = ShelterCollection.INSTANCE;
+    private final ShelterCollection model = ShelterCollection.INSTANCE;
 
+    @SuppressWarnings("unused")
     public HomelessShelterListActivity list = new HomelessShelterListActivity();
 
 
@@ -146,7 +149,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    public boolean onMarkerClick(final Marker marker) {
+    @SuppressWarnings("SameReturnValue")
+    public boolean onMarkerClick(@SuppressWarnings("unused") final Marker marker) {
         return true;
     }
 

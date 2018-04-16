@@ -1,8 +1,5 @@
 package com.example.tessamber.offthestreets.model;
 
-/**
- * Created by tess.amber on 3/13/18.
- */
 
 public class HomelessShelter {
 
