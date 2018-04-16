@@ -93,7 +93,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
         spUserType.setAdapter(adapter);
 
         bRegister.setOnClickListener(new View.OnClickListener() {
-
+            @Override
             public void onClick(View view) {
                 //stores name
                 String name = String.valueOf(etName.getText());
@@ -135,6 +135,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
         });
 
         bCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 android.content.Intent myIntent = new android.content.Intent(view.getContext(),
                         WelcomeScreenActivity.class);

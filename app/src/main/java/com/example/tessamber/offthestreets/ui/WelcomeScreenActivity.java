@@ -25,6 +25,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         Button bGuest = findViewById(R.id.bGuest);
 
         bWelcomeLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 android.content.Intent myIntent = new android.content.Intent(view.getContext(),
                         LoginScreenActivity.class);
@@ -33,6 +34,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         });
 
         bRegister.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 android.content.Intent myIntent2 = new android.content.Intent(view.getContext(),
                         RegistrationPageActivity.class);
@@ -41,6 +43,7 @@ public class WelcomeScreenActivity extends AppCompatActivity {
         });
 
         bGuest.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 android.content.Intent myIntent3 = new android.content.Intent(view.getContext(),
                         HomeScreenActivity.class);

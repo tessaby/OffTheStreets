@@ -139,6 +139,7 @@ public class HomelessShelterDetailFragment extends Fragment {
 
         // CLICK BUTTON TO BOOK BEDS
         bookButton.setOnClickListener(new View.OnClickListener() {
+            @Override
             public void onClick(View view) {
                 if (currentUser != null && !toBook.getText().toString().equals("")) {
 
