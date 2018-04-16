@@ -14,6 +14,7 @@ import com.google.firebase.auth.FirebaseUser;
  * Activity representing welcome screen for when app is opened
  * allows login or registration options
  */
+@SuppressWarnings("CyclicClassDependency")
 public class WelcomeScreenActivity extends AppCompatActivity {
 
     private static final String TAG = "WelcomeScreen";

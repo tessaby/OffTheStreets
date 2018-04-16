@@ -22,6 +22,8 @@ import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
+
+@SuppressWarnings("CyclicClassDependency")
 /**
  * Activity for new user registration
  */

@@ -17,6 +17,8 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+
+@SuppressWarnings("CyclicClassDependency")
 /**
  * Activity allows user to enter login details
  * which are verified through firebase authentication database
