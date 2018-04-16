@@ -7,6 +7,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import com.example.tessamber.offthestreets.R;
 
+/**
+ * Activity displaying selected shelter details from list page
+ */
 public class HomelessShelterDetailActivity extends AppCompatActivity {
 
     @Override

@@ -21,15 +21,28 @@ public class ShelterCollection {
         shelters = new ArrayList<>();
     }
 
-    public void addShelter(HomelessShelter shelter) { shelters.add(shelter);
-    }
+    /**
+     * method adds shelter to shelter list in shelter collection
+     * @param shelter to be added to list
+     */
+    public void addShelter(HomelessShelter shelter) { shelters.add(shelter); }
 
+    /**
+     * method to empty shelter list in Shelter Collection
+     */
     public void clearShelterList() { shelters.clear(); }
 
-    public ArrayList<HomelessShelter> getShelters() {
-        return shelters;
-    }
+    /**
+     * getter method for shelter list
+     * @return list of shelters
+     */
+    public ArrayList<HomelessShelter> getShelters() { return shelters; }
 
+    /**
+     * retrieves HomelessShelter from shelter list by id
+     * @param id of shelter
+     * @return shelter found
+     */
     public HomelessShelter findItemById(int id) {
         for (HomelessShelter h : shelters) {
             if (h.getId() == id) { return h; }
@@ -84,6 +97,7 @@ public class ShelterCollection {
      * @param ageRange specified age group
      * @return true if it does, false otherwise
      */
+    @SuppressWarnings("SimplifiableIfStatement")
     private boolean searchForAgeRange(HomelessShelter s, String ageRange) {
         if ("Anyone".equalsIgnoreCase(ageRange)) {
             return true ;
@@ -148,9 +162,14 @@ public class ShelterCollection {
             sheltersRef.child(key + hs.getShelterName()).setValue(hs);
         }
     }
-    /*
+
+    /**
+     * method that helps to update shelter capacity based on firebase
+     * @param shelterID shelter's unique id
+     * @param newCapacity capacity to be stored for shelter in shelter list
+     */
     public static void updateCapacity(int shelterID, int newCapacity) {
         HomelessShelter s = INSTANCE.findItemById(shelterID);
         s.setCapacity(newCapacity);
-    }*/
+    }
 }

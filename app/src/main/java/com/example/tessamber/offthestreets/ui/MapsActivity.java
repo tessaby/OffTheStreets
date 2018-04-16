@@ -31,6 +31,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SuppressWarnings("unused")
+/**
+ * Activity displaying Map from Google Maps Api with markers showing shelter locations and
+ * info after search based on search criteria entered
+ */
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
@@ -43,6 +47,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Spinner mGender;
     private Spinner mAgeRange;
     private EditText etShelterName;
+    Button bSearchMap;
 
     private List<HomelessShelter> displayList = new ArrayList<>();
 
@@ -80,7 +85,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //NAME TEXT VIEW
         etShelterName = findViewById(R.id.mapTextShelterName);
 
-        Button bSearchMap = findViewById(R.id.mapSearch);
+        bSearchMap = findViewById(R.id.mapSearch);
         bSearchMap.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

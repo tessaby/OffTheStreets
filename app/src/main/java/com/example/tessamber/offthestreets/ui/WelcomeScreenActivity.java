@@ -10,6 +10,10 @@ import com.example.tessamber.offthestreets.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+/**
+ * Activity representing welcome screen for when app is opened
+ * allows login or registration options
+ */
 @SuppressWarnings("CyclicClassDependency")
 public class WelcomeScreenActivity extends AppCompatActivity {
 

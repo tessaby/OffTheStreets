@@ -24,6 +24,9 @@ import com.google.firebase.database.FirebaseDatabase;
 
 
 @SuppressWarnings("CyclicClassDependency")
+/**
+ * Activity for new user registration
+ */
 public class RegistrationPageActivity extends AppCompatActivity {
 
     private static final String TAG = "RegistrationActivity";
@@ -149,9 +152,14 @@ public class RegistrationPageActivity extends AppCompatActivity {
         return string.replace(".", ",");
     }
 
-//    public String DecodeString(String string) {
-//        return string.replace(",", ".");
-//    }
+    /**
+     * For retrieving username from Firebase authentication database, replace comma with period
+     * @param string email
+     * @return email with dot instead of comma
+     */
+    public String DecodeString(String string) {
+        return string.replace(",", ".");
+    }
 
     /**
      * customizable toast

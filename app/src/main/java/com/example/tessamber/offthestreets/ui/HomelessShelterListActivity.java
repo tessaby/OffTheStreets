@@ -45,6 +45,9 @@ public class HomelessShelterListActivity extends AppCompatActivity {
     private Spinner spAgeRage;
     private EditText etShelterName;
 
+    // DECLARE BUTTONS
+    Button bSearch;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -81,7 +84,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
         etShelterName = findViewById(R.id.etShelterName);
 
         // BUTTONS
-        Button bSearch = findViewById(R.id.bSearch);
+        bSearch = findViewById(R.id.bSearch);
         bSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -158,7 +161,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    //System.out.println("Detected Click");
+                    System.out.println("Detected Click");
 
                     Context context = v.getContext();
                     Intent intent3 = new Intent(context, HomelessShelterDetailActivity.class);
@@ -195,7 +198,12 @@ public class HomelessShelterListActivity extends AppCompatActivity {
         }
     }
 
-    private void setCapacityFromFirebase() {
+    /**
+     * method to retrieve capacity value of shelter from firebase database of homeless shelters
+     * since the database is persistent
+     * and updates value to shelter in arraylist of shelters from shelter collection
+     */
+    public void setCapacityFromFirebase() {
         // FIREBASE
         // DECLARE & INITIALIZE FIREBASE DATABASE REFERENCES FOR SHELTERS
         FirebaseDatabase hFirebaseDatabase = FirebaseDatabase.getInstance();
@@ -222,7 +230,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // ...
-                //System.out.println("The read failed: " + databaseError.getCode());
+                System.out.println("The read failed: " + databaseError.getCode());
             }
         });
     }
