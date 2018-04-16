@@ -158,7 +158,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println("Detected Click");
+                    //System.out.println("Detected Click");
 
                     Context context = v.getContext();
                     Intent intent3 = new Intent(context, HomelessShelterDetailActivity.class);
@@ -222,7 +222,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // ...
-                System.out.println("The read failed: " + databaseError.getCode());
+                //System.out.println("The read failed: " + databaseError.getCode());
             }
         });
     }

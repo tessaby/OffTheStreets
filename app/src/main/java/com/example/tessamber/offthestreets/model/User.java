@@ -18,6 +18,7 @@ public class User {
     @SuppressWarnings("PublicField")
     public static List<User> MyArr1 = new ArrayList<>();
 
+    @SuppressWarnings("FieldMayBeFinal")
     private static int count = 0; //number of users in arraylist
     private String name;
     private String email;
