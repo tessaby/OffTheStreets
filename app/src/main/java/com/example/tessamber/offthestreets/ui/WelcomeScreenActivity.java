@@ -10,6 +10,7 @@ import com.example.tessamber.offthestreets.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
+@SuppressWarnings("CyclicClassDependency")
 public class WelcomeScreenActivity extends AppCompatActivity {
 
     private static final String TAG = "WelcomeScreen";

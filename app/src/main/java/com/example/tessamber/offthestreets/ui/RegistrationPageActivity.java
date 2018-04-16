@@ -23,6 +23,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 
+@SuppressWarnings("CyclicClassDependency")
 public class RegistrationPageActivity extends AppCompatActivity {
 
     private static final String TAG = "RegistrationActivity";

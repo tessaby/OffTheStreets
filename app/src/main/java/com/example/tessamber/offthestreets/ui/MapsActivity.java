@@ -49,7 +49,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private final ShelterCollection model = ShelterCollection.INSTANCE;
 
     @SuppressWarnings("unused")
-    public HomelessShelterListActivity list = new HomelessShelterListActivity();
+    private HomelessShelterListActivity list = new HomelessShelterListActivity();
 
 
     @Override

@@ -179,7 +179,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
             final View mView;
             final TextView mIdView;
             final TextView mContentView;
-            public HomelessShelter mItem;
+            private HomelessShelter mItem;
 
             ViewHolder(View view) {
                 super(view);

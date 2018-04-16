@@ -18,6 +18,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 
 
+@SuppressWarnings("CyclicClassDependency")
 public class LoginScreenActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";
