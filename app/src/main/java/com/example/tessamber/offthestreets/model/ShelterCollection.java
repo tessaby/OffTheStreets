@@ -10,15 +10,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-/**
- * Created by tess.amber on 3/13/18.
- */
-
+@SuppressWarnings("unused")
 public class ShelterCollection {
 
     public static final ShelterCollection INSTANCE = new ShelterCollection();
 
-    private ArrayList<HomelessShelter> shelters;
+    private final ArrayList<HomelessShelter> shelters;
 
     private ShelterCollection() {
         shelters = new ArrayList<>();

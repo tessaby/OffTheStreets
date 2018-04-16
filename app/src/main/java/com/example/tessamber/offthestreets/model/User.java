@@ -10,6 +10,7 @@ import java.util.List;
  * this class stores User info
  */
 
+@SuppressWarnings("unused")
 public class User {
 
     public static final List<String> userTypes = Arrays.asList("user", "admin");

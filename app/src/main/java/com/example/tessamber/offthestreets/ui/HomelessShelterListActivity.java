@@ -27,7 +27,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -36,18 +35,15 @@ import java.util.List;
 public class HomelessShelterListActivity extends AppCompatActivity {
 
     // DECLARE RECYCLERVIEW ADAPTER
-    SimpleItemRecyclerViewAdapter myAdapter;
+    private SimpleItemRecyclerViewAdapter myAdapter;
 
     // DECLARE SHELTER COLLECTION
-    final ShelterCollection model = ShelterCollection.INSTANCE;
+    private final ShelterCollection model = ShelterCollection.INSTANCE;
 
     // DECLARE VIEWS
     private Spinner spGender;
     private Spinner spAgeRage;
     private EditText etShelterName;
-
-    // DECLARE BUTTONS
-    Button bSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -85,7 +81,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
         etShelterName = findViewById(R.id.etShelterName);
 
         // BUTTONS
-        bSearch = findViewById(R.id.bSearch);
+        Button bSearch = findViewById(R.id.bSearch);
         bSearch.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 //figure out how to display new list of shelters according to search...
@@ -198,7 +194,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
         }
     }
 
-    public void setCapacityFromFirebase() {
+    private void setCapacityFromFirebase() {
         // FIREBASE
         // DECLARE & INITIALIZE FIREBASE DATABASE REFERENCES FOR SHELTERS
         FirebaseDatabase hFirebaseDatabase = FirebaseDatabase.getInstance();

@@ -30,9 +30,11 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
+@SuppressWarnings("unused")
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+    @SuppressWarnings("unused")
     private Boolean mLocationPermissionsGranted = false;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
 
@@ -41,12 +43,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private Spinner mGender;
     private Spinner mAgeRange;
     private EditText etShelterName;
-    Button bSearchMap;
 
-    List<HomelessShelter> displayList = new ArrayList<>();
+    private List<HomelessShelter> displayList = new ArrayList<>();
 
-    ShelterCollection model = ShelterCollection.INSTANCE;
+    private final ShelterCollection model = ShelterCollection.INSTANCE;
 
+    @SuppressWarnings("unused")
     public HomelessShelterListActivity list = new HomelessShelterListActivity();
 
 
@@ -78,7 +80,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         //NAME TEXT VIEW
         etShelterName = findViewById(R.id.mapTextShelterName);
 
-        bSearchMap = findViewById(R.id.mapSearch);
+        Button bSearchMap = findViewById(R.id.mapSearch);
         bSearchMap.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 //figure out how to display new list of shelters according to search...
@@ -146,7 +148,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
-    public boolean onMarkerClick(final Marker marker) {
+    @SuppressWarnings("SameReturnValue")
+    public boolean onMarkerClick(@SuppressWarnings("unused") final Marker marker) {
         return true;
     }
 

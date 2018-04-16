@@ -140,9 +140,9 @@ public class RegistrationPageActivity extends AppCompatActivity {
         return string.replace(".", ",");
     }
 
-    public String DecodeString(String string) {
-        return string.replace(",", ".");
-    }
+//    public String DecodeString(String string) {
+//        return string.replace(",", ".");
+//    }
 
     /**
      * customizable toast
