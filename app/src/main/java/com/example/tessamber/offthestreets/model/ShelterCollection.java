@@ -10,7 +10,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 
-@SuppressWarnings("unused")
+/**
+ * Shelter Collection Class contains list of shelters
+ */
 public class ShelterCollection {
 
     public static final ShelterCollection INSTANCE = new ShelterCollection();

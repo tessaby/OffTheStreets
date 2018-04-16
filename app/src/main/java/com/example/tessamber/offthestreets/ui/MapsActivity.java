@@ -30,7 +30,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import java.util.ArrayList;
 import java.util.List;
 
-@SuppressWarnings("unused")
+
 /**
  * Activity displaying Map from Google Maps Api with markers showing shelter locations and
  * info after search based on search criteria entered
@@ -38,7 +38,6 @@ import java.util.List;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
-    @SuppressWarnings("unused")
     private Boolean mLocationPermissionsGranted = false;
     private static final int LOCATION_PERMISSION_REQUEST_CODE = 1234;
 
@@ -52,10 +51,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private List<HomelessShelter> displayList = new ArrayList<>();
 
     private final ShelterCollection model = ShelterCollection.INSTANCE;
-
-    @SuppressWarnings("unused")
-    public HomelessShelterListActivity list = new HomelessShelterListActivity();
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

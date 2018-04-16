@@ -1,6 +1,8 @@
 package com.example.tessamber.offthestreets.model;
 
-
+/**
+ * Homeless Shelter Class
+ */
 public class HomelessShelter {
 
     //variables according to header list
@@ -18,7 +20,6 @@ public class HomelessShelter {
     /**
      * default constructor
      */
-    @SuppressWarnings("unused")
     public HomelessShelter() {
     }
 

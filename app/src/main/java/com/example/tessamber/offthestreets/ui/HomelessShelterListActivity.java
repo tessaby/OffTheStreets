@@ -35,10 +35,10 @@ import java.util.List;
 public class HomelessShelterListActivity extends AppCompatActivity {
 
     // DECLARE RECYCLERVIEW ADAPTER
-    SimpleItemRecyclerViewAdapter myAdapter;
+    private SimpleItemRecyclerViewAdapter myAdapter;
 
     // DECLARE SHELTER COLLECTION
-    final ShelterCollection model = ShelterCollection.INSTANCE;
+    private final ShelterCollection model = ShelterCollection.INSTANCE;
 
     // DECLARE VIEWS
     private Spinner spGender;
@@ -46,7 +46,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
     private EditText etShelterName;
 
     // DECLARE BUTTONS
-    Button bSearch;
+    private Button bSearch;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -125,7 +125,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
          * and stores it.
          * @param items array list of shelters
          */
-        public SimpleItemRecyclerViewAdapter(List<HomelessShelter> items) {
+        SimpleItemRecyclerViewAdapter(List<HomelessShelter> items) {
             mValues = items;
         }
 
@@ -133,7 +133,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
          * method that resets values of arraylist in simple item recycler view adapter
          * @param newlist arraylist of shelters
          */
-        public void setmValues(List<HomelessShelter> newlist) { mValues = newlist; }
+        void setmValues(List<HomelessShelter> newlist) { mValues = newlist; }
 
         @Override
         public long getItemId(int position) {
@@ -203,7 +203,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
      * since the database is persistent
      * and updates value to shelter in arraylist of shelters from shelter collection
      */
-    public void setCapacityFromFirebase() {
+    private void setCapacityFromFirebase() {
         // FIREBASE
         // DECLARE & INITIALIZE FIREBASE DATABASE REFERENCES FOR SHELTERS
         FirebaseDatabase hFirebaseDatabase = FirebaseDatabase.getInstance();
