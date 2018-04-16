@@ -64,7 +64,8 @@ public class RegistrationPageActivity extends AppCompatActivity {
 
         //INITIALIZE FIREBASE REFERENCES for users database
         FirebaseDatabase uFirebaseDatabase = FirebaseDatabase.getInstance();
-        DatabaseReference uDatabaseReference = uFirebaseDatabase.getReference("OffTheStreetsDatabase");
+        DatabaseReference uDatabaseReference = uFirebaseDatabase
+                .getReference("OffTheStreetsDatabase");
         usersRef = uDatabaseReference.child("users");
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
@@ -86,51 +87,57 @@ public class RegistrationPageActivity extends AppCompatActivity {
         /*
           Set up the adapter to display the allowable majors in the spinner
          */
-        @SuppressWarnings("unchecked") ArrayAdapter<String> adapter = new ArrayAdapter(this, android.R.layout.simple_spinner_item, User.userTypes);
+        @SuppressWarnings("unchecked") ArrayAdapter<String> adapter = new ArrayAdapter(this,
+                android.R.layout.simple_spinner_item, User.userTypes);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spUserType.setAdapter(adapter);
 
         bRegister.setOnClickListener(new View.OnClickListener() {
+
             public void onClick(View view) {
-            //stores name
-            String name = String.valueOf(etName.getText());
-            //stores email
-            String email = String.valueOf(etEmailR.getText());
-            //stores phone number
-            String phone = String.valueOf(etPhoneNum.getText());
-            //stores password
-            String password = String.valueOf(etPassword.getText());
-            //stores confirm password
-            String password2 = String.valueOf(etPassword2.getText());
+                //stores name
+                String name = String.valueOf(etName.getText());
+                //stores email
+                String email = String.valueOf(etEmailR.getText());
+                //stores phone number
+                String phone = String.valueOf(etPhoneNum.getText());
+                //stores password
+                String password = String.valueOf(etPassword.getText());
+                //stores confirm password
+                String password2 = String.valueOf(etPassword2.getText());
 
 
-            //check that all text boxes are not empty
-            if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty() || password2.isEmpty()) {
-                tvRegistration.setText("Registration unsuccessful! Check that all information has been filled in.");
+                //check that all text boxes are not empty
+                if (name.isEmpty() || email.isEmpty() || phone.isEmpty() || password.isEmpty()
+                        || password2.isEmpty()) {
+                    tvRegistration.setText("Registration unsuccessful! " +
+                            "Check that all information has been filled in.");
 
-                //check that password and confirm password text are equal
-            } else if (!password.equals(password2)) {
-                tvRegistration.setText("Registration unsuccessful! Passwords do not match.");
+                    //check that password and confirm password text are equal
+                } else if (!password.equals(password2)) {
+                    tvRegistration.setText("Registration unsuccessful! Passwords do not match.");
 
-                //store User info in FIREBASE, enter HomeScreenActivity.
-            } else {
-                User user = new User(name, email, phone, password);
-                registerUser(user);
+                    //store User info in FIREBASE, enter HomeScreenActivity.
+                } else {
+                    User user = new User(name, email, phone, password);
+                    registerUser(user);
 //                FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
 //                System.out.println(currentUser == null);
-                String ref = EncodeString(email);
-                if (FirebaseAuth.getInstance().getCurrentUser() != null) {
-                    usersRef.child(ref).setValue(user);
-                    android.content.Intent myIntent = new android.content.Intent(view.getContext(), HomeScreenActivity.class);
-                    startActivityForResult(myIntent, 0);
+                    String ref = EncodeString(email);
+                    if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+                        usersRef.child(ref).setValue(user);
+                        android.content.Intent myIntent = new android.content
+                                .Intent(view.getContext(), HomeScreenActivity.class);
+                        startActivityForResult(myIntent, 0);
+                    }
                 }
-            }
             }
         });
 
         bCancel.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                android.content.Intent myIntent = new android.content.Intent(view.getContext(), WelcomeScreenActivity.class);
+                android.content.Intent myIntent = new android.content.Intent(view.getContext(),
+                        WelcomeScreenActivity.class);
                 startActivityForResult(myIntent, 0);
             }
         });
@@ -146,6 +153,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
 
     /**
      * customizable toast
+     *
      * @param message message to be displayed
      */
     @SuppressWarnings("SameParameterValue")
@@ -156,6 +164,7 @@ public class RegistrationPageActivity extends AppCompatActivity {
     /**
      * private method to help validate email and register user to authentication for Firebase
      * also adds user info to users database which is the child of OffTheStreetsDatabase
+     *
      * @param user the user to be registered
      */
 
@@ -189,7 +198,8 @@ public class RegistrationPageActivity extends AppCompatActivity {
 
     /**
      * signing in after successful registration
-     * @param email of user registering
+     *
+     * @param email    of user registering
      * @param password of user registering
      */
     private void signIn(String email, String password) {
@@ -225,36 +235,5 @@ public class RegistrationPageActivity extends AppCompatActivity {
             mAuth.removeAuthStateListener(mAuthListener);
         }
     }
-
-
-    //ADD USER TO ARRAYLIST<USER> METHOD
-//    //check that username does not already exist in list
-//                if (MyArr1.size() != 0) {
-//        boolean flag = true;
-//        for (User myuser : MyArr1) {
-//            if (email.equals(myuser.getEmail())) {
-//                tvRegistration.setText("Registration unsuccessful! Email is already registered under another account.");
-//                flag = false;
-//            }
-//
-//            //email not previously registered, allow registration
-//              MyArr1.add(new User(name, email, phone, password));
-//        }
-//        if (flag) {
-//            //add User to database ArrayList
-////                        MyArr1.add(new User(name, email, phone, password));
-////                        usersRef.child(email).setValue(new User(name, email, phone, password));
-//            writeNewUser(name, email, phone, password, usersRef);
-//
-//            android.content.Intent myIntentRegister = new android.content.Intent(view.getContext(), WelcomeScreenActivity.class);
-//            startActivityForResult(myIntentRegister, 0);
-//        }
-//    } else {
-//        //list is empty, add first User to database ArrayList
-////                    MyArr1.add(new User(name, email, phone, password));
-////                    usersRef.child(email).setValue(new User(name, email, phone, password));
-//        android.content.Intent myIntentRegister = new android.content.Intent(view.getContext(), WelcomeScreenActivity.class);
-//        startActivityForResult(myIntentRegister, 0);
-//    }
 
 }
