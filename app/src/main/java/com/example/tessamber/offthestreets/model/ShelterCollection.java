@@ -87,6 +87,7 @@ public class ShelterCollection {
      * @param ageRange specified age group
      * @return true if it does, false otherwise
      */
+    @SuppressWarnings("SimplifiableIfStatement")
     private boolean searchForAgeRange(HomelessShelter s, String ageRange) {
         if (ageRange.equalsIgnoreCase("Anyone")) {
             return true ;

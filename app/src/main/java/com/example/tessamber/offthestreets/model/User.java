@@ -14,8 +14,6 @@ public class User {
 
     public static final List<String> userTypes = Arrays.asList("user", "admin");
 
-    public static List<User> MyArr1 = new ArrayList<>();
-
     private static int count = 0; //number of users in arraylist
     private String name;
     private String email;

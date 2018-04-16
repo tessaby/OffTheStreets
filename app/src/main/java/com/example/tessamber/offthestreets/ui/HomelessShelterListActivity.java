@@ -182,7 +182,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
             final View mView;
             final TextView mIdView;
             final TextView mContentView;
-            public HomelessShelter mItem;
+            HomelessShelter mItem;
 
             ViewHolder(View view) {
                 super(view);
@@ -197,6 +197,12 @@ public class HomelessShelterListActivity extends AppCompatActivity {
             }
         }
     }
+
+    /**
+     * method to retrieve capacity value of shelter from firebase database of homeless shelters
+     * since the database is persistent
+     * and updates value to shelter in arraylist of shelters from shelter collection
+     */
 
     public void setCapacityFromFirebase() {
         // FIREBASE
