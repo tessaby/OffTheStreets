@@ -123,14 +123,16 @@ public class HomelessShelterListActivity extends AppCompatActivity {
          * @param items array list of shelters
          */
         SimpleItemRecyclerViewAdapter(List<HomelessShelter> items) {
-            mValues = items;
+            setmValues(items);
         }
 
         /**
          * method that resets values of arraylist in simple item recycler view adapter
          * @param newlist arraylist of shelters
          */
-        void setmValues(List<HomelessShelter> newlist) { mValues = newlist; }
+        void setmValues(List<HomelessShelter> newlist) {
+            //noinspection AssignmentOrReturnOfFieldWithMutableType
+            mValues = newlist; }
 
         @Override
         public long getItemId(int position) {
@@ -158,7 +160,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
             holder.mView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    System.out.println("Detected Click");
+//                    System.out.println("Detected Click");
 
                     Context context = v.getContext();
                     Intent intent3 = new Intent(context, HomelessShelterDetailActivity.class);
@@ -227,7 +229,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
             @Override
             public void onCancelled(DatabaseError databaseError) {
                 // ...
-                System.out.println("The read failed: " + databaseError.getCode());
+//                System.out.println("The read failed: " + databaseError.getCode());
             }
         });
     }

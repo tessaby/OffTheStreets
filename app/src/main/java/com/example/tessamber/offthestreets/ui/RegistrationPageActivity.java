@@ -26,6 +26,7 @@ import com.google.firebase.database.FirebaseDatabase;
 /**
  * Activity for new user registration
  */
+@SuppressWarnings({"unused", "CyclicClassDependency"})
 public class RegistrationPageActivity extends AppCompatActivity {
 
     private static final String TAG = "RegistrationActivity";

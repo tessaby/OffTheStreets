@@ -21,6 +21,7 @@ import com.google.firebase.auth.FirebaseUser;
  * Activity allows user to enter login details
  * which are verified through firebase authentication database
  */
+@SuppressWarnings("CyclicClassDependency")
 public class LoginScreenActivity extends AppCompatActivity {
 
     private static final String TAG = "LoginActivity";

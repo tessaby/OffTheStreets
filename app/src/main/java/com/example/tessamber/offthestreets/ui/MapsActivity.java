@@ -158,6 +158,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         return true;
     }
 
+
     private void getLocationPermission(){
         Log.d("TAG", "getLocationPermissions Ready");
         String [] permissions = {Manifest.permission.ACCESS_FINE_LOCATION,

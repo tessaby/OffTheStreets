@@ -31,6 +31,7 @@ import com.google.firebase.database.ValueEventListener;
  * This fragment is contained in {@link HomelessShelterDetailActivity}
  * on handsets.
  */
+@SuppressWarnings("ALL")
 public class HomelessShelterDetailFragment extends Fragment {
 
     private static final String TAG = "DetailFragment";

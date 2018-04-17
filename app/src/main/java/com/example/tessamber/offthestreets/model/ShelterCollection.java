@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Shelter Collection Class contains list of shelters
  */
+@SuppressWarnings("ALL")
 public class ShelterCollection {
 
     public static final ShelterCollection INSTANCE = new ShelterCollection();
@@ -23,6 +24,7 @@ public class ShelterCollection {
      * Shelter collection constructor
      * assigns shelter list
      */
+    @SuppressWarnings("WeakerAccess")
     public ShelterCollection() {
         shelters = new ArrayList<>();
     }

@@ -20,6 +20,7 @@ public class HomelessShelter {
     /**
      * default constructor
      */
+    @SuppressWarnings("unused")
     public HomelessShelter() {
     }
 
