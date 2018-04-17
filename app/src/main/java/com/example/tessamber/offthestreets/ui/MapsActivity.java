@@ -149,6 +149,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     }
 
+    /**
+     * method for use with Map Activity
+     * @param marker clicked
+     * @return value true
+     */
     @SuppressWarnings("SameReturnValue")
     public boolean onMarkerClick(@SuppressWarnings("unused") final Marker marker) {
         return true;
