@@ -19,7 +19,11 @@ public class ShelterCollection {
 
     private ArrayList<HomelessShelter> shelters;
 
-    private ShelterCollection() {
+    /**
+     * Shelter collection constructor
+     * assigns shelter list
+     */
+    public ShelterCollection() {
         shelters = new ArrayList<>();
     }
 

@@ -45,9 +45,6 @@ public class HomelessShelterListActivity extends AppCompatActivity {
     private Spinner spAgeRage;
     private EditText etShelterName;
 
-    // DECLARE BUTTONS
-    private Button bSearch;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,7 +81,7 @@ public class HomelessShelterListActivity extends AppCompatActivity {
         etShelterName = findViewById(R.id.etShelterName);
 
         // BUTTONS
-        bSearch = findViewById(R.id.bSearch);
+        Button bSearch = findViewById(R.id.bSearch);
         bSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

@@ -101,6 +101,7 @@ public class User {
 
     private void clearBedsBooked() { bedsBooked = 0; }
 
-    private void clearShelterBookAt() { shelterBookedAt = null; }
+    private void clearShelterBookAt() { //noinspection AssignmentToNull
+        shelterBookedAt = null; }
 
 }
