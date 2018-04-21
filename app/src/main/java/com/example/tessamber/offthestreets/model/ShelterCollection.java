@@ -106,7 +106,7 @@ public class ShelterCollection {
      * @return true if it does, false otherwise
      */
     @SuppressWarnings("SimplifiableIfStatement")
-    private boolean searchForAgeRange(HomelessShelter s, String ageRange) {
+    public boolean searchForAgeRange(HomelessShelter s, String ageRange) {
         if ("Anyone".equalsIgnoreCase(ageRange)) {
             return true ;
         } else if (ageRange.toLowerCase().contains("children")
