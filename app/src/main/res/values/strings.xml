@@ -1,5 +1,7 @@
 <resources>
     <string name="app_name">OffTheStreets</string>
+    <string name="facebook_app_id">199878367316301</string>
+    <string name="fb_login_protocol_scheme">fb199878367316301</string>
 
     <string name="title_activity_homeless_shelter_detail">HomelessShelterDetail</string>
     <string name="title_activity_homeless_shelter_list">HomelessShelterList</string>
